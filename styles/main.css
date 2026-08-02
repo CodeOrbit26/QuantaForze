@@ -73,11 +73,13 @@ button {
   background: none;
 }
 
-/* Canvas Background (Scoped strictly to Video Showcase Section) */
-.showcase-section {
-  padding-block: 4rem 6rem;
+/* Canvas Background (Front Hero & Showcase Area) */
+.hero-wrapper {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  padding-bottom: 5rem;
+  margin-bottom: -5rem;
 }
 
 #particle-canvas {
@@ -89,6 +91,8 @@ button {
   z-index: 0;
   pointer-events: none;
   opacity: 0.85;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 88%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 88%, rgba(0, 0, 0, 0) 100%);
 }
 
 /* Container */
@@ -449,7 +453,8 @@ button {
 
 /* Intro Video / Showcase Section */
 .showcase-section {
-  padding-block: 4rem 6rem;
+  padding-block: 6rem 8rem;
+  margin-top: 3rem;
 }
 
 .video-wrapper {
