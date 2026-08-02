@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const stepContents = {
     'step-1': `
-<div class="terminal-line"><span class="prompt-symbol">$</span> <span class="cmd-text">quantaforze-antigravity plan "Build a distributed cache server with zero-allocation memory"</span></div>
+<div class="terminal-line"><span class="prompt-symbol">$</span> <span class="cmd-text">quantaforze-quantaforze plan "Build a distributed cache server with zero-allocation memory"</span></div>
 <div class="output-block">
   ✔ Analyzing codebase repository (42 files scanned)<br/>
   ✔ Formulated architecture strategy: Memory pool allocator & Lock-free queue<br/>
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="terminal-line"><span class="prompt-symbol">agent &gt;</span> <span class="cmd-text">Requesting feedback on storage pool design. Proceed to execution? [Y/n] Y</span></div>
     `,
     'step-2': `
-<div class="terminal-line"><span class="prompt-symbol">$</span> <span class="cmd-text">quantaforze-antigravity exec --parallel 4</span></div>
+<div class="terminal-line"><span class="prompt-symbol">$</span> <span class="cmd-text">quantaforze-quantaforze exec --parallel 4</span></div>
 <div class="output-block">
   <span class="diff-add">+ [NEW] src/cache/pool.rs (340 lines added)</span><br/>
   <span class="diff-add">+ [NEW] src/cache/ring_buffer.rs (210 lines added)</span><br/>
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
     `,
     'step-3': `
-<div class="terminal-line"><span class="prompt-symbol">$</span> <span class="cmd-text">quantaforze-antigravity test --coverage</span></div>
+<div class="terminal-line"><span class="prompt-symbol">$</span> <span class="cmd-text">quantaforze-quantaforze test --coverage</span></div>
 <div class="output-block">
   running 24 tests...<br/>
   test cache::pool::tests::test_allocation_bounds ... <span style="color:#4ade80;">ok</span><br/>
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
     `,
     'step-4': `
-<div class="terminal-line"><span class="prompt-symbol">$</span> <span class="cmd-text">quantaforze-antigravity deploy --target staging</span></div>
+<div class="terminal-line"><span class="prompt-symbol">$</span> <span class="cmd-text">quantaforze-quantaforze deploy --target staging</span></div>
 <div class="output-block">
   ✔ Verified build integrity (0 warnings, 0 lint errors)<br/>
   ✔ Pushed release bundle to staging cluster<br/>

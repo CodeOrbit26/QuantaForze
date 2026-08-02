@@ -1,5 +1,5 @@
 /**
- * QuantaForze Antigravity - Interactive Particle Canvas Engine
+ * QuantaForze - Interactive Particle Canvas Engine
  * Creates smooth morphing particles with glowing gradient fields
  */
 
@@ -31,11 +31,10 @@ export function initParticles() {
   });
 
   const colors = [
-    '#3186ff', // Blue
-    '#06b6d4', // Cyan
-    '#a855f7', // Purple
-    '#fbbc04', // Yellow
-    '#ea4335'  // Red
+    '#3b82f6', // Electric Blue
+    '#0284c7', // Slate Cyan
+    '#6366f1', // Soft Indigo
+    '#38bdf8'  // Sky Blue
   ];
 
   let particles = [];
