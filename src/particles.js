@@ -1,6 +1,6 @@
 /**
- * QuantaForze - Minimalist 3D Geometric Mesh Canvas Engine
- * Ultra-sleek Monochrome Silver & Diamond White 3D Wireframe Surface
+ * QuantaForze - 3D Metallic Geometric Lattice Surface Canvas Engine
+ * Horizontal perspective floor mesh with mouse tilt tracking (cleanly framed below hero text).
  */
 
 export function initParticles() {
@@ -34,15 +34,15 @@ export function initParticles() {
     initMesh();
   });
 
-  // Construct 3D Geometric Mesh Terrain
+  // Construct 3D Geometric Terrain/Structure Grid
   let gridPoints = [];
   let faces = [];
   let edges = [];
 
-  const cols = 15;
+  const cols = 16;
   const rows = 10;
-  const spacingX = 135;
-  const spacingZ = 115;
+  const spacingX = 130;
+  const spacingZ = 110;
 
   function initMesh() {
     gridPoints = [];
@@ -57,9 +57,9 @@ export function initParticles() {
         const x = startX + c * spacingX;
         const z = startZ + r * spacingZ;
         
-        // Dynamic wave elevation
+        // Gentle organic elevation
         const distFromCenter = Math.sqrt(x * x + z * z);
-        const y = Math.cos(distFromCenter * 0.0032) * 110 - Math.sin(c * 0.45) * 32;
+        const y = Math.cos(distFromCenter * 0.0025) * 80 - Math.sin(c * 0.4) * 25;
 
         gridPoints.push({ x, y, z, baseY: y, c, r });
       }
@@ -82,7 +82,7 @@ export function initParticles() {
         edges.push([i1, i3]);
         edges.push([i2, i4]);
         edges.push([i3, i4]);
-        edges.push([i2, i3]);
+        edges.push([i2, i3]); // Diagonal strut
       }
     }
   }
@@ -118,26 +118,27 @@ export function initParticles() {
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    // Bounded tilt angle
-    const targetTiltX = 0.38 + (mouse.y - height / 2) * 0.0003;
-    const targetTiltY = (mouse.x - width / 2) * 0.0003;
+    // Fixed horizontal perspective pitch angle (~1.25 rad / 72 deg tilt)
+    const targetTiltX = 1.25 + (mouse.y - height / 2) * 0.00015;
+    const targetTiltY = (mouse.x - width / 2) * 0.0002;
     mouse.tiltX += (targetTiltX - mouse.tiltX) * 0.05;
     mouse.tiltY += (targetTiltY - mouse.tiltY) * 0.05;
 
     ctx.clearRect(0, 0, width, height);
 
-    const focalLength = 850;
-    const centerY = height * 0.62;
+    const focalLength = 750;
+    const centerY = height * 0.72;
 
-    // Transform 3D points
+    // Transform all 3D points
     const projected = gridPoints.map(p => {
+      // Dynamic organic wave motion
       const waveY = p.baseY + Math.sin(time + p.c * 0.25 + p.r * 0.35) * 14;
       
       let rot = { x: p.x, y: waveY, z: p.z };
       rot = rotateX(rot, mouse.tiltX);
-      rot = rotateY(rot, mouse.tiltY + Math.sin(time * 0.18) * 0.1);
+      rot = rotateY(rot, mouse.tiltY + Math.sin(time * 0.15) * 0.08);
 
-      const zWorld = rot.z + 780;
+      const zWorld = rot.z + 700;
       const scale = focalLength / Math.max(zWorld, 100);
 
       return {
@@ -148,14 +149,14 @@ export function initParticles() {
       };
     });
 
-    // 1. Draw Subtle Facet Shades
+    // 1. Draw Dark Faceted Geometric Polygons (Depth Faces)
     faces.forEach(([i1, i2, i3]) => {
       const p1 = projected[i1];
       const p2 = projected[i2];
       const p3 = projected[i3];
 
       const avgZ = (p1.z + p2.z + p3.z) / 3;
-      const faceAlpha = Math.max(0.015, Math.min(0.2, (avgZ + 400) / 750));
+      const faceAlpha = Math.max(0.01, Math.min(0.25, (avgZ + 350) / 650));
 
       ctx.save();
       ctx.beginPath();
@@ -164,51 +165,52 @@ export function initParticles() {
       ctx.lineTo(p3.x, p3.y);
       ctx.closePath();
 
-      ctx.fillStyle = `rgba(255, 255, 255, ${faceAlpha})`;
+      ctx.fillStyle = `rgba(18, 22, 32, ${faceAlpha})`;
       ctx.fill();
       ctx.restore();
     });
 
-    // 2. Draw Pristine Silver-White Metallic Wireframe Lines
+    // 2. Draw Copper / Rose-Gold Metallic Wireframe Lines
     edges.forEach(([i, j]) => {
       const p1 = projected[i];
       const p2 = projected[j];
 
       const avgZ = (p1.z + p2.z) / 2;
-      const lineAlpha = Math.max(0.1, Math.min(0.85, (avgZ + 400) / 620));
+      const lineAlpha = Math.max(0.05, Math.min(0.7, (avgZ + 350) / 600));
 
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
 
-      // Silver White Metallic Gradient
+      // Rose Gold Metallic Gradient
       const lineGrad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-      lineGrad.addColorStop(0, `rgba(255, 255, 255, ${lineAlpha})`);
-      lineGrad.addColorStop(0.5, `rgba(226, 232, 240, ${lineAlpha * 0.85})`);
-      lineGrad.addColorStop(1, `rgba(148, 163, 184, ${lineAlpha * 0.7})`);
+      lineGrad.addColorStop(0, `rgba(217, 119, 6, ${lineAlpha})`);
+      lineGrad.addColorStop(0.5, `rgba(245, 158, 11, ${lineAlpha * 0.85})`);
+      lineGrad.addColorStop(1, `rgba(180, 83, 9, ${lineAlpha})`);
 
       ctx.strokeStyle = lineGrad;
-      ctx.lineWidth = Math.max(1, 2.4 * ((p1.scale + p2.scale) / 2));
+      ctx.lineWidth = Math.max(0.8, 2.2 * ((p1.scale + p2.scale) / 2));
       ctx.stroke();
       ctx.restore();
     });
 
-    // 3. Draw Specular Diamond White Joint Beads
+    // 3. Draw Shiny Metallic Joint Spheres (Beads)
     projected.forEach(p => {
-      const nodeAlpha = Math.max(0.25, Math.min(0.95, (p.z + 400) / 580));
-      const radius = Math.max(2, 4.8 * p.scale);
+      const nodeAlpha = Math.max(0.15, Math.min(0.9, (p.z + 350) / 550));
+      const radius = Math.max(1.8, 4.2 * p.scale);
 
       ctx.save();
       ctx.beginPath();
       ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
 
-      ctx.fillStyle = `rgba(255, 255, 255, ${nodeAlpha})`;
-      ctx.shadowColor = 'rgba(255, 255, 255, 0.9)';
-      ctx.shadowBlur = 10 * p.scale;
+      // Copper/Gold Metallic Shading
+      ctx.fillStyle = `rgba(251, 191, 36, ${nodeAlpha})`;
+      ctx.shadowColor = 'rgba(245, 158, 11, 0.7)';
+      ctx.shadowBlur = 8 * p.scale;
       ctx.fill();
 
-      // Specular Highlight
+      // Specular Highlight Bead
       ctx.beginPath();
       ctx.arc(p.x - radius * 0.25, p.y - radius * 0.25, radius * 0.35, 0, Math.PI * 2);
       ctx.fillStyle = '#ffffff';
