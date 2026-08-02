@@ -340,8 +340,12 @@ button {
 
 /* Hero Section */
 .hero-section {
-  padding-top: 10rem;
-  padding-bottom: 5rem;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  min-height: calc(100vh - 4.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
   overflow: hidden;
