@@ -1,6 +1,6 @@
 /**
  * QuantaForze - Interactive Quantum Field Canvas Engine
- * Depicts a morphing quantum energy grid & constellation field tracked dynamically by cursor movement.
+ * Ultra-sleek, organic lattice grid tracked by cursor movement in monochrome silver-white tones.
  */
 
 export function initParticles() {
@@ -18,7 +18,7 @@ export function initParticles() {
     y: height / 2,
     targetX: width / 2,
     targetY: height / 2,
-    radius: 220,
+    radius: 240,
     active: false
   };
 
@@ -40,8 +40,7 @@ export function initParticles() {
   });
 
   let nodes = [];
-  const columns = Math.floor(width / 60);
-  const rows = Math.floor(height / 60);
+  const nodeSpacing = 85;
 
   class QuantumNode {
     constructor(originX, originY) {
@@ -49,57 +48,56 @@ export function initParticles() {
       this.originY = originY;
       this.x = originX;
       this.y = originY;
-      this.size = 2 + Math.random() * 2;
+      this.size = 1.5 + Math.random() * 1.5;
       this.angle = Math.random() * Math.PI * 2;
-      this.speed = 0.01 + Math.random() * 0.015;
-      this.baseAlpha = 0.15 + Math.random() * 0.35;
+      this.speed = 0.008 + Math.random() * 0.012;
+      this.baseAlpha = 0.12 + Math.random() * 0.25;
       this.alpha = this.baseAlpha;
       this.glow = 0;
     }
 
     update() {
-      // Natural floating oscillation
+      // Natural organic floating movement
       this.angle += this.speed;
-      const oscX = Math.cos(this.angle) * 12;
-      const oscY = Math.sin(this.angle) * 12;
+      const oscX = Math.cos(this.angle) * 10;
+      const oscY = Math.sin(this.angle) * 10;
 
       const targetX = this.originX + oscX;
       const targetY = this.originY + oscY;
 
-      // Mouse attraction and dynamic displacement tracking
+      // Smooth elastic displacement towards cursor
       const dx = mouse.x - this.x;
       const dy = mouse.y - this.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist < mouse.radius) {
         const force = (mouse.radius - dist) / mouse.radius;
-        const pull = force * 60;
+        const pull = force * 45;
         const angle = Math.atan2(dy, dx);
         
-        // Dynamic magnetic elastic pull towards cursor
-        this.x += (this.originX + Math.cos(angle) * pull - this.x) * 0.1;
-        this.y += (this.originY + Math.sin(angle) * pull - this.y) * 0.1;
+        this.x += (this.originX + Math.cos(angle) * pull - this.x) * 0.08;
+        this.y += (this.originY + Math.sin(angle) * pull - this.y) * 0.08;
         this.glow = force;
-        this.alpha = this.baseAlpha + force * 0.6;
+        this.alpha = this.baseAlpha + force * 0.5;
       } else {
-        this.x += (targetX - this.x) * 0.05;
-        this.y += (targetY - this.y) * 0.05;
+        this.x += (targetX - this.x) * 0.04;
+        this.y += (targetY - this.y) * 0.04;
         this.glow *= 0.92;
-        this.alpha += (this.baseAlpha - this.alpha) * 0.05;
+        this.alpha += (this.baseAlpha - this.alpha) * 0.04;
       }
     }
 
     draw() {
       ctx.save();
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size + this.glow * 2, 0, Math.PI * 2);
+      ctx.arc(this.x, this.y, this.size + this.glow * 1.5, 0, Math.PI * 2);
       
-      const intensity = Math.floor(200 + this.glow * 55);
+      const intensity = Math.floor(220 + this.glow * 35);
       ctx.fillStyle = `rgba(${intensity}, ${intensity}, ${intensity}, ${this.alpha})`;
       
-      if (this.glow > 0.1) {
-        ctx.shadowBlur = 15 * this.glow;
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+      if (this.glow > 0.15) {
+        ctx.shadowBlur = 12 * this.glow;
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.7)';
       }
       
       ctx.fill();
@@ -109,26 +107,26 @@ export function initParticles() {
 
   function initNodes() {
     nodes = [];
-    for (let x = 0; x <= width + 60; x += 60) {
-      for (let y = 0; y <= height + 60; y += 60) {
-        nodes.push(new QuantumNode(x, y));
+    for (let x = -40; x <= width + 85; x += nodeSpacing) {
+      for (let y = -40; y <= height + 85; y += nodeSpacing) {
+        // Subtle random offset for organic constellation layout
+        const offsetX = (Math.random() - 0.5) * 20;
+        const offsetY = (Math.random() - 0.5) * 20;
+        nodes.push(new QuantumNode(x + offsetX, y + offsetY));
       }
     }
   }
 
   initNodes();
 
-  let time = 0;
-
   function animate() {
-    time += 0.02;
     // Smooth lerp mouse positioning
     mouse.x += (mouse.targetX - mouse.x) * 0.08;
     mouse.y += (mouse.targetY - mouse.y) * 0.08;
 
     ctx.clearRect(0, 0, width, height);
 
-    // Render dynamic connecting geometric lattice lines
+    // Render subtle connecting lattice lines
     for (let i = 0; i < nodes.length; i++) {
       const nodeA = nodes[i];
       nodeA.update();
@@ -139,17 +137,17 @@ export function initParticles() {
         const dy = nodeA.y - nodeB.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 85) {
+        if (dist < 110) {
           ctx.save();
           ctx.beginPath();
           ctx.moveTo(nodeA.x, nodeA.y);
           ctx.lineTo(nodeB.x, nodeB.y);
           
           const avgGlow = (nodeA.glow + nodeB.glow) / 2;
-          const alpha = (1 - dist / 85) * (0.1 + avgGlow * 0.4);
+          const alpha = (1 - dist / 110) * (0.08 + avgGlow * 0.35);
           
           ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-          ctx.lineWidth = 0.7 + avgGlow;
+          ctx.lineWidth = 0.6 + avgGlow * 0.6;
           ctx.stroke();
           ctx.restore();
         }
@@ -158,20 +156,20 @@ export function initParticles() {
       nodeA.draw();
     }
 
-    // Draw cursor magnetic halo depiction
+    // Elegant subtle magnetic halo around cursor
     if (mouse.active || mouse.glow > 0.01) {
       ctx.save();
       ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, mouse.radius * 0.75, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      ctx.arc(mouse.x, mouse.y, mouse.radius * 0.7, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      // Outer orbit ring
+      // Outer orbit dashed ring
       ctx.beginPath();
       ctx.arc(mouse.x, mouse.y, mouse.radius, 0, Math.PI * 2);
-      ctx.setLineDash([6, 12]);
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.setLineDash([4, 12]);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
       ctx.stroke();
       ctx.restore();
     }
