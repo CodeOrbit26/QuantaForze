@@ -183,11 +183,11 @@ export function initParticles() {
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
 
-      // Rose Gold Metallic Gradient
+      // Chrome / Silver Metallic Gradient Lines
       const lineGrad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-      lineGrad.addColorStop(0, `rgba(217, 119, 6, ${lineAlpha})`);
-      lineGrad.addColorStop(0.5, `rgba(245, 158, 11, ${lineAlpha * 0.9})`);
-      lineGrad.addColorStop(1, `rgba(180, 83, 9, ${lineAlpha})`);
+      lineGrad.addColorStop(0, `rgba(255, 255, 255, ${lineAlpha})`);
+      lineGrad.addColorStop(0.5, `rgba(203, 213, 225, ${lineAlpha * 0.85})`);
+      lineGrad.addColorStop(1, `rgba(148, 163, 184, ${lineAlpha})`);
 
       ctx.strokeStyle = lineGrad;
       ctx.lineWidth = Math.max(1, 2.8 * ((p1.scale + p2.scale) / 2));
@@ -195,7 +195,7 @@ export function initParticles() {
       ctx.restore();
     });
 
-    // 3. Draw Shiny Metallic Joint Spheres (Beads)
+    // 3. Draw Shiny Silver/White Metallic Joint Spheres (Beads)
     projected.forEach(p => {
       const nodeAlpha = Math.max(0.2, Math.min(0.95, (p.z + 400) / 600));
       const radius = Math.max(2, 5 * p.scale);
@@ -204,9 +204,9 @@ export function initParticles() {
       ctx.beginPath();
       ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
 
-      // Copper/Gold Metallic Shading
-      ctx.fillStyle = `rgba(251, 191, 36, ${nodeAlpha})`;
-      ctx.shadowColor = 'rgba(245, 158, 11, 0.8)';
+      // Silver Specular Shading
+      ctx.fillStyle = `rgba(255, 255, 255, ${nodeAlpha})`;
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.9)';
       ctx.shadowBlur = 10 * p.scale;
       ctx.fill();
 
