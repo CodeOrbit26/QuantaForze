@@ -1,6 +1,6 @@
 /**
- * QuantaForze - 3D Metallic Geometric Lattice Surface Canvas Engine
- * High-end Champagne Gold & Obsidian Crystal 3D Geometric Render
+ * QuantaForze - Minimalist 3D Geometric Mesh Canvas Engine
+ * Ultra-sleek Monochrome Silver & Diamond White 3D Wireframe Surface
  */
 
 export function initParticles() {
@@ -34,7 +34,7 @@ export function initParticles() {
     initMesh();
   });
 
-  // Construct 3D Geometric Terrain/Structure Grid
+  // Construct 3D Geometric Mesh Terrain
   let gridPoints = [];
   let faces = [];
   let edges = [];
@@ -57,9 +57,9 @@ export function initParticles() {
         const x = startX + c * spacingX;
         const z = startZ + r * spacingZ;
         
-        // Geometric dome elevation
+        // Dynamic wave elevation
         const distFromCenter = Math.sqrt(x * x + z * z);
-        const y = Math.cos(distFromCenter * 0.0032) * 120 - Math.sin(c * 0.45) * 38;
+        const y = Math.cos(distFromCenter * 0.0032) * 110 - Math.sin(c * 0.45) * 32;
 
         gridPoints.push({ x, y, z, baseY: y, c, r });
       }
@@ -118,7 +118,7 @@ export function initParticles() {
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    // Bounded mouse tilt angle
+    // Bounded tilt angle
     const targetTiltX = 0.38 + (mouse.y - height / 2) * 0.0003;
     const targetTiltY = (mouse.x - width / 2) * 0.0003;
     mouse.tiltX += (targetTiltX - mouse.tiltX) * 0.05;
@@ -131,11 +131,11 @@ export function initParticles() {
 
     // Transform 3D points
     const projected = gridPoints.map(p => {
-      const waveY = p.baseY + Math.sin(time + p.c * 0.25 + p.r * 0.35) * 16;
+      const waveY = p.baseY + Math.sin(time + p.c * 0.25 + p.r * 0.35) * 14;
       
       let rot = { x: p.x, y: waveY, z: p.z };
       rot = rotateX(rot, mouse.tiltX);
-      rot = rotateY(rot, mouse.tiltY + Math.sin(time * 0.18) * 0.12);
+      rot = rotateY(rot, mouse.tiltY + Math.sin(time * 0.18) * 0.1);
 
       const zWorld = rot.z + 780;
       const scale = focalLength / Math.max(zWorld, 100);
@@ -148,14 +148,14 @@ export function initParticles() {
       };
     });
 
-    // 1. Draw Obsidian Faceted Crystals (Faceted Depth Polygons)
+    // 1. Draw Subtle Facet Shades
     faces.forEach(([i1, i2, i3]) => {
       const p1 = projected[i1];
       const p2 = projected[i2];
       const p3 = projected[i3];
 
       const avgZ = (p1.z + p2.z + p3.z) / 3;
-      const faceAlpha = Math.max(0.03, Math.min(0.35, (avgZ + 400) / 650));
+      const faceAlpha = Math.max(0.015, Math.min(0.2, (avgZ + 400) / 750));
 
       ctx.save();
       ctx.beginPath();
@@ -164,58 +164,53 @@ export function initParticles() {
       ctx.lineTo(p3.x, p3.y);
       ctx.closePath();
 
-      const faceGrad = ctx.createLinearGradient(p1.x, p1.y, p3.x, p3.y);
-      faceGrad.addColorStop(0, `rgba(30, 41, 59, ${faceAlpha})`);
-      faceGrad.addColorStop(1, `rgba(15, 23, 42, ${faceAlpha * 0.8})`);
-
-      ctx.fillStyle = faceGrad;
+      ctx.fillStyle = `rgba(255, 255, 255, ${faceAlpha})`;
       ctx.fill();
       ctx.restore();
     });
 
-    // 2. Draw Champagne Gold Metallic Lattice Struts
+    // 2. Draw Pristine Silver-White Metallic Wireframe Lines
     edges.forEach(([i, j]) => {
       const p1 = projected[i];
       const p2 = projected[j];
 
       const avgZ = (p1.z + p2.z) / 2;
-      const lineAlpha = Math.max(0.12, Math.min(0.9, (avgZ + 400) / 600));
+      const lineAlpha = Math.max(0.1, Math.min(0.85, (avgZ + 400) / 620));
 
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
 
-      // Champagne Gold / Warm Bronze Gradient
+      // Silver White Metallic Gradient
       const lineGrad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-      lineGrad.addColorStop(0, `rgba(254, 243, 199, ${lineAlpha})`);
-      lineGrad.addColorStop(0.5, `rgba(245, 158, 11, ${lineAlpha * 0.95})`);
-      lineGrad.addColorStop(1, `rgba(180, 83, 9, ${lineAlpha * 0.8})`);
+      lineGrad.addColorStop(0, `rgba(255, 255, 255, ${lineAlpha})`);
+      lineGrad.addColorStop(0.5, `rgba(226, 232, 240, ${lineAlpha * 0.85})`);
+      lineGrad.addColorStop(1, `rgba(148, 163, 184, ${lineAlpha * 0.7})`);
 
       ctx.strokeStyle = lineGrad;
-      ctx.lineWidth = Math.max(1, 2.8 * ((p1.scale + p2.scale) / 2));
+      ctx.lineWidth = Math.max(1, 2.4 * ((p1.scale + p2.scale) / 2));
       ctx.stroke();
       ctx.restore();
     });
 
-    // 3. Draw Champagne Gold Specular Joint Beads
+    // 3. Draw Specular Diamond White Joint Beads
     projected.forEach(p => {
-      const nodeAlpha = Math.max(0.2, Math.min(0.98, (p.z + 400) / 580));
-      const radius = Math.max(2, 5.2 * p.scale);
+      const nodeAlpha = Math.max(0.25, Math.min(0.95, (p.z + 400) / 580));
+      const radius = Math.max(2, 4.8 * p.scale);
 
       ctx.save();
       ctx.beginPath();
       ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
 
-      // Glowing Champagne Gold Shading
-      ctx.fillStyle = `rgba(251, 191, 36, ${nodeAlpha})`;
-      ctx.shadowColor = 'rgba(245, 158, 11, 0.85)';
-      ctx.shadowBlur = 12 * p.scale;
+      ctx.fillStyle = `rgba(255, 255, 255, ${nodeAlpha})`;
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.9)';
+      ctx.shadowBlur = 10 * p.scale;
       ctx.fill();
 
-      // Bright Specular Core Highlight
+      // Specular Highlight
       ctx.beginPath();
-      ctx.arc(p.x - radius * 0.25, p.y - radius * 0.25, radius * 0.38, 0, Math.PI * 2);
+      ctx.arc(p.x - radius * 0.25, p.y - radius * 0.25, radius * 0.35, 0, Math.PI * 2);
       ctx.fillStyle = '#ffffff';
       ctx.fill();
 
