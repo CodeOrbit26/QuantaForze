@@ -105,29 +105,37 @@ button {
   z-index: 1;
 }
 
-/* Header & Navbar */
+/* Header & Floating Glass Navbar */
 .site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: 1240px;
   z-index: 1000;
-  transition: background var(--transition-normal), backdrop-filter var(--transition-normal), border-color var(--transition-normal);
-  border-bottom: 1px solid transparent;
+  background: rgba(13, 17, 26, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  padding-inline: 1.5rem;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-normal);
 }
 
 .site-header.scrolled {
-  background: rgba(8, 12, 20, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom-color: var(--border-light);
+  background: rgba(8, 12, 20, 0.88);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
 }
 
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.5rem;
+  height: 4.25rem;
+  padding-inline: 0;
 }
 
 /* Brand Logo */
