@@ -1,6 +1,6 @@
 /**
- * QuantaForze - Interactive Particle Canvas Engine
- * Creates smooth morphing particles with glowing gradient fields
+ * QuantaForze - Interactive Quantum Field Canvas Engine
+ * Depicts a morphing quantum energy grid & constellation field tracked dynamically by cursor movement.
  */
 
 export function initParticles() {
@@ -16,125 +16,162 @@ export function initParticles() {
     y: height / 2,
     targetX: width / 2,
     targetY: height / 2,
-    radius: 180
+    radius: 220,
+    active: false
   };
 
   window.addEventListener('mousemove', (e) => {
     mouse.targetX = e.clientX;
     mouse.targetY = e.clientY;
+    mouse.active = true;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.active = false;
   });
 
   window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-    initParticleArray();
+    initNodes();
   });
 
-  const colors = [
-    '#ffffff', // Pure White
-    '#e2e8f0', // Silver White
-    '#cbd5e1', // Slate Grey
-    '#94a3b8'  // Muted Grey
-  ];
+  let nodes = [];
+  const columns = Math.floor(width / 60);
+  const rows = Math.floor(height / 60);
 
-  let particles = [];
-  const particleCount = Math.min(Math.floor((width * height) / 12000), 120);
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.baseX = this.x;
-      this.baseY = this.y;
-      this.size = Math.random() * 2.5 + 1;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
+  class QuantumNode {
+    constructor(originX, originY) {
+      this.originX = originX;
+      this.originY = originY;
+      this.x = originX;
+      this.y = originY;
+      this.size = 2 + Math.random() * 2;
       this.angle = Math.random() * Math.PI * 2;
-      this.speed = Math.random() * 0.02 + 0.005;
-      this.alpha = Math.random() * 0.6 + 0.2;
+      this.speed = 0.01 + Math.random() * 0.015;
+      this.baseAlpha = 0.15 + Math.random() * 0.35;
+      this.alpha = this.baseAlpha;
+      this.glow = 0;
     }
 
     update() {
-      // Gentle organic movement
+      // Natural floating oscillation
       this.angle += this.speed;
-      this.x += this.vx + Math.cos(this.angle) * 0.5;
-      this.y += this.vy + Math.sin(this.angle) * 0.5;
+      const oscX = Math.cos(this.angle) * 12;
+      const oscY = Math.sin(this.angle) * 12;
 
-      // Wrap boundaries
-      if (this.x < 0) this.x = width;
-      if (this.x > width) this.x = 0;
-      if (this.y < 0) this.y = height;
-      if (this.y > height) this.y = 0;
+      const targetX = this.originX + oscX;
+      const targetY = this.originY + oscY;
 
-      // Interactive mouse push
+      // Mouse attraction and dynamic displacement tracking
       const dx = mouse.x - this.x;
       const dy = mouse.y - this.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist < mouse.radius) {
         const force = (mouse.radius - dist) / mouse.radius;
+        const pull = force * 60;
         const angle = Math.atan2(dy, dx);
-        this.x -= Math.cos(angle) * force * 3;
-        this.y -= Math.sin(angle) * force * 3;
+        
+        // Dynamic magnetic elastic pull towards cursor
+        this.x += (this.originX + Math.cos(angle) * pull - this.x) * 0.1;
+        this.y += (this.originY + Math.sin(angle) * pull - this.y) * 0.1;
+        this.glow = force;
+        this.alpha = this.baseAlpha + force * 0.6;
+      } else {
+        this.x += (targetX - this.x) * 0.05;
+        this.y += (targetY - this.y) * 0.05;
+        this.glow *= 0.92;
+        this.alpha += (this.baseAlpha - this.alpha) * 0.05;
       }
     }
 
     draw() {
       ctx.save();
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.globalAlpha = this.alpha;
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = this.color;
+      ctx.arc(this.x, this.y, this.size + this.glow * 2, 0, Math.PI * 2);
+      
+      const intensity = Math.floor(200 + this.glow * 55);
+      ctx.fillStyle = `rgba(${intensity}, ${intensity}, ${intensity}, ${this.alpha})`;
+      
+      if (this.glow > 0.1) {
+        ctx.shadowBlur = 15 * this.glow;
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+      }
+      
       ctx.fill();
       ctx.restore();
     }
   }
 
-  function initParticleArray() {
-    particles = [];
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+  function initNodes() {
+    nodes = [];
+    for (let x = 0; x <= width + 60; x += 60) {
+      for (let y = 0; y <= height + 60; y += 60) {
+        nodes.push(new QuantumNode(x, y));
+      }
     }
   }
 
-  initParticleArray();
+  initNodes();
+
+  let time = 0;
 
   function animate() {
-    // Smooth lerp mouse
-    mouse.x += (mouse.targetX - mouse.x) * 0.05;
-    mouse.y += (mouse.targetY - mouse.y) * 0.05;
+    time += 0.02;
+    // Smooth lerp mouse positioning
+    mouse.x += (mouse.targetX - mouse.x) * 0.08;
+    mouse.y += (mouse.targetY - mouse.y) * 0.08;
 
     ctx.clearRect(0, 0, width, height);
 
-    // Draw connecting lines between close particles
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
+    // Render dynamic connecting geometric lattice lines
+    for (let i = 0; i < nodes.length; i++) {
+      const nodeA = nodes[i];
+      nodeA.update();
+
+      for (let j = i + 1; j < nodes.length; j++) {
+        const nodeB = nodes[j];
+        const dx = nodeA.x - nodeB.x;
+        const dy = nodeA.y - nodeB.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 130) {
+        if (dist < 85) {
           ctx.save();
           ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = particles[i].color;
-          ctx.globalAlpha = (1 - dist / 130) * 0.15;
-          ctx.lineWidth = 0.8;
+          ctx.moveTo(nodeA.x, nodeA.y);
+          ctx.lineTo(nodeB.x, nodeB.y);
+          
+          const avgGlow = (nodeA.glow + nodeB.glow) / 2;
+          const alpha = (1 - dist / 85) * (0.1 + avgGlow * 0.4);
+          
+          ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+          ctx.lineWidth = 0.7 + avgGlow;
           ctx.stroke();
           ctx.restore();
         }
       }
+
+      nodeA.draw();
     }
 
-    // Draw particles
-    particles.forEach((p) => {
-      p.update();
-      p.draw();
-    });
+    // Draw cursor magnetic halo depiction
+    if (mouse.active || mouse.glow > 0.01) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, mouse.radius * 0.75, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Outer orbit ring
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, mouse.radius, 0, Math.PI * 2);
+      ctx.setLineDash([6, 12]);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.stroke();
+      ctx.restore();
+    }
 
     requestAnimationFrame(animate);
   }
