@@ -332,74 +332,85 @@ button {
 
 /* Hero Section */
 .hero-section {
-  padding-top: 10rem;
-  padding-bottom: 5rem;
+  padding-top: 9.5rem;
+  padding-bottom: 4rem;
   text-align: center;
   position: relative;
   z-index: 1;
 }
 
-.hero-pill {
+.hero-brand-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 1rem;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-light);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  backdrop-filter: blur(10px);
+  gap: 0.55rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2.25rem;
 }
 
-.hero-pill-badge {
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
+.hero-brand-logo {
+  width: 26px;
+  height: 26px;
+}
+
+.brand-sub {
+  font-weight: 400;
+  opacity: 0.9;
 }
 
 .hero-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.75rem, 5.5vw, 4.75rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
-  max-width: 900px;
+  font-family: 'Outfit', var(--font-main);
+  font-size: clamp(2.8rem, 5.2vw, 4.6rem);
+  font-weight: 450;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  margin-bottom: 2.5rem;
+  max-width: 960px;
   margin-inline: auto;
-}
-
-.hero-title .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, var(--accent-blue) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-title .quanta-accent {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 50%, var(--accent-purple) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  color: var(--text-secondary);
-  max-width: 680px;
-  margin: 0 auto 2.5rem auto;
-  line-height: 1.6;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 1rem;
   flex-wrap: wrap;
+}
+
+.btn-main {
+  background: #18181b;
+  color: #ffffff;
+  padding: 0.75rem 1.75rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.btn-main:hover {
+  background: #27272a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.btn-sub {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  padding: 0.75rem 1.75rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-fast);
+}
+
+.btn-sub:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .download-dropdown-wrap {
