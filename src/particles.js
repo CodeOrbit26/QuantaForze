@@ -1,6 +1,6 @@
 /**
  * QuantaForze - Interactive Quantum Field Canvas Engine
- * Depicts a morphing quantum energy grid with diagonal light-to-low-light color & opacity falloff.
+ * Depicts a morphing quantum energy grid & constellation field tracked dynamically by cursor movement.
  */
 
 export function initParticles() {
@@ -40,6 +40,8 @@ export function initParticles() {
   });
 
   let nodes = [];
+  const columns = Math.floor(width / 60);
+  const rows = Math.floor(height / 60);
 
   class QuantumNode {
     constructor(originX, originY) {
@@ -50,7 +52,7 @@ export function initParticles() {
       this.size = 2 + Math.random() * 2;
       this.angle = Math.random() * Math.PI * 2;
       this.speed = 0.01 + Math.random() * 0.015;
-      this.baseAlpha = 0.2 + Math.random() * 0.4;
+      this.baseAlpha = 0.15 + Math.random() * 0.35;
       this.alpha = this.baseAlpha;
       this.glow = 0;
     }
@@ -74,6 +76,7 @@ export function initParticles() {
         const pull = force * 60;
         const angle = Math.atan2(dy, dx);
         
+        // Dynamic magnetic elastic pull towards cursor
         this.x += (this.originX + Math.cos(angle) * pull - this.x) * 0.1;
         this.y += (this.originY + Math.sin(angle) * pull - this.y) * 0.1;
         this.glow = force;
@@ -91,15 +94,8 @@ export function initParticles() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size + this.glow * 2, 0, Math.PI * 2);
       
-      // Diagonal gradient factor from Top-Left (0) to Bottom-Right (1)
-      const diagFactor = Math.min(Math.max((this.x + this.y) / (width + height), 0), 1);
-      
-      // Light to low-light transition
-      const baseLuminance = Math.floor(255 - diagFactor * 135); // 255 -> 120
-      const diagAlphaMult = 1.0 - diagFactor * 0.65; // 1.0 -> 0.35
-      const currentAlpha = Math.min(this.alpha * diagAlphaMult, 1);
-
-      ctx.fillStyle = `rgba(${baseLuminance}, ${baseLuminance}, ${baseLuminance}, ${currentAlpha})`;
+      const intensity = Math.floor(200 + this.glow * 55);
+      ctx.fillStyle = `rgba(${intensity}, ${intensity}, ${intensity}, ${this.alpha})`;
       
       if (this.glow > 0.1) {
         ctx.shadowBlur = 15 * this.glow;
@@ -122,7 +118,10 @@ export function initParticles() {
 
   initNodes();
 
+  let time = 0;
+
   function animate() {
+    time += 0.02;
     // Smooth lerp mouse positioning
     mouse.x += (mouse.targetX - mouse.x) * 0.08;
     mouse.y += (mouse.targetY - mouse.y) * 0.08;
@@ -146,16 +145,10 @@ export function initParticles() {
           ctx.moveTo(nodeA.x, nodeA.y);
           ctx.lineTo(nodeB.x, nodeB.y);
           
-          const midX = (nodeA.x + nodeB.x) / 2;
-          const midY = (nodeA.y + nodeB.y) / 2;
-          const diagFactor = Math.min(Math.max((midX + midY) / (width + height), 0), 1);
-          
-          const baseLuminance = Math.floor(255 - diagFactor * 135);
-          const diagAlphaMult = 1.0 - diagFactor * 0.65;
           const avgGlow = (nodeA.glow + nodeB.glow) / 2;
-          const alpha = (1 - dist / 85) * (0.12 + avgGlow * 0.4) * diagAlphaMult;
+          const alpha = (1 - dist / 85) * (0.1 + avgGlow * 0.4);
           
-          ctx.strokeStyle = `rgba(${baseLuminance}, ${baseLuminance}, ${baseLuminance}, ${alpha})`;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
           ctx.lineWidth = 0.7 + avgGlow;
           ctx.stroke();
           ctx.restore();
