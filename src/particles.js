@@ -8,8 +8,10 @@ export function initParticles() {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  let width = (canvas.width = window.innerWidth);
-  let height = (canvas.height = window.innerHeight);
+  const parent = canvas.parentElement || document.body;
+
+  let width = (canvas.width = parent.clientWidth || window.innerWidth);
+  let height = (canvas.height = parent.clientHeight || 700);
 
   let mouse = {
     x: width / 2,
@@ -21,8 +23,9 @@ export function initParticles() {
   };
 
   window.addEventListener('mousemove', (e) => {
-    mouse.targetX = e.clientX;
-    mouse.targetY = e.clientY;
+    const rect = canvas.getBoundingClientRect();
+    mouse.targetX = e.clientX - rect.left;
+    mouse.targetY = e.clientY - rect.top;
     mouse.active = true;
   });
 
@@ -31,8 +34,8 @@ export function initParticles() {
   });
 
   window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+    width = canvas.width = parent.clientWidth || window.innerWidth;
+    height = canvas.height = parent.clientHeight || 700;
     initNodes();
   });
 
