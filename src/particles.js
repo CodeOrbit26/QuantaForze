@@ -1,6 +1,6 @@
 /**
  * QuantaForze - 3D Metallic Geometric Lattice Surface Canvas Engine
- * Horizontal perspective floor mesh with mouse tilt tracking (cleanly framed below hero text).
+ * Permanent horizontal perspective floor mesh initialized at 1.25 rad pitch angle.
  */
 
 export function initParticles() {
@@ -13,12 +13,13 @@ export function initParticles() {
   let width = (canvas.width = parent.clientWidth || window.innerWidth);
   let height = (canvas.height = parent.clientHeight || 800);
 
+  // Initialize tiltX directly to horizontal floor perspective (1.25 rad)
   let mouse = {
     x: width / 2,
     y: height / 2,
     targetX: width / 2,
     targetY: height / 2,
-    tiltX: 0,
+    tiltX: 1.25,
     tiltY: 0
   };
 
@@ -82,7 +83,7 @@ export function initParticles() {
         edges.push([i1, i3]);
         edges.push([i2, i4]);
         edges.push([i3, i4]);
-        edges.push([i2, i3]); // Diagonal strut
+        edges.push([i2, i3]);
       }
     }
   }
@@ -118,7 +119,7 @@ export function initParticles() {
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    // Fixed horizontal perspective pitch angle (~1.25 rad / 72 deg tilt)
+    // Fixed horizontal perspective pitch angle (~1.25 rad floor view, permanently locked)
     const targetTiltX = 1.25 + (mouse.y - height / 2) * 0.00015;
     const targetTiltY = (mouse.x - width / 2) * 0.0002;
     mouse.tiltX += (targetTiltX - mouse.tiltX) * 0.05;
