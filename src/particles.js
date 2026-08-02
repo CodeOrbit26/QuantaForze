@@ -1,6 +1,6 @@
 /**
- * QuantaForze - 3D Wireframe Geometric Polyhedron Canvas Engine
- * Renders rotating 3D geodesic wireframe structures with metallic joint nodes and interactive mouse tilt tracking.
+ * QuantaForze - Elegant 3D Geodesic Metallic Wireframe Canvas Engine
+ * Smooth constant rotation with bounded elastic mouse tilt (no infinite acceleration)
  */
 
 export function initParticles() {
@@ -17,7 +17,9 @@ export function initParticles() {
     x: width / 2,
     y: height / 2,
     targetX: width / 2,
-    targetY: height / 2
+    targetY: height / 2,
+    tiltX: 0,
+    tiltY: 0
   };
 
   window.addEventListener('mousemove', (e) => {
@@ -31,24 +33,46 @@ export function initParticles() {
     height = canvas.height = parent.clientHeight || 800;
   });
 
-  // Generate 3D Geodesic Icosahedron Vertices & Edges
-  function createPolyhedron(radius, detail = 1) {
+  // Generate Subdivided Geodesic 3D Polyhedron Sphere Vertices & Edges
+  function createGeodesicSphere(radius) {
     const t = (1 + Math.sqrt(5)) / 2;
-    let rawVerts = [
+    let baseVerts = [
       [-1, t, 0], [1, t, 0], [-1, -t, 0], [1, -t, 0],
       [0, -1, t], [0, 1, t], [0, -1, -t], [0, 1, -t],
       [t, 0, -1], [t, 0, 1], [-t, 0, -1], [-t, 0, 1]
     ];
 
-    // Normalize vertices to radius
-    let vertices = rawVerts.map(v => {
+    // Add midpoints for higher geometric density
+    let vertices = [];
+    baseVerts.forEach(v => {
       const len = Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
-      return [ (v[0] / len) * radius, (v[1] / len) * radius, (v[2] / len) * radius ];
+      vertices.push([ (v[0] / len) * radius, (v[1] / len) * radius, (v[2] / len) * radius ]);
     });
 
-    // Build edges array
+    // Add secondary layer vertices for rich wireframe complexity
+    const count = vertices.length;
+    for (let i = 0; i < count; i++) {
+      for (let j = i + 1; j < count; j++) {
+        const dx = vertices[i][0] - vertices[j][0];
+        const dy = vertices[i][1] - vertices[j][1];
+        const dz = vertices[i][2] - vertices[j][2];
+        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+        if (dist < radius * 1.3) {
+          const mx = (vertices[i][0] + vertices[j][0]) / 2;
+          const my = (vertices[i][1] + vertices[j][1]) / 2;
+          const mz = (vertices[i][2] + vertices[j][2]) / 2;
+          const len = Math.sqrt(mx * mx + my * my + mz * mz);
+          if (len > 0) {
+            vertices.push([ (mx / len) * radius, (my / len) * radius, (mz / len) * radius ]);
+          }
+        }
+      }
+    }
+
+    // Build unique edges between close vertices
     let edges = [];
-    const threshold = radius * 1.15;
+    const threshold = radius * 0.72;
     for (let i = 0; i < vertices.length; i++) {
       for (let j = i + 1; j < vertices.length; j++) {
         const dx = vertices[i][0] - vertices[j][0];
@@ -64,11 +88,13 @@ export function initParticles() {
     return { vertices, edges };
   }
 
-  const polyLeft = createPolyhedron(Math.min(width, height) * 0.38);
-  const polyRight = createPolyhedron(Math.min(width, height) * 0.42);
+  const radiusLeft = Math.min(width, height) * 0.28;
+  const radiusRight = Math.min(width, height) * 0.30;
+  const polyLeft = createGeodesicSphere(radiusLeft);
+  const polyRight = createGeodesicSphere(radiusRight);
 
-  let angleX = 0;
-  let angleY = 0;
+  let baseAngleX = 0;
+  let baseAngleY = 0;
 
   function rotateX(v, angle) {
     const cos = Math.cos(angle);
@@ -89,84 +115,91 @@ export function initParticles() {
   }
 
   function animate() {
-    // Smooth lerp mouse target
+    // Smooth lerp mouse positioning
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
+    // Calculate bounded tilt (fixed max angle, NO infinite acceleration)
+    const targetTiltY = (mouse.x - width / 2) * 0.0004;
+    const targetTiltX = (mouse.y - height / 2) * 0.0004;
+    mouse.tiltX += (targetTiltX - mouse.tiltX) * 0.05;
+    mouse.tiltY += (targetTiltY - mouse.tiltY) * 0.05;
+
+    // Smooth steady constant base rotation speed
+    baseAngleX += 0.0025;
+    baseAngleY += 0.0035;
+
     ctx.clearRect(0, 0, width, height);
 
-    // Continuous rotation influenced by mouse cursor position
-    const mouseOffsetX = (mouse.x - width / 2) * 0.0003;
-    const mouseOffsetY = (mouse.y - height / 2) * 0.0003;
+    const focalLength = 700;
 
-    angleX += 0.003 + mouseOffsetY;
-    angleY += 0.004 + mouseOffsetX;
+    function renderPolyhedron(poly, centerX, centerY, speedMultX, speedMultY, isGold) {
+      const currentRotX = baseAngleX * speedMultX + mouse.tiltX;
+      const currentRotY = baseAngleY * speedMultY + mouse.tiltY;
 
-    const focalLength = 800;
+      // Transform 3D Vertices
+      const projected = poly.vertices.map(v => {
+        let r = rotateX(v, currentRotX);
+        r = rotateY(r, currentRotY);
+        r = rotateZ(r, baseAngleX * 0.3);
 
-    function drawPolyhedronMesh(poly, centerX, centerY, rotXSpeed, rotYSpeed, isLeft) {
-      const rotVerts = poly.vertices.map(v => {
-        let r = rotateX(v, angleX * rotXSpeed);
-        r = rotateY(r, angleY * rotYSpeed);
-        r = rotateZ(r, angleX * 0.5);
-        return r;
-      });
-
-      // Project 3D points to 2D
-      const projPoints = rotVerts.map(v => {
-        const z = v[2] + 400;
+        const z = r[2] + 450;
         const scale = focalLength / z;
         return {
-          x: centerX + v[0] * scale,
-          y: centerY + v[1] * scale,
-          z: v[2],
+          x: centerX + r[0] * scale,
+          y: centerY + r[1] * scale,
+          z: r[2],
           scale: scale
         };
       });
 
-      // Draw wireframe connecting lines
+      // Draw metallic lattice connecting edges
       poly.edges.forEach(([i, j]) => {
-        const p1 = projPoints[i];
-        const p2 = projPoints[j];
+        const p1 = projected[i];
+        const p2 = projected[j];
 
-        // Depth sorting opacity calculation
         const avgZ = (p1.z + p2.z) / 2;
-        const alpha = Math.max(0.08, Math.min(0.85, (avgZ + 250) / 400));
+        const depthAlpha = Math.max(0.04, Math.min(0.7, (avgZ + 200) / 380));
 
         ctx.save();
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
-        
-        // Metallic Silver/Rose Bronze gradient line
-        const lineGrad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-        lineGrad.addColorStop(0, `rgba(226, 232, 240, ${alpha})`);
-        lineGrad.addColorStop(0.5, `rgba(203, 213, 225, ${alpha * 0.9})`);
-        lineGrad.addColorStop(1, `rgba(148, 163, 184, ${alpha})`);
 
-        ctx.strokeStyle = lineGrad;
-        ctx.lineWidth = Math.max(1, 2.5 * ((p1.scale + p2.scale) / 2));
+        if (isGold) {
+          ctx.strokeStyle = `rgba(217, 119, 6, ${depthAlpha})`;
+        } else {
+          ctx.strokeStyle = `rgba(226, 232, 240, ${depthAlpha * 0.85})`;
+        }
+
+        ctx.lineWidth = Math.max(0.8, 1.8 * ((p1.scale + p2.scale) / 2));
         ctx.stroke();
         ctx.restore();
       });
 
-      // Draw glowing joint sphere nodes
-      projPoints.forEach(p => {
-        const nodeAlpha = Math.max(0.2, Math.min(0.95, (p.z + 250) / 380));
-        const nodeRadius = Math.max(2, 5.5 * p.scale);
+      // Draw shiny joint sphere nodes
+      projected.forEach(p => {
+        const nodeAlpha = Math.max(0.1, Math.min(0.95, (p.z + 200) / 350));
+        const nodeRadius = Math.max(1.5, 3.8 * p.scale);
 
         ctx.save();
         ctx.beginPath();
         ctx.arc(p.x, p.y, nodeRadius, 0, Math.PI * 2);
-        
-        ctx.fillStyle = `rgba(255, 255, 255, ${nodeAlpha})`;
-        ctx.shadowBlur = 12 * p.scale;
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.9)';
+
+        if (isGold) {
+          ctx.fillStyle = `rgba(251, 191, 36, ${nodeAlpha})`;
+          ctx.shadowColor = 'rgba(245, 158, 11, 0.7)';
+        } else {
+          ctx.fillStyle = `rgba(255, 255, 255, ${nodeAlpha})`;
+          ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+        }
+
+        ctx.shadowBlur = 8 * p.scale;
         ctx.fill();
 
-        // Inner core highlight
+        // Inner specular highlight point
         ctx.beginPath();
-        ctx.arc(p.x - nodeRadius * 0.25, p.y - nodeRadius * 0.25, nodeRadius * 0.4, 0, Math.PI * 2);
+        ctx.arc(p.x - nodeRadius * 0.2, p.y - nodeRadius * 0.2, nodeRadius * 0.3, 0, Math.PI * 2);
         ctx.fillStyle = '#ffffff';
         ctx.fill();
 
@@ -174,11 +207,11 @@ export function initParticles() {
       });
     }
 
-    // Render left 3D polyhedron structure (partially extending off left edge)
-    drawPolyhedronMesh(polyLeft, -width * 0.05, height * 0.45, 1, 1.2, true);
+    // Render left 3D Polyhedron (framed on left side)
+    renderPolyhedron(polyLeft, -width * 0.08, height * 0.48, 1, 1.1, true);
 
-    // Render right 3D polyhedron structure (partially extending off right edge)
-    drawPolyhedronMesh(polyRight, width * 1.05, height * 0.55, -0.8, -1, false);
+    // Render right 3D Polyhedron (framed on right side)
+    renderPolyhedron(polyRight, width * 1.08, height * 0.52, -0.9, -1, false);
 
     requestAnimationFrame(animate);
   }
