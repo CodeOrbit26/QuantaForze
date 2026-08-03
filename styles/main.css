@@ -317,26 +317,27 @@ button {
   background: #ffffff;
   color: #080c14;
   font-weight: 600;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.18);
+  border: 1px solid #ffffff;
 }
 
 .btn-glow:hover {
-  background: #e2e8f0;
-  color: #080c14;
+  background: #f8fafc;
+  color: #000000;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.35);
 }
 
 .btn-secondary {
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-primary);
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
 }
 
 /* Mobile Nav Toggle */
