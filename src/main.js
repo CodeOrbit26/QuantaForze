@@ -4,29 +4,78 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Canvas Particles
   initParticles();
 
-  // 1. Fluid Scroll Progress Navbar Engine
+  // 1. Premium Scroll-Driven Navbar Expansion
   const header = document.querySelector('.site-header');
-  let ticking = false;
+  if (header) {
+    const SCROLL_RANGE = 120; // pixels over which the full transition occurs
 
-  function updateHeaderScroll() {
-    const scrollY = window.scrollY;
-    const maxScroll = 180; // Distance over which full width transition completes
-    const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
-
-    if (header) {
-      header.style.setProperty('--scroll-p', progress.toFixed(4));
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
     }
-    ticking = false;
+
+    let currentProgress = 0;
+    let rafId = null;
+
+    function updateNavbar() {
+      const scrollY = window.scrollY;
+      const targetProgress = Math.min(1, scrollY / SCROLL_RANGE);
+
+      // Smooth eased interpolation (no jumps)
+      currentProgress += (targetProgress - currentProgress) * 0.12;
+
+      // Snap to endpoints to avoid sub-pixel drift
+      if (Math.abs(currentProgress - targetProgress) < 0.001) {
+        currentProgress = targetProgress;
+      }
+
+      const t = currentProgress;
+
+      // Interpolated values: compact → full-width
+      const topOffset = lerp(1.25, 0, t);                     // rem
+      const widthPercent = lerp(94, 100, t);                   // %  (100% - 3rem ≈ 94%)
+      const maxWidth = lerp(1240, 9999, t);                    // px
+      const borderRadius = lerp(9999, 0, t);                   // px (pill → flat)
+      const paddingInline = lerp(1.5, 2.5, t);                 // rem
+      const bgAlpha = lerp(0.65, 0.92, t);                     // background opacity
+      const blurPx = lerp(20, 28, t);                           // backdrop blur
+      const borderAlpha = lerp(0.12, 0.06, t);                 // border opacity
+      const shadowSpread = lerp(16, 0, t);                     // shadow Y offset
+      const shadowAlpha = lerp(0.4, 0.55, t);                  // shadow opacity
+
+      header.style.top = `${topOffset}rem`;
+      header.style.width = `calc(${widthPercent}% - ${lerp(3, 0, t)}rem)`;
+      header.style.maxWidth = t > 0.95 ? 'none' : `${maxWidth}px`;
+      header.style.borderRadius = `${borderRadius}px`;
+      header.style.paddingInline = `${paddingInline}rem`;
+      header.style.background = `rgba(10, 14, 24, ${bgAlpha})`;
+      header.style.backdropFilter = `blur(${blurPx}px)`;
+      header.style.webkitBackdropFilter = `blur(${blurPx}px)`;
+      header.style.borderColor = `rgba(255, 255, 255, ${borderAlpha})`;
+      header.style.boxShadow = `0 ${shadowSpread}px ${shadowSpread * 2}px rgba(0, 0, 0, ${shadowAlpha})`;
+
+      // Toggle class for any downstream CSS that keys off it
+      if (t > 0.5) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      if (currentProgress !== targetProgress) {
+        rafId = requestAnimationFrame(updateNavbar);
+      } else {
+        rafId = null;
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateNavbar);
+      }
+    }, { passive: true });
+
+    // Initial state
+    updateNavbar();
   }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateHeaderScroll);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  updateHeaderScroll();
 
   // 2. Feature Explorer Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
