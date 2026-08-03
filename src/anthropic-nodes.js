@@ -1,6 +1,6 @@
 /**
- * QuantaForze - Anthropic-Style Interactive Research Node Map Canvas
- * Interactive mind-map node network connecting research questions and floating thumbnails.
+ * QuantaForze - Anthropic-Style Interactive Node Map Canvas
+ * Positioned in corner clusters around central text with expanding dynamic hover physics.
  */
 
 export function initAnthropicNodes() {
@@ -14,13 +14,13 @@ export function initAnthropicNodes() {
   let height = (canvas.height = card.clientHeight);
 
   let mouse = {
-    x: -1000,
-    y: -1000,
+    x: width / 2,
+    y: height / 2,
     active: false
   };
 
   card.addEventListener('mouseenter', () => { mouse.active = true; });
-  card.addEventListener('mouseleave', () => { mouse.active = false; mouse.x = -1000; mouse.y = -1000; });
+  card.addEventListener('mouseleave', () => { mouse.active = false; });
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
@@ -32,149 +32,128 @@ export function initAnthropicNodes() {
     height = canvas.height = card.clientHeight;
   });
 
-  // Nodes dataset matching Anthropic research questions structure
+  // Corner cluster positions far away from central text box
   const questions = [
     {
-      text: "How do parallel agents collaborate?",
-      xPct: 0.18,
-      yPct: 0.38,
+      text: "How does AI work?",
+      xPct: 0.12,
+      yPct: 0.32,
       nodes: [
-        { dx: -60, dy: -50, label: "Harness Sync", icon: "⚡" },
-        { dx: 50, dy: -65, label: "Agent Lock", icon: "🔒" },
-        { dx: 60, dy: 45, label: "Memory Pool", icon: "🧠" },
-        { dx: -70, dy: 55, label: "IPC Pipeline", icon: "🔄" }
+        { dx: -40, dy: -50, color: "#38bdf8" },
+        { dx: 45, dy: -45, color: "#4ade80" },
+        { dx: -55, dy: 35, color: "#f43f5e" },
+        { dx: 40, dy: 45, color: "#fbbf24" }
       ]
     },
     {
-      text: "Who governs AI execution?",
-      xPct: 0.78,
+      text: "Who should govern AI?",
+      xPct: 0.85,
       yPct: 0.22,
       nodes: [
-        { dx: -55, dy: 40, label: "Sandbox Policy", icon: "🛡️" },
-        { dx: 60, dy: -35, label: "Audit Log", icon: "📜" },
-        { dx: 65, dy: 45, label: "Rate Limit", icon: "⏱️" }
+        { dx: -45, dy: 40, color: "#a855f7" },
+        { dx: 40, dy: -40, color: "#38bdf8" },
+        { dx: 50, dy: 45, color: "#f97316" }
       ]
     },
     {
-      text: "What is AI's impact on software?",
-      xPct: 0.25,
-      yPct: 0.78,
+      text: "What is AI's impact on society?",
+      xPct: 0.14,
+      yPct: 0.76,
       nodes: [
-        { dx: -65, dy: -45, label: "Zero Friction", icon: "🚀" },
-        { dx: 60, dy: -50, label: "Code Quality", icon: "✨" },
-        { dx: 55, dy: 40, label: "Developer Velocity", icon: "📈" }
+        { dx: -40, dy: -45, color: "#e11d48" },
+        { dx: 50, dy: -40, color: "#10b981" },
+        { dx: 35, dy: 40, color: "#6366f1" }
       ]
     },
     {
-      text: "How does agent memory scale?",
-      xPct: 0.80,
+      text: "How does AI affect the economy?",
+      xPct: 0.84,
       yPct: 0.78,
       nodes: [
-        { dx: -50, dy: -45, label: "Context Window", icon: "🗂️" },
-        { dx: 55, dy: -50, label: "Vector Search", icon: "🔍" },
-        { dx: -55, dy: 40, label: "State Graph", icon: "🌐" }
+        { dx: -50, dy: -35, color: "#ec4899" },
+        { dx: 40, dy: -40, color: "#06b6d4" },
+        { dx: -35, dy: 45, color: "#8b5cf6" }
       ]
     }
   ];
 
-  // Calculate pixel positions
-  function getPositions() {
-    return questions.map(q => {
-      const qx = q.xPct * width;
-      const qy = q.yPct * height;
-
-      const children = q.nodes.map(n => ({
-        x: qx + n.dx,
-        y: qy + n.dy,
-        label: n.label,
-        icon: n.icon
-      }));
-
-      return { text: q.text, x: qx, y: qy, children };
-    });
-  }
-
-  let hoverAlpha = 0.35;
+  let expand = 0.3;
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
-    // Fade in line opacity when hovered
-    const targetAlpha = mouse.active ? 0.9 : 0.4;
-    hoverAlpha += (targetAlpha - hoverAlpha) * 0.08;
+    // Expand distance & opacity when mouse moves over card
+    const targetExpand = mouse.active ? 1 : 0.35;
+    expand += (targetExpand - expand) * 0.06;
 
-    const data = getPositions();
+    const data = questions.map(q => {
+      const qx = q.xPct * width;
+      const qy = q.yPct * height;
+
+      const children = q.nodes.map(n => ({
+        x: qx + n.dx * expand,
+        y: qy + n.dy * expand,
+        color: n.color
+      }));
+
+      return { text: q.text, x: qx, y: qy, children };
+    });
 
     data.forEach(group => {
-      // Draw line connecting question to central area
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(group.x, group.y);
-      ctx.lineTo(width / 2, height / 2);
-      ctx.strokeStyle = `rgba(255, 255, 255, ${hoverAlpha * 0.15})`;
-      ctx.lineWidth = 1;
-      ctx.setLineDash([4, 4]);
-      ctx.stroke();
-      ctx.restore();
-
-      // Draw child node connecting lines & icons
+      // Connect line to corner nodes
       group.children.forEach(child => {
         ctx.save();
         ctx.beginPath();
         ctx.moveTo(group.x, group.y);
         ctx.lineTo(child.x, child.y);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${hoverAlpha * 0.35})`;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.18 * expand})`;
         ctx.lineWidth = 1;
         ctx.stroke();
         ctx.restore();
 
-        // Draw child thumbnail badge
+        // Draw thumbnail tile
         ctx.save();
-        ctx.beginPath();
-        ctx.arc(child.x, child.y, 16, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(30, 41, 59, 0.85)";
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+        const tileW = 24 * Math.max(0.6, expand);
+        const tileH = 30 * Math.max(0.6, expand);
+        ctx.fillStyle = child.color;
+        ctx.globalAlpha = 0.65 * expand;
+        ctx.fillRect(child.x - tileW / 2, child.y - tileH / 2, tileW, tileH);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
         ctx.lineWidth = 1;
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.font = "12px sans-serif";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(child.icon, child.x, child.y);
+        ctx.strokeRect(child.x - tileW / 2, child.y - tileH / 2, tileW, tileH);
         ctx.restore();
       });
 
-      // Draw question node label
+      // Question Node Dot
       ctx.save();
-      ctx.font = "400 15px 'Instrument Serif', Georgia, serif";
-      ctx.fillStyle = `rgba(248, 250, 252, ${hoverAlpha * 0.9})`;
-      ctx.textAlign = "center";
-      ctx.fillText(group.text, group.x, group.y + 24);
-
-      // Node point
       ctx.beginPath();
-      ctx.arc(group.x, group.y, 5, 0, Math.PI * 2);
+      ctx.arc(group.x, group.y, 4.5, 0, Math.PI * 2);
       ctx.fillStyle = "#ffffff";
-      ctx.shadowColor = "rgba(255, 255, 255, 0.8)";
-      ctx.shadowBlur = 10;
+      ctx.shadowColor = "#ffffff";
+      ctx.shadowBlur = 8;
       ctx.fill();
+
+      // Question Label Text
+      ctx.font = "400 14px 'Times New Roman', Georgia, serif";
+      ctx.fillStyle = `rgba(248, 250, 252, ${0.4 + 0.5 * expand})`;
+      ctx.textAlign = group.x < width / 2 ? "left" : "right";
+      ctx.fillText(group.text, group.x + (group.x < width / 2 ? 12 : -12), group.y + 4);
       ctx.restore();
     });
 
-    // Draw mouse interaction spring line
+    // Spring line to cursor
     if (mouse.active) {
       data.forEach(group => {
         const dx = mouse.x - group.x;
         const dy = mouse.y - group.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 180) {
+        if (dist < 220) {
           ctx.save();
           ctx.beginPath();
           ctx.moveTo(mouse.x, mouse.y);
           ctx.lineTo(group.x, group.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.5 * (1 - dist / 180)})`;
-          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.35 * (1 - dist / 220)})`;
+          ctx.lineWidth = 1;
           ctx.stroke();
           ctx.restore();
         }
