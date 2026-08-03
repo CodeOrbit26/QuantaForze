@@ -1,6 +1,6 @@
 /**
  * QuantaForze - Anthropic Full-Screen Scroll Expansion Canvas Engine
- * Triggers animation strictly when at least 60% of the card is scrolled into view.
+ * Uses IntersectionObserver for smooth bug-free scroll detection and expansion.
  */
 
 export function initAnthropicNodes() {
@@ -21,28 +21,22 @@ export function initAnthropicNodes() {
 
   let scrollRatio = 0;
 
-  function updateScroll() {
-    const rect = card.getBoundingClientRect();
-    const windowH = window.innerHeight;
-    
-    // Calculate how much of the card's height is visible in viewport
-    const visibleTop = Math.max(0, rect.top);
-    const visibleBottom = Math.min(windowH, rect.bottom);
-    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-    const visiblePct = rect.height > 0 ? visibleHeight / rect.height : 0;
+  // IntersectionObserver for robust bug-free scroll detection
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+        scrollRatio = 1;
+        card.classList.add('in-view');
+      } else if (!entry.isIntersecting || entry.intersectionRatio < 0.2) {
+        scrollRatio = 0;
+        card.classList.remove('in-view');
+      }
+    });
+  }, {
+    threshold: [0, 0.2, 0.45, 0.6, 0.8, 1.0]
+  });
 
-    // Trigger animation strictly when at least 60% (0.60) of the box is scrolled into view
-    if (visiblePct >= 0.60) {
-      scrollRatio = Math.min(1, (visiblePct - 0.60) / 0.40 + 0.4);
-      card.classList.add('in-view');
-    } else {
-      scrollRatio = 0;
-      card.classList.remove('in-view');
-    }
-  }
-
-  window.addEventListener('scroll', updateScroll);
-  updateScroll();
+  observer.observe(card);
 
   card.addEventListener('mouseenter', () => { mouse.active = true; });
   card.addEventListener('mouseleave', () => { mouse.active = false; });
