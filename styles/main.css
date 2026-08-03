@@ -141,9 +141,9 @@ button {
 }
 
 .brand-img-logo {
-  height: 2.2rem;
+  height: 1.5rem;
   width: auto;
-  max-height: 2.4rem;
+  max-height: 1.7rem;
   object-fit: contain;
   display: block;
   image-rendering: -webkit-optimize-contrast;
