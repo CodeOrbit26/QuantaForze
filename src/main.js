@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Premium Scroll-Driven Navbar Expansion
   const header = document.querySelector('.site-header');
   if (header) {
-    const SCROLL_RANGE = 120; // pixels over which the full transition occurs
+    const SCROLL_RANGE = 80; // shorter range → snappier response
+    const headerActions = header.querySelector('.header-actions');
+    const headerBtns = header.querySelectorAll('.header-actions .btn-cta');
+    const navLinks = header.querySelectorAll('.main-nav a');
 
     function lerp(a, b, t) {
       return a + (b - a) * t;
@@ -20,40 +23,59 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrollY = window.scrollY;
       const targetProgress = Math.min(1, scrollY / SCROLL_RANGE);
 
-      // Smooth eased interpolation (no jumps)
-      currentProgress += (targetProgress - currentProgress) * 0.12;
+      // Fast, responsive interpolation
+      currentProgress += (targetProgress - currentProgress) * 0.25;
 
-      // Snap to endpoints to avoid sub-pixel drift
-      if (Math.abs(currentProgress - targetProgress) < 0.001) {
+      // Snap to endpoints
+      if (Math.abs(currentProgress - targetProgress) < 0.002) {
         currentProgress = targetProgress;
       }
 
       const t = currentProgress;
 
-      // Interpolated values: compact → full-width
-      const topOffset = lerp(1.25, 0, t);                     // rem
-      const widthPercent = lerp(94, 100, t);                   // %  (100% - 3rem ≈ 94%)
-      const maxWidth = lerp(1240, 9999, t);                    // px
-      const borderRadius = lerp(9999, 0, t);                   // px (pill → flat)
-      const paddingInline = lerp(1.5, 2.5, t);                 // rem
-      const bgAlpha = lerp(0.65, 0.92, t);                     // background opacity
-      const blurPx = lerp(20, 28, t);                           // backdrop blur
-      const borderAlpha = lerp(0.12, 0.06, t);                 // border opacity
-      const shadowSpread = lerp(16, 0, t);                     // shadow Y offset
-      const shadowAlpha = lerp(0.4, 0.55, t);                  // shadow opacity
+      // ── Header shell ──
+      const topOffset = lerp(1.25, 0, t);
+      const borderRadius = lerp(9999, 0, t);
+      const paddingInline = lerp(1.5, 2.5, t);
+      const bgAlpha = lerp(0.65, 0.92, t);
+      const blurPx = lerp(20, 28, t);
+      const borderAlpha = lerp(0.12, 0.06, t);
+      const shadowY = lerp(16, 0, t);
+      const shadowAlpha = lerp(0.4, 0.55, t);
 
       header.style.top = `${topOffset}rem`;
-      header.style.width = `calc(${widthPercent}% - ${lerp(3, 0, t)}rem)`;
-      header.style.maxWidth = t > 0.95 ? 'none' : `${maxWidth}px`;
+      header.style.width = `calc(${lerp(94, 100, t)}% - ${lerp(3, 0, t)}rem)`;
+      header.style.maxWidth = t > 0.95 ? 'none' : `${lerp(1240, 9999, t)}px`;
       header.style.borderRadius = `${borderRadius}px`;
       header.style.paddingInline = `${paddingInline}rem`;
       header.style.background = `rgba(10, 14, 24, ${bgAlpha})`;
       header.style.backdropFilter = `blur(${blurPx}px)`;
       header.style.webkitBackdropFilter = `blur(${blurPx}px)`;
       header.style.borderColor = `rgba(255, 255, 255, ${borderAlpha})`;
-      header.style.boxShadow = `0 ${shadowSpread}px ${shadowSpread * 2}px rgba(0, 0, 0, ${shadowAlpha})`;
+      header.style.boxShadow = `0 ${shadowY}px ${shadowY * 2}px rgba(0, 0, 0, ${shadowAlpha})`;
 
-      // Toggle class for any downstream CSS that keys off it
+      // ── Buttons: scale up, grow padding, shift gap ──
+      const btnPadV = lerp(0.5, 0.65, t);
+      const btnPadH = lerp(1.1, 1.4, t);
+      const btnFontSize = lerp(0.82, 0.9, t);
+      const btnRadius = lerp(8, 9999, t);
+
+      headerBtns.forEach(btn => {
+        btn.style.padding = `${btnPadV}rem ${btnPadH}rem`;
+        btn.style.fontSize = `${btnFontSize}rem`;
+        btn.style.borderRadius = `${btnRadius}px`;
+      });
+
+      if (headerActions) {
+        headerActions.style.gap = `${lerp(0.6, 1, t)}rem`;
+      }
+
+      // ── Nav links spacing ──
+      navLinks.forEach(link => {
+        link.style.padding = `0.4rem ${lerp(0.6, 1, t)}rem`;
+      });
+
+      // Toggle class for downstream CSS
       if (t > 0.5) {
         header.classList.add('scrolled');
       } else {
