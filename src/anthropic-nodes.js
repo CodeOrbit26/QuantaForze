@@ -1,7 +1,6 @@
 /**
  * QuantaForze - Anthropic Full-Screen Scroll Expansion Canvas Engine
- * Unscrolled: Compact card with headline text.
- * Scrolled into View / Hovered: Seamlessly expands to 100% full screen with ultra-smooth node network physics.
+ * Triggers animation strictly when at least 60% of the card is scrolled into view.
  */
 
 export function initAnthropicNodes() {
@@ -26,18 +25,16 @@ export function initAnthropicNodes() {
     const rect = card.getBoundingClientRect();
     const windowH = window.innerHeight;
     
-    // Calculate how far card is scrolled into center of screen
-    const cardCenter = rect.top + rect.height / 2;
-    const distFromCenter = Math.abs(windowH / 2 - cardCenter);
-    const maxDist = windowH / 2 + rect.height / 2;
+    // Calculate how much of the card's height is visible in viewport
+    const visibleTop = Math.max(0, rect.top);
+    const visibleBottom = Math.min(windowH, rect.bottom);
+    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+    const visiblePct = rect.height > 0 ? visibleHeight / rect.height : 0;
 
-    if (rect.top < windowH && rect.bottom > 0) {
-      scrollRatio = Math.max(0, Math.min(1, 1 - distFromCenter / (maxDist * 0.75)));
-      if (scrollRatio > 0.25) {
-        card.classList.add('in-view');
-      } else {
-        card.classList.remove('in-view');
-      }
+    // Trigger animation strictly when at least 60% (0.60) of the box is scrolled into view
+    if (visiblePct >= 0.60) {
+      scrollRatio = Math.min(1, (visiblePct - 0.60) / 0.40 + 0.4);
+      card.classList.add('in-view');
     } else {
       scrollRatio = 0;
       card.classList.remove('in-view');
@@ -117,7 +114,7 @@ export function initAnthropicNodes() {
     ctx.clearRect(0, 0, width, height);
 
     // Smooth expand interpolation
-    const targetExpand = mouse.active ? 1.0 : Math.max(0, (scrollRatio - 0.15) * 1.3);
+    const targetExpand = mouse.active ? 1.0 : (scrollRatio > 0 ? scrollRatio : 0);
     expand += (targetExpand - expand) * 0.05;
 
     if (expand > 0.02) {
