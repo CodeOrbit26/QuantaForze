@@ -1826,49 +1826,30 @@ button {
   color: #cbd5e1;
 }
 
-/* Massive Watermark Typography Graphic with Shimmer Fade Effect */
+/* Watermark Text Graphic */
 .footer-watermark-wrap {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   text-align: center;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin: 3.5rem -4rem 1rem -4rem;
   user-select: none;
   pointer-events: none;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12%, rgba(0, 0, 0, 1) 88%, rgba(0, 0, 0, 0) 100%);
-  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12%, rgba(0, 0, 0, 1) 88%, rgba(0, 0, 0, 0) 100%);
+  display: flex;
+  justify-content: center;
 }
 
 .watermark-text {
   font-family: var(--font-sans);
   font-size: 13vw;
   font-weight: 900;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01em;
   line-height: 0.85;
   text-transform: uppercase;
-  background: linear-gradient(120deg, 
-    rgba(255, 255, 255, 0.02) 0%, 
-    rgba(49, 134, 255, 0.18) 25%, 
-    rgba(255, 255, 255, 0.28) 50%, 
-    rgba(168, 85, 247, 0.18) 75%, 
-    rgba(255, 255, 255, 0.02) 100%);
-  background-size: 200% 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.008) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: block;
+  display: inline-block;
   white-space: nowrap;
-  animation: watermarkLightShimmer 10s infinite linear;
-  filter: drop-shadow(0 0 35px rgba(49, 134, 255, 0.12));
-}
-
-@keyframes watermarkLightShimmer {
-  0% { background-position: -100% 0; }
-  100% { background-position: 100% 0; }
+  transform: scaleY(1.05);
 }
 
 /* Bottom Bar */
