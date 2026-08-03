@@ -1837,15 +1837,16 @@ button {
 
 .watermark-text {
   font-family: var(--font-sans);
-  font-size: 9.5vw;
+  font-size: 6.8vw;
   font-weight: 900;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.05em;
   line-height: 0.9;
   text-transform: uppercase;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.005) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.005) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: block;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 /* Bottom Bar */
