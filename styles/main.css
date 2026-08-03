@@ -234,43 +234,48 @@ button {
   transform: rotate(180deg);
 }
 
-/* Full Screen Horizontal Mega Menu Dropdown */
+/* Full Screen Horizontal Mega Menu Dropdown (Perfect Viewport Centering & Silk Glassmorphism) */
 .mega-dropdown-fullscreen {
   position: fixed;
   top: 4.5rem;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
   width: 100vw;
-  background: rgba(8, 11, 18, 0.96);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
+  max-width: 100vw;
+  background: rgba(6, 9, 16, 0.96);
+  backdrop-filter: blur(36px);
+  -webkit-backdrop-filter: blur(36px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), top 0.4s ease, visibility 0.3s ease;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), top 0.35s ease, visibility 0.25s ease;
   z-index: 1000;
-  padding: 3.5rem 0;
+  padding: 3rem 0;
+  box-sizing: border-box;
+  pointer-events: none;
 }
 
 .site-header.scrolled .mega-dropdown-fullscreen {
-  top: 5.5rem;
+  top: 5rem;
 }
 
 .nav-item:hover .mega-dropdown-fullscreen {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
 .dropdown-fullscreen-inner {
-  max-width: 1280px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1.65fr;
+  gap: 3.5rem;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .dropdown-left-hero {
@@ -346,33 +351,35 @@ button {
 .full-dropdown-card {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
+  gap: 1.1rem;
+  padding: 1.35rem 1.4rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .full-dropdown-card:hover {
-  background: linear-gradient(135deg, rgba(49, 134, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border-color: rgba(49, 134, 255, 0.3);
+  background: linear-gradient(135deg, rgba(49, 134, 255, 0.14) 0%, rgba(255, 255, 255, 0.035) 100%);
+  border-color: rgba(49, 134, 255, 0.35);
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.6);
 }
 
 .card-icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: rgba(49, 134, 255, 0.16);
-  border: 1px solid rgba(49, 134, 255, 0.3);
+  border: 1px solid rgba(49, 134, 255, 0.35);
   color: var(--accent-blue);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(49, 134, 255, 0.2);
 }
 
 .card-info h4 {
