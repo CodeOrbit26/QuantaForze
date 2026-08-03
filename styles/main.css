@@ -120,7 +120,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.5rem;
+  height: 5.5rem;
   max-width: 1360px;
   margin: 0 auto;
   padding-inline: 2rem;
@@ -141,7 +141,7 @@ button {
 }
 
 .brand-img-logo {
-  height: 3.4rem;
+  height: 5rem;
   width: auto;
   object-fit: contain;
   display: block;
