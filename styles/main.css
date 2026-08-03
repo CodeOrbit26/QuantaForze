@@ -1839,16 +1839,17 @@ button {
 
 .watermark-text {
   font-family: var(--font-sans);
-  font-size: 10vw;
+  font-size: 9vw;
   font-weight: 900;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   line-height: 0.85;
   text-transform: uppercase;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.008) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.002) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   white-space: nowrap;
+  opacity: 0.75;
 }
 
 /* Bottom Bar */
