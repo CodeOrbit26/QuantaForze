@@ -472,22 +472,24 @@ button {
   color: var(--accent-blue);
 }
 
-/* Anthropic Style Research Card Section */
+/* Anthropic Style Research Card Section (Full Width Scroll Expansion) */
 .showcase-section {
-  padding-block: 4rem 6rem;
+  padding-block: 2rem 4rem;
   width: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .anthropic-research-card {
   position: relative;
-  width: 100%;
-  max-width: 1040px;
+  width: calc(100% - 4rem);
+  max-width: 1200px;
   margin: 0 auto;
-  min-height: 500px;
+  min-height: 520px;
   background: #090a0d;
-  border-radius: 28px;
+  border-radius: 32px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
@@ -495,18 +497,24 @@ button {
   justify-content: center;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  transform: scale(0.97);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+  transform: scale(0.96);
+  transition: width 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              min-height 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.4s ease,
-              box-shadow 0.6s ease;
+              box-shadow 0.75s ease;
 }
 
 .anthropic-research-card.in-view, .anthropic-research-card:hover {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  border-radius: 0px;
   transform: scale(1);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.75);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
 }
 
 #anthropic-node-canvas {
