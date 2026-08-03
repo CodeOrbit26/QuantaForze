@@ -1,7 +1,7 @@
 /**
- * QuantaForze - Anthropic Full-Screen Scroll Expansion Canvas Engine
- * Unscrolled: Compact card with headline text.
- * Scrolled into View / Hovered: Seamlessly expands to 100% full screen with ultra-smooth node network physics.
+ * QuantaForze - Anthropic Research Node Canvas Engine
+ * Unscrolled: Clean card with headline text.
+ * Scrolled into View / Hovered: Dynamic node network expansion perfectly inside card boundaries.
  */
 
 export function initAnthropicNodes() {
@@ -26,14 +26,14 @@ export function initAnthropicNodes() {
     const rect = card.getBoundingClientRect();
     const windowH = window.innerHeight;
     
-    // Calculate how far card is scrolled into center of screen
+    // Calculate scroll progress relative to viewport center
     const cardCenter = rect.top + rect.height / 2;
     const distFromCenter = Math.abs(windowH / 2 - cardCenter);
     const maxDist = windowH / 2 + rect.height / 2;
 
     if (rect.top < windowH && rect.bottom > 0) {
       scrollRatio = Math.max(0, Math.min(1, 1 - distFromCenter / (maxDist * 0.75)));
-      if (scrollRatio > 0.25) {
+      if (scrollRatio > 0.2) {
         card.classList.add('in-view');
       } else {
         card.classList.remove('in-view');
@@ -60,47 +60,47 @@ export function initAnthropicNodes() {
     height = canvas.height = card.clientHeight;
   });
 
-  // Questions and node clusters
+  // Well-balanced node cluster positions safely inside card boundary
   const questions = [
     {
       text: "How does AI work?",
-      xPct: 0.16,
-      yPct: 0.32,
+      xPct: 0.22,
+      yPct: 0.30,
       nodes: [
-        { dx: -50, dy: -60, color: "#38bdf8" },
-        { dx: 55, dy: -50, color: "#4ade80" },
-        { dx: -65, dy: 40, color: "#f43f5e" },
-        { dx: 50, dy: 55, color: "#fbbf24" }
+        { dx: -45, dy: -50, color: "#38bdf8" },
+        { dx: 45, dy: -45, color: "#4ade80" },
+        { dx: -55, dy: 35, color: "#f43f5e" },
+        { dx: 45, dy: 45, color: "#fbbf24" }
       ]
     },
     {
       text: "Who should govern AI?",
-      xPct: 0.84,
-      yPct: 0.24,
+      xPct: 0.78,
+      yPct: 0.28,
       nodes: [
-        { dx: -55, dy: 50, color: "#a855f7" },
-        { dx: 50, dy: -45, color: "#38bdf8" },
-        { dx: 60, dy: 50, color: "#f97316" }
+        { dx: -45, dy: 45, color: "#a855f7" },
+        { dx: 45, dy: -40, color: "#38bdf8" },
+        { dx: 50, dy: 45, color: "#f97316" }
       ]
     },
     {
       text: "What is AI's impact on society?",
-      xPct: 0.18,
-      yPct: 0.78,
+      xPct: 0.22,
+      yPct: 0.74,
       nodes: [
-        { dx: -50, dy: -55, color: "#e11d48" },
-        { dx: 60, dy: -45, color: "#10b981" },
-        { dx: 45, dy: 50, color: "#6366f1" }
+        { dx: -45, dy: -45, color: "#e11d48" },
+        { dx: 50, dy: -40, color: "#10b981" },
+        { dx: 40, dy: 45, color: "#6366f1" }
       ]
     },
     {
       text: "How does AI affect the economy?",
-      xPct: 0.82,
-      yPct: 0.78,
+      xPct: 0.78,
+      yPct: 0.74,
       nodes: [
-        { dx: -60, dy: -45, color: "#ec4899" },
-        { dx: 50, dy: -50, color: "#06b6d4" },
-        { dx: -45, dy: 50, color: "#8b5cf6" }
+        { dx: -50, dy: -40, color: "#ec4899" },
+        { dx: 45, dy: -45, color: "#06b6d4" },
+        { dx: -40, dy: 45, color: "#8b5cf6" }
       ]
     }
   ];
@@ -108,7 +108,6 @@ export function initAnthropicNodes() {
   let expand = 0;
 
   function animate() {
-    // Dynamic canvas resize check during smooth card transition
     if (canvas.width !== card.clientWidth || canvas.height !== card.clientHeight) {
       width = canvas.width = card.clientWidth;
       height = canvas.height = card.clientHeight;
@@ -116,8 +115,8 @@ export function initAnthropicNodes() {
 
     ctx.clearRect(0, 0, width, height);
 
-    // Smooth expand interpolation
-    const targetExpand = mouse.active ? 1.0 : Math.max(0, (scrollRatio - 0.15) * 1.3);
+    // Smooth expansion lerp based on scroll & hover
+    const targetExpand = mouse.active ? 1.0 : Math.max(0, (scrollRatio - 0.15) * 1.25);
     expand += (targetExpand - expand) * 0.05;
 
     if (expand > 0.02) {
@@ -141,17 +140,17 @@ export function initAnthropicNodes() {
           ctx.beginPath();
           ctx.moveTo(group.x, group.y);
           ctx.lineTo(child.x, child.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.25 * expand})`;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.22 * expand})`;
           ctx.lineWidth = 1;
           ctx.stroke();
           ctx.restore();
 
           // Thumbnail tiles
           ctx.save();
-          const tileW = 28 * Math.max(0.4, expand);
-          const tileH = 34 * Math.max(0.4, expand);
+          const tileW = 24 * Math.max(0.4, expand);
+          const tileH = 30 * Math.max(0.4, expand);
           ctx.fillStyle = child.color;
-          ctx.globalAlpha = 0.75 * expand;
+          ctx.globalAlpha = 0.7 * expand;
           ctx.fillRect(child.x - tileW / 2, child.y - tileH / 2, tileW, tileH);
           ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
           ctx.lineWidth = 1;
@@ -162,17 +161,17 @@ export function initAnthropicNodes() {
         // Question Node Dot
         ctx.save();
         ctx.beginPath();
-        ctx.arc(group.x, group.y, 5, 0, Math.PI * 2);
+        ctx.arc(group.x, group.y, 4.5, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${expand})`;
         ctx.shadowColor = "#ffffff";
-        ctx.shadowBlur = 10 * expand;
+        ctx.shadowBlur = 8 * expand;
         ctx.fill();
 
         // Question Text Label
-        ctx.font = "400 15px 'Times New Roman', Georgia, serif";
+        ctx.font = "400 14px 'Times New Roman', Georgia, serif";
         ctx.fillStyle = `rgba(248, 250, 252, ${expand * 0.9})`;
         ctx.textAlign = group.x < width / 2 ? "left" : "right";
-        ctx.fillText(group.text, group.x + (group.x < width / 2 ? 14 : -14), group.y + 4);
+        ctx.fillText(group.text, group.x + (group.x < width / 2 ? 12 : -12), group.y + 4);
         ctx.restore();
       });
 
@@ -182,13 +181,13 @@ export function initAnthropicNodes() {
           const dx = mouse.x - group.x;
           const dy = mouse.y - group.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 240) {
+          if (dist < 220) {
             ctx.save();
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
             ctx.lineTo(group.x, group.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.45 * (1 - dist / 240)})`;
-            ctx.lineWidth = 1.2;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.4 * (1 - dist / 220)})`;
+            ctx.lineWidth = 1;
             ctx.stroke();
             ctx.restore();
           }
