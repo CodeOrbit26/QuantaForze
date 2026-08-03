@@ -1610,14 +1610,19 @@ button {
   gap: 1.25rem;
 }
 
-/* Site Footer */
+/* Site Footer (Full-Width Seamless Edge-to-Edge) */
 .site-footer {
+  width: 100%;
+  background: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 3rem 0;
-  background: rgba(8, 11, 18, 0.6);
+  padding: 3.5rem 0;
+  margin-top: 2rem;
 }
 
 .footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1644,7 +1649,8 @@ button {
 
 .footer-nav {
   display: flex;
-  gap: 1.75rem;
+  align-items: center;
+  gap: 2rem;
 }
 
 .footer-nav a {
