@@ -120,8 +120,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 6.5rem;
-  max-width: 1400px;
+  height: 4.5rem;
+  max-width: 1360px;
   margin: 0 auto;
   padding-inline: 2rem;
 }
@@ -141,11 +141,16 @@ button {
 }
 
 .brand-img-logo {
-  width: 22rem;
-  height: auto;
-  max-height: 6rem;
+  height: 2.2rem;
+  width: auto;
+  max-height: 2.4rem;
   object-fit: contain;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.08) brightness(1.02);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .logo-badge-parent {
