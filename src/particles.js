@@ -18,14 +18,19 @@ export function initParticles() {
     y: height / 2,
     targetX: width / 2,
     targetY: height / 2,
-    tiltX: 0,
+    tiltX: 0.35,
     tiltY: 0
   };
 
   window.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
-    mouse.targetX = e.clientX - rect.left;
-    mouse.targetY = e.clientY - rect.top;
+    // Only track relative mouse position when canvas is visible in viewport
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      const relX = Math.max(0, Math.min(width, e.clientX - rect.left));
+      const relY = Math.max(0, Math.min(height, e.clientY - rect.top));
+      mouse.targetX = relX;
+      mouse.targetY = relY;
+    }
   });
 
   window.addEventListener('resize', () => {
@@ -114,20 +119,20 @@ export function initParticles() {
   function animate() {
     time += 0.015;
 
-    // Smooth lerp mouse positioning
+    // Smooth lerp mouse positioning within bounded limits
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    // Bounded tilt angles (NO infinite spinning)
-    const targetTiltX = 0.35 + (mouse.y - height / 2) * 0.0003;
-    const targetTiltY = (mouse.x - width / 2) * 0.0003;
+    // Strictly bounded tilt angles to prevent vertical stretching during scrolling
+    const targetTiltX = 0.35 + (mouse.y - height / 2) * 0.0001;
+    const targetTiltY = (mouse.x - width / 2) * 0.0001;
     mouse.tiltX += (targetTiltX - mouse.tiltX) * 0.05;
     mouse.tiltY += (targetTiltY - mouse.tiltY) * 0.05;
 
     ctx.clearRect(0, 0, width, height);
 
     const focalLength = 800;
-    const centerY = height * 0.65;
+    const centerY = height * 0.62;
 
     // Transform all 3D points
     const projected = gridPoints.map(p => {
@@ -136,7 +141,7 @@ export function initParticles() {
       
       let rot = { x: p.x, y: waveY, z: p.z };
       rot = rotateX(rot, mouse.tiltX);
-      rot = rotateY(rot, mouse.tiltY + Math.sin(time * 0.2) * 0.15);
+      rot = rotateY(rot, mouse.tiltY + Math.sin(time * 0.2) * 0.12);
 
       const zWorld = rot.z + 750;
       const scale = focalLength / Math.max(zWorld, 100);
@@ -156,7 +161,7 @@ export function initParticles() {
       const p3 = projected[i3];
 
       const avgZ = (p1.z + p2.z + p3.z) / 3;
-      const faceAlpha = Math.max(0.02, Math.min(0.4, (avgZ + 400) / 700));
+      const faceAlpha = Math.max(0.02, Math.min(0.35, (avgZ + 400) / 700));
 
       ctx.save();
       ctx.beginPath();
@@ -165,57 +170,49 @@ export function initParticles() {
       ctx.lineTo(p3.x, p3.y);
       ctx.closePath();
 
-      ctx.fillStyle = `rgba(18, 22, 32, ${faceAlpha})`;
+      // Shiny metallic gradient fill
+      const grad = ctx.createLinearGradient(p1.x, p1.y, p3.x, p3.y);
+      grad.addColorStop(0, `rgba(224, 150, 70, ${faceAlpha * 0.35})`);
+      grad.addColorStop(0.5, `rgba(40, 30, 20, ${faceAlpha * 0.8})`);
+      grad.addColorStop(1, `rgba(15, 20, 30, ${faceAlpha})`);
+
+      ctx.fillStyle = grad;
       ctx.fill();
       ctx.restore();
     });
 
-    // 2. Draw Copper / Rose-Gold Metallic Wireframe Lines
-    edges.forEach(([i, j]) => {
-      const p1 = projected[i];
-      const p2 = projected[j];
+    // 2. Draw Copper/Gold Wireframe Strut Lines
+    edges.forEach(([i1, i2]) => {
+      const p1 = projected[i1];
+      const p2 = projected[i2];
 
       const avgZ = (p1.z + p2.z) / 2;
-      const lineAlpha = Math.max(0.1, Math.min(0.85, (avgZ + 400) / 650));
+      const edgeAlpha = Math.max(0.1, Math.min(0.85, (avgZ + 450) / 600));
 
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
 
-      // Rose Gold Metallic Gradient
-      const lineGrad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-      lineGrad.addColorStop(0, `rgba(217, 119, 6, ${lineAlpha})`);
-      lineGrad.addColorStop(0.5, `rgba(245, 158, 11, ${lineAlpha * 0.9})`);
-      lineGrad.addColorStop(1, `rgba(180, 83, 9, ${lineAlpha})`);
-
-      ctx.strokeStyle = lineGrad;
-      ctx.lineWidth = Math.max(1, 2.8 * ((p1.scale + p2.scale) / 2));
+      // Gold/Bronze metallic stroke
+      ctx.strokeStyle = `rgba(245, 175, 85, ${edgeAlpha * 0.75})`;
+      ctx.lineWidth = Math.max(0.7, 1.3 * p1.scale);
       ctx.stroke();
       ctx.restore();
     });
 
-    // 3. Draw Shiny Metallic Joint Spheres (Beads)
+    // 3. Draw Shiny Nodes / Spheres at Vertices
     projected.forEach(p => {
-      const nodeAlpha = Math.max(0.2, Math.min(0.95, (p.z + 400) / 600));
-      const radius = Math.max(2, 5 * p.scale);
+      const nodeAlpha = Math.max(0.2, Math.min(1.0, (p.z + 450) / 550));
+      const radius = Math.max(2, 4.5 * p.scale);
 
       ctx.save();
       ctx.beginPath();
       ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-
-      // Copper/Gold Metallic Shading
-      ctx.fillStyle = `rgba(251, 191, 36, ${nodeAlpha})`;
-      ctx.shadowColor = 'rgba(245, 158, 11, 0.8)';
-      ctx.shadowBlur = 10 * p.scale;
+      ctx.fillStyle = `rgba(255, 220, 160, ${nodeAlpha})`;
+      ctx.shadowColor = "rgba(255, 180, 80, 0.9)";
+      ctx.shadowBlur = 12 * p.scale;
       ctx.fill();
-
-      // Specular Highlight Bead
-      ctx.beginPath();
-      ctx.arc(p.x - radius * 0.25, p.y - radius * 0.25, radius * 0.35, 0, Math.PI * 2);
-      ctx.fillStyle = '#ffffff';
-      ctx.fill();
-
       ctx.restore();
     });
 
