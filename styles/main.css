@@ -143,21 +143,22 @@ button {
   letter-spacing: -0.02em;
 }
 
-/* Brand Logo Image */
+/* Brand Logo SVG Vector */
 .brand {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
 
-.quanta-logo-img {
-  height: 20px;
+.quanta-logo-svg {
+  height: 22px;
   width: auto;
-  filter: invert(1) brightness(1.2);
+  fill: #ffffff;
+  display: block;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
-.brand:hover .quanta-logo-img {
+.brand:hover .quanta-logo-svg {
   opacity: 0.85;
   transform: scale(1.02);
 }
