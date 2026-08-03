@@ -151,6 +151,79 @@
   border-color: rgba(49, 134, 255, 0.3);
 }
 
+/* Team Showcase Styles */
+.team-section {
+  padding-block: 2rem 8rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.25rem 2rem;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-card:hover {
+  background: rgba(49, 134, 255, 0.05);
+  border-color: rgba(49, 134, 255, 0.3);
+  transform: translateY(-4px);
+}
+
+.avatar-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(49, 134, 255, 0.25), rgba(168, 85, 247, 0.25));
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.avatar-box.small {
+  width: 56px;
+  height: 56px;
+}
+
+.avatar-initials {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.team-card h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+}
+
+.team-role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+
+.team-bio {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .p-icon {
   font-size: 2rem;
   margin-bottom: 1rem;

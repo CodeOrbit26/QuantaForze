@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Support & Help Center | QuantaForge</title>
-  <meta name="description" content="QuantaForge Support Center: 24/7 technical assistance, platform status, API troubleshooting, and enterprise support resources.">
+  <meta name="description" content="QuantaForge Support Center: Documentation, API references, system status, and technical assistance.">
   
   <link rel="stylesheet" href="./styles/main.css">
-  <link rel="stylesheet" href="./styles/docs.css">
+  <link rel="stylesheet" href="./styles/product-pages.css">
 </head>
-<body class="docs-body">
+<body>
 
-  <!-- Header -->
+  <!-- Header Navbar -->
   <header class="site-header scrolled">
     <div class="header-container">
       <a href="index.html" class="logo-wrap" aria-label="QuantaForge Home">
@@ -19,55 +19,68 @@
       </a>
 
       <div class="header-right">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="docs.html" class="btn-cta btn-secondary">Docs</a>
-        <a href="index.html#contact" class="btn-cta btn-glow">Get Started</a>
+        <nav>
+          <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html#products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="index.html#technology" class="nav-link">Technology</a></li>
+            <li class="nav-item"><a href="founders.html" class="nav-link">Founders</a></li>
+            <li class="nav-item"><a href="docs.html" class="nav-link">Developers</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="docs.html" class="btn-cta btn-secondary">Docs</a>
+          <a href="support.html" class="btn-cta btn-secondary active">Support</a>
+          <a href="docs.html" class="btn-cta btn-glow">Get Started</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <div class="docs-main" style="max-width: 960px; margin: 6rem auto 4rem; padding: 0 2rem;">
-    <h1 class="doc-title">Support & Help Center</h1>
-    <p class="doc-lead">We're here to help you deploy, scale, and troubleshoot your QuantaForge platforms.</p>
-
-    <div class="feature-grid-docs">
-      <div class="doc-card">
-        <div class="doc-card-num">📚 DOCS</div>
-        <h4>Developer Documentation</h4>
-        <p>Explore quickstarts, API specifications, and SDK references for QuantaForge.</p>
-        <a href="docs.html" style="color:var(--accent-blue); font-size:0.85rem; font-weight:600; display:inline-block; margin-top:0.8rem; text-decoration:none;">View Docs →</a>
-      </div>
-
-      <div class="doc-card">
-        <div class="doc-card-num">🏥 HEALTHCARE</div>
-        <h4>AxioVital Support</h4>
-        <p>Dedicated clinical workflow and hospital infrastructure support channels.</p>
-        <a href="axiovital.html" style="color:var(--accent-blue); font-size:0.85rem; font-weight:600; display:inline-block; margin-top:0.8rem; text-decoration:none;">AxioVital Portal →</a>
-      </div>
-
-      <div class="doc-card">
-        <div class="doc-card-num">⚡ STATUS</div>
-        <h4>System Status</h4>
-        <p>Real-time operational status for QuantaForge Intelligence Layer & APIs.</p>
-        <span style="color:#4ade80; font-size:0.85rem; font-weight:600; display:inline-block; margin-top:0.8rem;">● All Systems Operational</span>
+  <!-- Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div class="product-badge">🛠️ SUPPORT & HELP CENTER</div>
+      <h1 class="product-title">How can we <span class="quanta-accent">help you?</span></h1>
+      <p class="product-subtitle">
+        Find developer guides, system troubleshooting, platform documentation, and technical support.
+      </p>
+      
+      <div class="product-actions">
+        <a href="docs.html" class="btn-cta btn-primary">Browse Documentation</a>
+        <a href="https://github.com/CodeOrbit26/QuantaForze/issues" target="_blank" class="btn-cta btn-secondary">GitHub Issue Tracker</a>
       </div>
     </div>
+  </section>
 
-    <hr class="doc-divider">
-
-    <section class="doc-section">
-      <h2>Contact Technical Support</h2>
-      <p>Need dedicated assistance? Reach out to our engineering team:</p>
-      
-      <div class="callout callout-info" style="margin-top: 1.5rem;">
-        <div class="callout-icon">💬</div>
-        <div class="callout-content">
-          <strong>Enterprise Priority Support:</strong> <a href="mailto:support@quantaforge.com" style="color:#ffffff;">support@quantaforge.com</a><br/>
-          Average response time: <strong>under 15 minutes</strong> for tier-1 incidents.
+  <!-- Support Channels Grid -->
+  <section class="product-features">
+    <div class="container">
+      <div class="features-grid-3col">
+        
+        <div class="p-feature-card">
+          <div class="p-icon">📚</div>
+          <h3>Documentation</h3>
+          <p>Explore CLI setup, SDK installation, AxioVital integration guides, and API specifications.</p>
+          <a href="docs.html" style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem; display: inline-block;">Open Docs →</a>
         </div>
+
+        <div class="p-feature-card">
+          <div class="p-icon">💬</div>
+          <h3>Developer Discord</h3>
+          <p>Join our active community of systems architects, AI engineers, and healthcare developers.</p>
+          <a href="#" style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem; display: inline-block;">Join Discord →</a>
+        </div>
+
+        <div class="p-feature-card">
+          <div class="p-icon">✉️</div>
+          <h3>Direct Engineering Support</h3>
+          <p>Need custom enterprise integration support for AxioVital or agent deployments? Contact our engineering team.</p>
+          <a href="mailto:support@quantaforge.com" style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem; display: inline-block;">Email Support →</a>
+        </div>
+
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
 </body>
 </html>

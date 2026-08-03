@@ -6,29 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   initAnthropicNodes();
 
-  // 1. Smart Auto-Hiding Floating Navbar on Scroll Direction
+  // 1. Sticky Header Scroll Effect with smooth hysteresis
   const header = document.querySelector('.site-header');
-  let lastScrollY = window.scrollY;
+  let isScrolled = false;
 
   function handleScroll() {
-    const currentScrollY = window.scrollY;
-
-    // Toggle scrolled state
-    if (currentScrollY > 50) {
+    const y = window.scrollY;
+    if (!isScrolled && y > 45) {
+      isScrolled = true;
       header?.classList.add('scrolled');
-    } else {
+    } else if (isScrolled && y < 15) {
+      isScrolled = false;
       header?.classList.remove('scrolled');
-      header?.classList.remove('header-hidden');
     }
-
-    // Auto-hide when scrolling down, show when scrolling up
-    if (currentScrollY > 120 && currentScrollY > lastScrollY + 5) {
-      header?.classList.add('header-hidden');
-    } else if (currentScrollY < lastScrollY - 5) {
-      header?.classList.remove('header-hidden');
-    }
-
-    lastScrollY = currentScrollY;
   }
 
   window.addEventListener('scroll', handleScroll, { passive: true });
