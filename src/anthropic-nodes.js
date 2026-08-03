@@ -1,7 +1,6 @@
 /**
- * QuantaForze - Anthropic Research Node Canvas Engine
- * Unscrolled: Clean card with headline text.
- * Scrolled into View / Hovered: Dynamic node network expansion perfectly inside card boundaries.
+ * QuantaForze - Anthropic Scroll & Hover Expansion Canvas Engine
+ * Compact node positions to ensure zero clipping or overflow.
  */
 
 export function initAnthropicNodes() {
@@ -26,14 +25,13 @@ export function initAnthropicNodes() {
     const rect = card.getBoundingClientRect();
     const windowH = window.innerHeight;
     
-    // Calculate scroll progress relative to viewport center
     const cardCenter = rect.top + rect.height / 2;
     const distFromCenter = Math.abs(windowH / 2 - cardCenter);
     const maxDist = windowH / 2 + rect.height / 2;
 
     if (rect.top < windowH && rect.bottom > 0) {
       scrollRatio = Math.max(0, Math.min(1, 1 - distFromCenter / (maxDist * 0.75)));
-      if (scrollRatio > 0.2) {
+      if (scrollRatio > 0.25) {
         card.classList.add('in-view');
       } else {
         card.classList.remove('in-view');
@@ -60,47 +58,47 @@ export function initAnthropicNodes() {
     height = canvas.height = card.clientHeight;
   });
 
-  // Well-balanced node cluster positions safely inside card boundary
+  // Balanced cluster positions comfortably inside card bounds
   const questions = [
     {
       text: "How does AI work?",
-      xPct: 0.22,
-      yPct: 0.30,
+      xPct: 0.20,
+      yPct: 0.35,
       nodes: [
         { dx: -45, dy: -50, color: "#38bdf8" },
-        { dx: 45, dy: -45, color: "#4ade80" },
-        { dx: -55, dy: 35, color: "#f43f5e" },
-        { dx: 45, dy: 45, color: "#fbbf24" }
+        { dx: 45, dy: -40, color: "#4ade80" },
+        { dx: -50, dy: 35, color: "#f43f5e" },
+        { dx: 40, dy: 45, color: "#fbbf24" }
       ]
     },
     {
       text: "Who should govern AI?",
-      xPct: 0.78,
+      xPct: 0.80,
       yPct: 0.28,
       nodes: [
-        { dx: -45, dy: 45, color: "#a855f7" },
-        { dx: 45, dy: -40, color: "#38bdf8" },
-        { dx: 50, dy: 45, color: "#f97316" }
+        { dx: -45, dy: 40, color: "#a855f7" },
+        { dx: 40, dy: -40, color: "#38bdf8" },
+        { dx: 45, dy: 45, color: "#f97316" }
       ]
     },
     {
       text: "What is AI's impact on society?",
       xPct: 0.22,
-      yPct: 0.74,
+      yPct: 0.75,
       nodes: [
-        { dx: -45, dy: -45, color: "#e11d48" },
-        { dx: 50, dy: -40, color: "#10b981" },
-        { dx: 40, dy: 45, color: "#6366f1" }
+        { dx: -40, dy: -45, color: "#e11d48" },
+        { dx: 45, dy: -40, color: "#10b981" },
+        { dx: 35, dy: 40, color: "#6366f1" }
       ]
     },
     {
       text: "How does AI affect the economy?",
       xPct: 0.78,
-      yPct: 0.74,
+      yPct: 0.75,
       nodes: [
-        { dx: -50, dy: -40, color: "#ec4899" },
-        { dx: 45, dy: -45, color: "#06b6d4" },
-        { dx: -40, dy: 45, color: "#8b5cf6" }
+        { dx: -45, dy: -35, color: "#ec4899" },
+        { dx: 40, dy: -40, color: "#06b6d4" },
+        { dx: -35, dy: 45, color: "#8b5cf6" }
       ]
     }
   ];
@@ -115,8 +113,7 @@ export function initAnthropicNodes() {
 
     ctx.clearRect(0, 0, width, height);
 
-    // Smooth expansion lerp based on scroll & hover
-    const targetExpand = mouse.active ? 1.0 : Math.max(0, (scrollRatio - 0.15) * 1.25);
+    const targetExpand = mouse.active ? 1.0 : Math.max(0, (scrollRatio - 0.15) * 1.3);
     expand += (targetExpand - expand) * 0.05;
 
     if (expand > 0.02) {
@@ -134,23 +131,21 @@ export function initAnthropicNodes() {
       });
 
       data.forEach(group => {
-        // Connecting line web
         group.children.forEach(child => {
           ctx.save();
           ctx.beginPath();
           ctx.moveTo(group.x, group.y);
           ctx.lineTo(child.x, child.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.22 * expand})`;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.25 * expand})`;
           ctx.lineWidth = 1;
           ctx.stroke();
           ctx.restore();
 
-          // Thumbnail tiles
           ctx.save();
-          const tileW = 24 * Math.max(0.4, expand);
-          const tileH = 30 * Math.max(0.4, expand);
+          const tileW = 26 * Math.max(0.4, expand);
+          const tileH = 32 * Math.max(0.4, expand);
           ctx.fillStyle = child.color;
-          ctx.globalAlpha = 0.7 * expand;
+          ctx.globalAlpha = 0.75 * expand;
           ctx.fillRect(child.x - tileW / 2, child.y - tileH / 2, tileW, tileH);
           ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
           ctx.lineWidth = 1;
@@ -158,7 +153,6 @@ export function initAnthropicNodes() {
           ctx.restore();
         });
 
-        // Question Node Dot
         ctx.save();
         ctx.beginPath();
         ctx.arc(group.x, group.y, 4.5, 0, Math.PI * 2);
@@ -167,7 +161,6 @@ export function initAnthropicNodes() {
         ctx.shadowBlur = 8 * expand;
         ctx.fill();
 
-        // Question Text Label
         ctx.font = "400 14px 'Times New Roman', Georgia, serif";
         ctx.fillStyle = `rgba(248, 250, 252, ${expand * 0.9})`;
         ctx.textAlign = group.x < width / 2 ? "left" : "right";
@@ -175,7 +168,6 @@ export function initAnthropicNodes() {
         ctx.restore();
       });
 
-      // Interactive spring line to cursor
       if (mouse.active) {
         data.forEach(group => {
           const dx = mouse.x - group.x;

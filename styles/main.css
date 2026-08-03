@@ -474,7 +474,7 @@ button {
 
 /* Anthropic Style Research Card Section */
 .showcase-section {
-  padding-block: 3rem 5rem;
+  padding-block: 4rem 6rem;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -483,9 +483,9 @@ button {
 .anthropic-research-card {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1040px;
   margin: 0 auto;
-  min-height: 520px;
+  min-height: 500px;
   background: #090a0d;
   border-radius: 28px;
   overflow: hidden;
@@ -493,18 +493,20 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  transform: scale(0.98);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+  transform: scale(0.97);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.4s ease,
-              box-shadow 0.5s ease;
+              box-shadow 0.6s ease;
 }
 
 .anthropic-research-card.in-view, .anthropic-research-card:hover {
+  max-width: 1200px;
   transform: scale(1);
   border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.75);
 }
 
 #anthropic-node-canvas {
