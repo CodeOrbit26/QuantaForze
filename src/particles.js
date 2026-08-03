@@ -1,6 +1,6 @@
 /**
  * QuantaForze - 3D Metallic Geometric Lattice Surface Canvas Engine
- * Permanent horizontal perspective floor mesh initialized at 1.25 rad pitch angle.
+ * Renders a copper/rose-gold 3D wireframe landscape mesh with shiny sphere nodes & dark faceted polygons.
  */
 
 export function initParticles() {
@@ -13,13 +13,12 @@ export function initParticles() {
   let width = (canvas.width = parent.clientWidth || window.innerWidth);
   let height = (canvas.height = parent.clientHeight || 800);
 
-  // Initialize tiltX directly to horizontal floor perspective (1.25 rad)
   let mouse = {
     x: width / 2,
     y: height / 2,
     targetX: width / 2,
     targetY: height / 2,
-    tiltX: 1.25,
+    tiltX: 0,
     tiltY: 0
   };
 
@@ -40,10 +39,10 @@ export function initParticles() {
   let faces = [];
   let edges = [];
 
-  const cols = 16;
-  const rows = 10;
-  const spacingX = 130;
-  const spacingZ = 110;
+  const cols = 14;
+  const rows = 9;
+  const spacingX = 140;
+  const spacingZ = 120;
 
   function initMesh() {
     gridPoints = [];
@@ -58,9 +57,9 @@ export function initParticles() {
         const x = startX + c * spacingX;
         const z = startZ + r * spacingZ;
         
-        // Gentle organic elevation
+        // Geometric dome/wave elevation
         const distFromCenter = Math.sqrt(x * x + z * z);
-        const y = Math.cos(distFromCenter * 0.0025) * 80 - Math.sin(c * 0.4) * 25;
+        const y = Math.cos(distFromCenter * 0.003) * 110 - Math.sin(c * 0.5) * 35;
 
         gridPoints.push({ x, y, z, baseY: y, c, r });
       }
@@ -83,7 +82,7 @@ export function initParticles() {
         edges.push([i1, i3]);
         edges.push([i2, i4]);
         edges.push([i3, i4]);
-        edges.push([i2, i3]);
+        edges.push([i2, i3]); // Diagonal strut
       }
     }
   }
@@ -113,33 +112,33 @@ export function initParticles() {
   }
 
   function animate() {
-    time += 0.012;
+    time += 0.015;
 
     // Smooth lerp mouse positioning
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    // Fixed horizontal perspective pitch angle (~1.25 rad floor view, permanently locked)
-    const targetTiltX = 1.25 + (mouse.y - height / 2) * 0.00015;
-    const targetTiltY = (mouse.x - width / 2) * 0.0002;
+    // Bounded tilt angles (NO infinite spinning)
+    const targetTiltX = 0.35 + (mouse.y - height / 2) * 0.0003;
+    const targetTiltY = (mouse.x - width / 2) * 0.0003;
     mouse.tiltX += (targetTiltX - mouse.tiltX) * 0.05;
     mouse.tiltY += (targetTiltY - mouse.tiltY) * 0.05;
 
     ctx.clearRect(0, 0, width, height);
 
-    const focalLength = 750;
-    const centerY = height * 0.72;
+    const focalLength = 800;
+    const centerY = height * 0.65;
 
     // Transform all 3D points
     const projected = gridPoints.map(p => {
       // Dynamic organic wave motion
-      const waveY = p.baseY + Math.sin(time + p.c * 0.25 + p.r * 0.35) * 14;
+      const waveY = p.baseY + Math.sin(time + p.c * 0.3 + p.r * 0.4) * 18;
       
       let rot = { x: p.x, y: waveY, z: p.z };
       rot = rotateX(rot, mouse.tiltX);
-      rot = rotateY(rot, mouse.tiltY + Math.sin(time * 0.15) * 0.08);
+      rot = rotateY(rot, mouse.tiltY + Math.sin(time * 0.2) * 0.15);
 
-      const zWorld = rot.z + 700;
+      const zWorld = rot.z + 750;
       const scale = focalLength / Math.max(zWorld, 100);
 
       return {
@@ -157,7 +156,7 @@ export function initParticles() {
       const p3 = projected[i3];
 
       const avgZ = (p1.z + p2.z + p3.z) / 3;
-      const faceAlpha = Math.max(0.01, Math.min(0.25, (avgZ + 350) / 650));
+      const faceAlpha = Math.max(0.02, Math.min(0.4, (avgZ + 400) / 700));
 
       ctx.save();
       ctx.beginPath();
@@ -177,7 +176,7 @@ export function initParticles() {
       const p2 = projected[j];
 
       const avgZ = (p1.z + p2.z) / 2;
-      const lineAlpha = Math.max(0.05, Math.min(0.7, (avgZ + 350) / 600));
+      const lineAlpha = Math.max(0.1, Math.min(0.85, (avgZ + 400) / 650));
 
       ctx.save();
       ctx.beginPath();
@@ -187,19 +186,19 @@ export function initParticles() {
       // Rose Gold Metallic Gradient
       const lineGrad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
       lineGrad.addColorStop(0, `rgba(217, 119, 6, ${lineAlpha})`);
-      lineGrad.addColorStop(0.5, `rgba(245, 158, 11, ${lineAlpha * 0.85})`);
+      lineGrad.addColorStop(0.5, `rgba(245, 158, 11, ${lineAlpha * 0.9})`);
       lineGrad.addColorStop(1, `rgba(180, 83, 9, ${lineAlpha})`);
 
       ctx.strokeStyle = lineGrad;
-      ctx.lineWidth = Math.max(0.8, 2.2 * ((p1.scale + p2.scale) / 2));
+      ctx.lineWidth = Math.max(1, 2.8 * ((p1.scale + p2.scale) / 2));
       ctx.stroke();
       ctx.restore();
     });
 
     // 3. Draw Shiny Metallic Joint Spheres (Beads)
     projected.forEach(p => {
-      const nodeAlpha = Math.max(0.15, Math.min(0.9, (p.z + 350) / 550));
-      const radius = Math.max(1.8, 4.2 * p.scale);
+      const nodeAlpha = Math.max(0.2, Math.min(0.95, (p.z + 400) / 600));
+      const radius = Math.max(2, 5 * p.scale);
 
       ctx.save();
       ctx.beginPath();
@@ -207,8 +206,8 @@ export function initParticles() {
 
       // Copper/Gold Metallic Shading
       ctx.fillStyle = `rgba(251, 191, 36, ${nodeAlpha})`;
-      ctx.shadowColor = 'rgba(245, 158, 11, 0.7)';
-      ctx.shadowBlur = 8 * p.scale;
+      ctx.shadowColor = 'rgba(245, 158, 11, 0.8)';
+      ctx.shadowBlur = 10 * p.scale;
       ctx.fill();
 
       // Specular Highlight Bead
