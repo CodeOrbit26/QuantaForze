@@ -1345,5 +1345,267 @@ button {
   .mobile-toggle { display: flex; }
   .solutions-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.5rem; }
+  .products-duo-grid { grid-template-columns: 1fr; }
+  .arch-pipeline-box { flex-direction: column; text-align: center; }
+  .arch-arrow { transform: rotate(90deg); margin: 0.5rem 0; }
   .footer-top { grid-template-columns: 1fr; }
+}
+
+/* QuantaForge Blueprint Sections */
+
+/* Philosophy & 6-Step Loop */
+.philosophy-section {
+  padding-block: 6rem 8rem;
+  position: relative;
+}
+
+.loop-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.loop-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 2rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loop-card:hover {
+  background: rgba(49, 134, 255, 0.06);
+  border-color: rgba(49, 134, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.loop-step {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.loop-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.loop-card p {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Products Duo Grid Showcase */
+.products-duo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+.product-showcase-card {
+  background: #0b0e17;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.p-card-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.product-showcase-card h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+}
+
+.p-card-desc {
+  font-size: 1rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.p-card-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: #94a3b8;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin-bottom: auto;
+}
+
+.p-card-features strong {
+  color: #f8fafc;
+}
+
+/* Architecture Flow Pipeline Box */
+.architecture-section {
+  padding-block: 6rem 8rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(13, 18, 28, 0.5) 100%);
+}
+
+.arch-pipeline-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0b0d14;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  margin: 3.5rem 0 4rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.arch-step {
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+}
+
+.arch-step.highlight .arch-icon {
+  background: rgba(49, 134, 255, 0.25);
+  border-color: rgba(49, 134, 255, 0.4);
+  box-shadow: 0 0 25px rgba(49, 134, 255, 0.3);
+}
+
+.arch-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin: 0 auto 0.8rem;
+}
+
+.arch-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.arch-sub {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.arch-arrow {
+  color: var(--accent-blue);
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/* Pillars 6 Grid */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.pillar-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+}
+
+.pillar-card h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.pillar-card p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Core Principles Section */
+.principles-section {
+  padding-block: 6rem 8rem;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+.principle-item {
+  border-left: 2px solid var(--accent-blue);
+  padding-left: 1.5rem;
+}
+
+.principle-item h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.principle-item p {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Final CTA Section */
+.final-cta-section {
+  padding-block: 8rem;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(49, 134, 255, 0.12) 0%, transparent 70%);
+}
+
+.cta-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
 }
