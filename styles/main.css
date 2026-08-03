@@ -487,7 +487,7 @@ button {
   width: calc(100% - 4rem);
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 420px;
+  min-height: 520px;
   background: #090a0d;
   border-radius: 32px;
   overflow: hidden;
@@ -510,7 +510,7 @@ button {
 .anthropic-research-card.in-view, .anthropic-research-card:hover {
   width: 100%;
   max-width: 100%;
-  min-height: 80vh;
+  min-height: 100vh;
   border-radius: 0px;
   transform: scale(1);
   border-color: rgba(255, 255, 255, 0.12);
