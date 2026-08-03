@@ -1,8 +1,10 @@
 import { initParticles } from './particles.js';
+import { initAnthropicNodes } from './anthropic-nodes.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Canvas Particles
+  // Initialize Canvas Particles & Anthropic Nodes
   initParticles();
+  initAnthropicNodes();
 
   // 1. Sticky Header Scroll Effect
   const header = document.querySelector('.site-header');
