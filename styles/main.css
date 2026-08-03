@@ -95,31 +95,34 @@ button {
   z-index: 1;
 }
 
-/* Header & Floating Glass Navbar (initial compact state – JS interpolates on scroll) */
+/* Header & Navbar (Full-Width Edge-to-Edge) */
 .site-header {
   position: fixed;
-  top: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 3rem);
-  max-width: 1240px;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
-  background: rgba(13, 17, 26, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 9999px;
-  padding-inline: 1.5rem;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
-  /* no CSS transition — JS rAF handles smooth interpolation */
+  background: rgba(9, 10, 15, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all var(--transition-normal);
+}
+
+.site-header.scrolled {
+  background: rgba(9, 10, 15, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.25rem;
-  padding-inline: 0;
+  height: 4.5rem;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-inline: 2rem;
 }
 
 /* Brand Logo */
