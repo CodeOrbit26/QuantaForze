@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuantaForze CLI | Keyboard-First Terminal Agent</title>
+  <meta name="description" content="QuantaForze CLI: Lightweight, keyboard-first terminal surface for autonomous coding and parallel agent execution.">
+  
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/product-pages.css">
+</head>
+<body>
+
+  <!-- Header Navbar -->
+  <header class="site-header scrolled">
+    <div class="header-container">
+      <a href="index.html" class="logo-wrap" aria-label="QuantaForze Home">
+        <img src="./Quantaforze.png" alt="QuantaForze" class="brand-img-logo">
+      </a>
+
+      <div class="header-right">
+        <nav>
+          <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html#products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="index.html#use-cases" class="nav-link">Use Cases</a></li>
+            <li class="nav-item"><a href="docs.html" class="nav-link">Docs</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="docs.html" class="btn-cta btn-secondary">Docs</a>
+          <a href="index.html#download" class="btn-cta btn-glow">Download CLI</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div class="product-badge">💻 QUANTAFORZE CLI TOOL</div>
+      <h1 class="product-title">Keyboard-First <span class="quanta-accent">Terminal Agent</span></h1>
+      <p class="product-subtitle">
+        Execute autonomous coding tasks directly inside your terminal with lightning speed, interactive diff reviews, and native shell execution.
+      </p>
+      
+      <div class="product-actions">
+        <a href="docs.html#quickstart" class="btn-cta btn-primary">npm install -g quantaforze-cli</a>
+        <a href="docs.html" class="btn-cta btn-secondary">CLI Reference Guide</a>
+      </div>
+
+      <!-- Terminal Preview -->
+      <div class="product-preview-card">
+        <div class="preview-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="preview-title">bash — quantaforze run</span>
+        </div>
+        <div class="preview-terminal-body">
+          <p><span class="prompt-symbol">$</span> quantaforze run --prompt "Fix memory leak in websocket broadcast queue"</p>
+          <div class="terminal-log">
+            ✔ Scanned 34 source files in repository<br>
+            ✔ Formulated plan: Refactor Queue ring buffer & free dropped buffers<br>
+            ✔ Code edit applied to <code>src/net/ws_queue.rs</code><br>
+            ✔ Executed 14 Rust integration tests (<span style="color:#4ade80;">14 passed, 0 failed</span>)<br>
+            <span style="color:#38bdf8;">✨ Task finished in 1.4s!</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
