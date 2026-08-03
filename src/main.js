@@ -4,15 +4,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Canvas Particles
   initParticles();
 
-  // 1. Sticky Header Scroll Effect
+  // 1. Fluid Scroll Progress Navbar Engine
   const header = document.querySelector('.site-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header?.classList.add('scrolled');
-    } else {
-      header?.classList.remove('scrolled');
+  let ticking = false;
+
+  function updateHeaderScroll() {
+    const scrollY = window.scrollY;
+    const maxScroll = 180; // Distance over which full width transition completes
+    const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
+
+    if (header) {
+      header.style.setProperty('--scroll-p', progress.toFixed(4));
     }
-  });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateHeaderScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateHeaderScroll();
 
   // 2. Feature Explorer Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
