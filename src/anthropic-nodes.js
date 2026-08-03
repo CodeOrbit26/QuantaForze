@@ -1,6 +1,6 @@
 /**
  * QuantaForze - Anthropic-Style Interactive Node Map Canvas
- * Positioned in corner clusters around central text with expanding dynamic hover physics.
+ * Recreates the exact Anthropic research mind-map layout with earthy muted tones & organic spring interaction.
  */
 
 export function initAnthropicNodes() {
@@ -32,59 +32,58 @@ export function initAnthropicNodes() {
     height = canvas.height = card.clientHeight;
   });
 
-  // Corner cluster positions far away from central text box
+  // Anthropic exact questions & earthy color palette
   const questions = [
     {
       text: "How does AI work?",
-      xPct: 0.12,
-      yPct: 0.32,
+      xPct: 0.15,
+      yPct: 0.35,
       nodes: [
-        { dx: -40, dy: -50, color: "#38bdf8" },
-        { dx: 45, dy: -45, color: "#4ade80" },
-        { dx: -55, dy: 35, color: "#f43f5e" },
-        { dx: 40, dy: 45, color: "#fbbf24" }
+        { dx: -45, dy: -55, color: "#cc785c" },
+        { dx: 50, dy: -45, color: "#849670" },
+        { dx: -55, dy: 40, color: "#607d8b" },
+        { dx: 45, dy: 50, color: "#d4a359" }
       ]
     },
     {
       text: "Who should govern AI?",
-      xPct: 0.85,
+      xPct: 0.82,
       yPct: 0.22,
       nodes: [
-        { dx: -45, dy: 40, color: "#a855f7" },
-        { dx: 40, dy: -40, color: "#38bdf8" },
-        { dx: 50, dy: 45, color: "#f97316" }
+        { dx: -45, dy: 45, color: "#cc785c" },
+        { dx: 40, dy: -40, color: "#849670" },
+        { dx: 50, dy: 45, color: "#d4a359" }
       ]
     },
     {
       text: "What is AI's impact on society?",
-      xPct: 0.14,
-      yPct: 0.76,
+      xPct: 0.16,
+      yPct: 0.78,
       nodes: [
-        { dx: -40, dy: -45, color: "#e11d48" },
-        { dx: 50, dy: -40, color: "#10b981" },
-        { dx: 35, dy: 40, color: "#6366f1" }
+        { dx: -40, dy: -45, color: "#607d8b" },
+        { dx: 50, dy: -40, color: "#849670" },
+        { dx: 35, dy: 40, color: "#cc785c" }
       ]
     },
     {
       text: "How does AI affect the economy?",
-      xPct: 0.84,
+      xPct: 0.83,
       yPct: 0.78,
       nodes: [
-        { dx: -50, dy: -35, color: "#ec4899" },
-        { dx: 40, dy: -40, color: "#06b6d4" },
-        { dx: -35, dy: 45, color: "#8b5cf6" }
+        { dx: -50, dy: -35, color: "#d4a359" },
+        { dx: 40, dy: -40, color: "#607d8b" },
+        { dx: -35, dy: 45, color: "#849670" }
       ]
     }
   ];
 
-  let expand = 0.3;
+  let expand = 0.35;
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
-    // Expand distance & opacity when mouse moves over card
-    const targetExpand = mouse.active ? 1 : 0.35;
-    expand += (targetExpand - expand) * 0.06;
+    const targetExpand = mouse.active ? 1 : 0.4;
+    expand += (targetExpand - expand) * 0.05;
 
     const data = questions.map(q => {
       const qx = q.xPct * width;
@@ -106,19 +105,19 @@ export function initAnthropicNodes() {
         ctx.beginPath();
         ctx.moveTo(group.x, group.y);
         ctx.lineTo(child.x, child.y);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${0.18 * expand})`;
+        ctx.strokeStyle = `rgba(245, 244, 239, ${0.18 * expand})`;
         ctx.lineWidth = 1;
         ctx.stroke();
         ctx.restore();
 
-        // Draw thumbnail tile
+        // Draw Anthropic image thumbnail card
         ctx.save();
-        const tileW = 24 * Math.max(0.6, expand);
-        const tileH = 30 * Math.max(0.6, expand);
+        const tileW = 26 * Math.max(0.6, expand);
+        const tileH = 32 * Math.max(0.6, expand);
         ctx.fillStyle = child.color;
-        ctx.globalAlpha = 0.65 * expand;
+        ctx.globalAlpha = 0.7 * expand;
         ctx.fillRect(child.x - tileW / 2, child.y - tileH / 2, tileW, tileH);
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+        ctx.strokeStyle = "rgba(245, 244, 239, 0.35)";
         ctx.lineWidth = 1;
         ctx.strokeRect(child.x - tileW / 2, child.y - tileH / 2, tileW, tileH);
         ctx.restore();
@@ -127,21 +126,21 @@ export function initAnthropicNodes() {
       // Question Node Dot
       ctx.save();
       ctx.beginPath();
-      ctx.arc(group.x, group.y, 4.5, 0, Math.PI * 2);
-      ctx.fillStyle = "#ffffff";
-      ctx.shadowColor = "#ffffff";
-      ctx.shadowBlur = 8;
+      ctx.arc(group.x, group.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = "#f5f4ef";
+      ctx.shadowColor = "#f5f4ef";
+      ctx.shadowBlur = 6;
       ctx.fill();
 
       // Question Label Text
       ctx.font = "400 14px 'Times New Roman', Georgia, serif";
-      ctx.fillStyle = `rgba(248, 250, 252, ${0.4 + 0.5 * expand})`;
+      ctx.fillStyle = `rgba(245, 244, 239, ${0.45 + 0.45 * expand})`;
       ctx.textAlign = group.x < width / 2 ? "left" : "right";
       ctx.fillText(group.text, group.x + (group.x < width / 2 ? 12 : -12), group.y + 4);
       ctx.restore();
     });
 
-    // Spring line to cursor
+    // Spring line to mouse cursor
     if (mouse.active) {
       data.forEach(group => {
         const dx = mouse.x - group.x;
@@ -152,7 +151,7 @@ export function initAnthropicNodes() {
           ctx.beginPath();
           ctx.moveTo(mouse.x, mouse.y);
           ctx.lineTo(group.x, group.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.35 * (1 - dist / 220)})`;
+          ctx.strokeStyle = `rgba(245, 244, 239, ${0.3 * (1 - dist / 220)})`;
           ctx.lineWidth = 1;
           ctx.stroke();
           ctx.restore();
