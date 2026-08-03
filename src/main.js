@@ -6,15 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   initAnthropicNodes();
 
-  // 1. Sticky Header Scroll Effect
+  // 1. Sticky Header Scroll Effect with smooth hysteresis
   const header = document.querySelector('.site-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+  let isScrolled = false;
+
+  function handleScroll() {
+    const y = window.scrollY;
+    if (!isScrolled && y > 45) {
+      isScrolled = true;
       header?.classList.add('scrolled');
-    } else {
+    } else if (isScrolled && y < 15) {
+      isScrolled = false;
       header?.classList.remove('scrolled');
     }
-  });
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 
   // 2. Feature Explorer Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
