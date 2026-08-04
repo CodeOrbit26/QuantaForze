@@ -6,16 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   initAnthropicNodes();
 
-  // 1. Sticky Header Scroll Effect with smooth hysteresis
+  // 1. Sticky Header Scroll Effect (morphs only after scrolling 75-90% down the 1st page)
   const header = document.querySelector('.site-header');
+  const hero = document.querySelector('.hero-section');
   let isScrolled = false;
 
   function handleScroll() {
     const y = window.scrollY;
-    if (!isScrolled && y > 45) {
+    const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+    const threshold = heroHeight * 0.75; // Morphs smoothly near end of 1st page
+
+    if (!isScrolled && y > threshold) {
       isScrolled = true;
       header?.classList.add('scrolled');
-    } else if (isScrolled && y < 15) {
+    } else if (isScrolled && y < threshold - 60) {
       isScrolled = false;
       header?.classList.remove('scrolled');
     }
