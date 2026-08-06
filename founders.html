@@ -341,6 +341,32 @@
         if (item) item.classList.add('active');
       }
     });
+
+    // Dropdown Hover Keep-Alive Handler
+    var dropdownItems = document.querySelectorAll('.nav-item-dropdown');
+    dropdownItems.forEach(function(item) {
+      var dropdown = item.querySelector('.mega-dropdown-fullscreen');
+      if (!dropdown) return;
+      var hoverTimeout = null;
+
+      function openMenu() {
+        clearTimeout(hoverTimeout);
+        dropdown.classList.add('is-open');
+        item.classList.add('dropdown-active');
+      }
+
+      function closeMenu() {
+        hoverTimeout = setTimeout(function() {
+          dropdown.classList.remove('is-open');
+          item.classList.remove('dropdown-active');
+        }, 180);
+      }
+
+      item.addEventListener('mouseenter', openMenu);
+      item.addEventListener('mouseleave', closeMenu);
+      dropdown.addEventListener('mouseenter', openMenu);
+      dropdown.addEventListener('mouseleave', closeMenu);
+    });
   })();
 </script>
 </body>

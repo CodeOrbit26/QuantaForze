@@ -28,6 +28,32 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 
+  // Mega Dropdown Hover Keep-Alive Handler
+  const dropdownItems = document.querySelectorAll('.nav-item-dropdown');
+  dropdownItems.forEach((item) => {
+    const dropdown = item.querySelector('.mega-dropdown-fullscreen');
+    if (!dropdown) return;
+    let hoverTimeout = null;
+
+    function openMenu() {
+      clearTimeout(hoverTimeout);
+      dropdown.classList.add('is-open');
+      item.classList.add('dropdown-active');
+    }
+
+    function closeMenu() {
+      hoverTimeout = setTimeout(() => {
+        dropdown.classList.remove('is-open');
+        item.classList.remove('dropdown-active');
+      }, 180);
+    }
+
+    item.addEventListener('mouseenter', openMenu);
+    item.addEventListener('mouseleave', closeMenu);
+    dropdown.addEventListener('mouseenter', openMenu);
+    dropdown.addEventListener('mouseleave', closeMenu);
+  });
+
   // 2. Feature Explorer Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanes = document.querySelectorAll('.tab-pane');
