@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Started | QuantaForze Quickstart & Onboarding</title>
+  <meta name="description" content="Quickstart guide to set up QuantaForze CLI, SDK, Autonomous Agents, and device-to-device connectivity in minutes.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%233186ff'/><path d='M30 65 L50 25 L70 65 Z' fill='%23ffffff'/></svg>">
+  
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/product-pages.css">
+  
+  <style>
+    .quickstart-step-card {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      transition: all 0.25s ease;
+    }
+    .quickstart-step-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+    .step-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+    .code-block-wrap {
+      background: #090d16;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.9rem;
+      color: #38bdf8;
+      margin-top: 1rem;
+      overflow-x: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .code-text {
+      color: #38bdf8;
+      user-select: all;
+    }
+    .btn-copy-code {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #94a3b8;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-copy-code:hover {
+      color: #fff;
+      background: rgba(56, 189, 248, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navbar -->
+  <header class="site-header scrolled">
+    <div class="header-container">
+      <a href="index.html" class="logo-wrap" aria-label="QuantaForze Home">
+        <img src="./assets/images/Quantaforze.png" alt="QuantaForze" class="brand-img-logo">
+      </a>
+
+      <div class="header-right">
+        <nav>
+          <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html#products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="index.html#technology" class="nav-link">Technology</a></li>
+            <li class="nav-item"><a href="index.html#company" class="nav-link">Company</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="docs.html" class="btn-cta btn-secondary">Docs</a>
+          <a href="get-started.html" class="btn-cta btn-glow">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div class="product-badge">🚀 QUICKSTART & ONBOARDING</div>
+      <h1 class="product-title">Get Started with <span class="quanta-accent">QuantaForze</span></h1>
+      <p class="product-subtitle">
+        Deploy your first autonomous AI agent, set up device connectivity, or integrate the Intelligence Layer in under 5 minutes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Quickstart Content -->
+  <section class="team-section" style="padding-top: 0;">
+    <div class="container" style="max-width: 960px;">
+      
+      <!-- Step 1: Install -->
+      <div class="quickstart-step-card">
+        <div class="step-num-badge">01</div>
+        <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 0.5rem;">Install QuantaForze CLI & SDK</h3>
+        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
+          Install the official QuantaForze Command-Line Interface and developer SDK using your preferred package manager.
+        </p>
+
+        <div class="code-block-wrap">
+          <span class="code-text">npm install -g @quantaforze/cli @quantaforze/sdk</span>
+          <button class="btn-copy-code" onclick="navigator.clipboard.writeText('npm install -g @quantaforze/cli @quantaforze/sdk'); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy', 2000)">Copy</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Initialize -->
+      <div class="quickstart-step-card">
+        <div class="step-num-badge">02</div>
+        <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 0.5rem;">Initialize Project & Authenticate</h3>
+        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
+          Navigate to your project directory and create a new QuantaForze configuration file with your API credentials.
+        </p>
+
+        <div class="code-block-wrap">
+          <span class="code-text">quantaforze init --template agentic-workspace</span>
+          <button class="btn-copy-code" onclick="navigator.clipboard.writeText('quantaforze init --template agentic-workspace'); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy', 2000)">Copy</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Launch -->
+      <div class="quickstart-step-card">
+        <div class="step-num-badge">03</div>
+        <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 0.5rem;">Run Your First Autonomous Agent Task</h3>
+        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
+          Dispatch intent to your autonomous agent harness and watch parallel worker execution loops in action.
+        </p>
+
+        <div class="code-block-wrap">
+          <span class="code-text">quantaforze run "Analyze repository and generate automated architecture plan"</span>
+          <button class="btn-copy-code" onclick="navigator.clipboard.writeText('quantaforze run &quot;Analyze repository and generate automated architecture plan&quot;'); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy', 2000)">Copy</button>
+        </div>
+      </div>
+
+      <!-- Next Steps & Resources Grid -->
+      <div style="margin-top: 4rem;">
+        <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+          <span class="section-tag">EXPLORE ECOSYSTEM</span>
+          <h2 class="section-title">Where to go from here</h2>
+        </div>
+
+        <div class="values-section-grid">
+          <a href="docs.html" class="value-box-card" style="text-decoration: none; display: block; transition: transform 0.2s ease;">
+            <h4><span>📚</span> Technical Documentation</h4>
+            <p>Explore detailed API endpoints, SDK references, architecture specs, and configuration schemas.</p>
+          </a>
+
+          <a href="agent.html" class="value-box-card" style="text-decoration: none; display: block; transition: transform 0.2s ease;">
+            <h4><span>🤖</span> QuantaForze Agent</h4>
+            <p>Learn how to configure computer-control agents and natural voice intent interfaces.</p>
+          </a>
+
+          <a href="axiovital.html" class="value-box-card" style="text-decoration: none; display: block; transition: transform 0.2s ease;">
+            <h4><span>🏥</span> AxioVital Integration</h4>
+            <p>Connect clinical data, hospital EHR continuity, and patient monitoring environments.</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Architectural Horizon Footer -->
+  <footer class="site-footer">
+    <div class="footer-ambient-glow"></div>
+
+    <div class="container footer-relative-container">
+      
+      <!-- Top Grid -->
+      <div class="footer-top-grid">
+        
+        <!-- Column 1: Brand, Tagline & Dispatch -->
+        <div class="footer-col brand-col">
+          <a href="index.html" class="footer-logo-wrap">
+            <img src="./assets/images/Quantaforze.png" alt="QuantaForze" class="brand-img-logo">
+          </a>
+          <p class="footer-brand-desc">
+            Organize complexity. Connect intelligence. Automate action. Building intelligent infrastructure for connected environments.
+          </p>
+
+          <form class="footer-dispatch-form" onsubmit="event.preventDefault();">
+            <div class="dispatch-input-wrap">
+              <input type="email" placeholder="Subscribe to engineering updates..." required class="dispatch-input">
+              <button type="submit" class="btn-dispatch">
+                <span>Join</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Column 2: Ecosystem -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">
+            <span class="title-bar"></span> Ecosystem
+          </h4>
+          <ul class="footer-link-list">
+            <li><a href="axiovital.html">AxioVital Platform</a></li>
+            <li><a href="agent.html">QuantaForze Agent</a></li>
+            <li><a href="intelligence.html">Intelligence Layer</a></li>
+            <li><a href="connect.html">QuantaForze Connect</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Developers -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">
+            <span class="title-bar"></span> Developers
+          </h4>
+          <ul class="footer-link-list">
+            <li><a href="get-started.html">Get Started</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="docs.html#api">API Reference</a></li>
+            <li><a href="https://github.com/CodeOrbit26/QuantaForze" target="_blank">GitHub Repository ↗</a></li>
+            <li><a href="support.html">Support & Help Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Company -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">
+            <span class="title-bar"></span> Company
+          </h4>
+          <ul class="footer-link-list">
+            <li><a href="founders.html">Founders & Team</a></li>
+            <li><a href="index.html#company">Philosophy & Vision</a></li>
+            <li><a href="index.html#research">Research Papers</a></li>
+            <li><a href="privacy.html">Privacy & Security</a></li>
+            <li><a href="mailto:contact@quantaforze.com">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Massive Watermark Typography Graphic -->
+      <div class="footer-watermark-wrap" aria-hidden="true">
+        <span class="watermark-text">QUANTAFORZE</span>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="copyright-text">
+          © 2026 QuantaForze Technologies Inc. All rights reserved.
+        </div>
+
+        <div class="footer-meta-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <span class="dot-sep">•</span>
+          <a href="privacy.html">Terms of Service</a>
+          <span class="dot-sep">•</span>
+          <a href="support.html">Security Audit</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
