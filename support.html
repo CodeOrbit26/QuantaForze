@@ -175,5 +175,21 @@
     </div>
   </footer>
 
+<script>
+  (function() {
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    var links = document.querySelectorAll('a[href]');
+    links.forEach(function(l) {
+      var href = l.getAttribute('href');
+      if (!href) return;
+      var file = href.split('/').pop().split('#')[0];
+      if (file && (file === path || (path === '' && file === 'index.html'))) {
+        l.classList.add('active');
+        var item = l.closest('.nav-item');
+        if (item) item.classList.add('active');
+      }
+    });
+  })();
+</script>
 </body>
 </html>

@@ -1773,6 +1773,11 @@ button {
   align-items: center;
 }
 
+.nav-link:hover, .nav-item.active .nav-link, .nav-link.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
 .footer-link-list {
   list-style: none;
   padding: 0;
@@ -1795,6 +1800,21 @@ button {
 .footer-link-list a:hover {
   color: #ffffff;
   transform: translateX(3px);
+}
+
+.footer-link-list a.active {
+  color: #ffffff !important;
+  font-weight: 600;
+  transform: translateX(4px);
+}
+
+.footer-link-list a.active::before {
+  content: '•';
+  color: #38bdf8;
+  font-size: 1.3rem;
+  line-height: 0;
+  margin-right: 0.15rem;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
 }
 
 /* Micro Badges & Chips */
