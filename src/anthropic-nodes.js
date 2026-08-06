@@ -1,6 +1,6 @@
 /**
  * QuantaForze - Anthropic Full-Screen Scroll Expansion Canvas Engine
- * Uses IntersectionObserver for smooth bug-free scroll detection and expansion.
+ * Performance-optimized: visibility-paused, no per-element save/restore.
  */
 
 export function initAnthropicNodes() {
@@ -8,10 +8,12 @@ export function initAnthropicNodes() {
   const canvas = document.getElementById('anthropic-node-canvas');
   if (!card || !canvas) return;
 
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { alpha: true });
 
   let width = (canvas.width = card.clientWidth);
   let height = (canvas.height = card.clientHeight);
+  let isVisible = false;
+  let animFrameId = null;
 
   let mouse = {
     x: width / 2,
@@ -21,15 +23,20 @@ export function initAnthropicNodes() {
 
   let scrollRatio = 0;
 
-  // IntersectionObserver for robust bug-free scroll detection
+  // IntersectionObserver for visibility & scroll detection
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+      isVisible = entry.isIntersecting;
       if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
         scrollRatio = 1;
         card.classList.add('in-view');
       } else if (!entry.isIntersecting || entry.intersectionRatio < 0.2) {
         scrollRatio = 0;
         card.classList.remove('in-view');
+      }
+      // Start animation if visible and not already running
+      if (isVisible && !animFrameId) {
+        animFrameId = requestAnimationFrame(animate);
       }
     });
   }, {
@@ -46,17 +53,20 @@ export function initAnthropicNodes() {
     mouse.y = e.clientY - rect.top;
   });
 
+  let resizeTimer;
   window.addEventListener('resize', () => {
-    width = canvas.width = card.clientWidth;
-    height = canvas.height = card.clientHeight;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      width = canvas.width = card.clientWidth;
+      height = canvas.height = card.clientHeight;
+    }, 150);
   });
 
   // Questions and node clusters
   const questions = [
     {
       text: "How does AI work?",
-      xPct: 0.16,
-      yPct: 0.32,
+      xPct: 0.16, yPct: 0.32,
       nodes: [
         { dx: -50, dy: -60, color: "#38bdf8" },
         { dx: 55, dy: -50, color: "#4ade80" },
@@ -66,8 +76,7 @@ export function initAnthropicNodes() {
     },
     {
       text: "Who should govern AI?",
-      xPct: 0.84,
-      yPct: 0.24,
+      xPct: 0.84, yPct: 0.24,
       nodes: [
         { dx: -55, dy: 50, color: "#a855f7" },
         { dx: 50, dy: -45, color: "#38bdf8" },
@@ -76,8 +85,7 @@ export function initAnthropicNodes() {
     },
     {
       text: "What is AI's impact on society?",
-      xPct: 0.18,
-      yPct: 0.78,
+      xPct: 0.18, yPct: 0.78,
       nodes: [
         { dx: -50, dy: -55, color: "#e11d48" },
         { dx: 60, dy: -45, color: "#10b981" },
@@ -86,8 +94,7 @@ export function initAnthropicNodes() {
     },
     {
       text: "How does AI affect the economy?",
-      xPct: 0.82,
-      yPct: 0.78,
+      xPct: 0.82, yPct: 0.78,
       nodes: [
         { dx: -60, dy: -45, color: "#ec4899" },
         { dx: 50, dy: -50, color: "#06b6d4" },
@@ -98,11 +105,23 @@ export function initAnthropicNodes() {
 
   let expand = 0;
 
+  // Throttled canvas resize (only check every ~60 frames instead of every frame)
+  let resizeCheckCounter = 0;
+
   function animate() {
-    // Dynamic canvas resize check during smooth card transition
-    if (canvas.width !== card.clientWidth || canvas.height !== card.clientHeight) {
-      width = canvas.width = card.clientWidth;
-      height = canvas.height = card.clientHeight;
+    if (!isVisible) {
+      animFrameId = null;
+      return;
+    }
+
+    // Check canvas size every 60 frames instead of every frame
+    resizeCheckCounter++;
+    if (resizeCheckCounter >= 60) {
+      resizeCheckCounter = 0;
+      if (canvas.width !== card.clientWidth || canvas.height !== card.clientHeight) {
+        width = canvas.width = card.clientWidth;
+        height = canvas.height = card.clientHeight;
+      }
     }
 
     ctx.clearRect(0, 0, width, height);
@@ -112,83 +131,82 @@ export function initAnthropicNodes() {
     expand += (targetExpand - expand) * 0.05;
 
     if (expand > 0.02) {
-      const data = questions.map(q => {
-        const qx = q.xPct * width;
-        const qy = q.yPct * height;
+      // Batch connecting lines
+      ctx.lineWidth = 1;
+      for (let q = 0; q < questions.length; q++) {
+        const group = questions[q];
+        const qx = group.xPct * width;
+        const qy = group.yPct * height;
 
-        const children = q.nodes.map(n => ({
-          x: qx + n.dx * expand,
-          y: qy + n.dy * expand,
-          color: n.color
-        }));
-
-        return { text: q.text, x: qx, y: qy, children };
-      });
-
-      data.forEach(group => {
-        // Connecting line web
-        group.children.forEach(child => {
-          ctx.save();
-          ctx.beginPath();
-          ctx.moveTo(group.x, group.y);
-          ctx.lineTo(child.x, child.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.25 * expand})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-          ctx.restore();
-
-          // Thumbnail tiles
-          ctx.save();
-          const tileW = 28 * Math.max(0.4, expand);
-          const tileH = 34 * Math.max(0.4, expand);
-          ctx.fillStyle = child.color;
-          ctx.globalAlpha = 0.75 * expand;
-          ctx.fillRect(child.x - tileW / 2, child.y - tileH / 2, tileW, tileH);
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
-          ctx.lineWidth = 1;
-          ctx.strokeRect(child.x - tileW / 2, child.y - tileH / 2, tileW, tileH);
-          ctx.restore();
-        });
-
-        // Question Node Dot
-        ctx.save();
+        // Draw connecting lines
+        ctx.strokeStyle = `rgba(255,255,255,${(0.25 * expand).toFixed(2)})`;
         ctx.beginPath();
-        ctx.arc(group.x, group.y, 5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${expand})`;
-        ctx.shadowColor = "#ffffff";
-        ctx.shadowBlur = 10 * expand;
+        for (let n = 0; n < group.nodes.length; n++) {
+          const node = group.nodes[n];
+          const cx = qx + node.dx * expand;
+          const cy = qy + node.dy * expand;
+          ctx.moveTo(qx, qy);
+          ctx.lineTo(cx, cy);
+        }
+        ctx.stroke();
+
+        // Draw tiles
+        const tileW = 28 * Math.max(0.4, expand);
+        const tileH = 34 * Math.max(0.4, expand);
+        const tileAlpha = 0.75 * expand;
+
+        for (let n = 0; n < group.nodes.length; n++) {
+          const node = group.nodes[n];
+          const cx = qx + node.dx * expand;
+          const cy = qy + node.dy * expand;
+
+          ctx.globalAlpha = tileAlpha;
+          ctx.fillStyle = node.color;
+          ctx.fillRect(cx - tileW / 2, cy - tileH / 2, tileW, tileH);
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = "rgba(255,255,255,0.4)";
+          ctx.lineWidth = 1;
+          ctx.strokeRect(cx - tileW / 2, cy - tileH / 2, tileW, tileH);
+        }
+
+        // Question dot
+        ctx.beginPath();
+        ctx.arc(qx, qy, 5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${expand.toFixed(2)})`;
         ctx.fill();
 
-        // Question Text Label
+        // Question text
         ctx.font = "400 15px 'Times New Roman', Georgia, serif";
-        ctx.fillStyle = `rgba(248, 250, 252, ${expand * 0.9})`;
-        ctx.textAlign = group.x < width / 2 ? "left" : "right";
-        ctx.fillText(group.text, group.x + (group.x < width / 2 ? 14 : -14), group.y + 4);
-        ctx.restore();
-      });
+        ctx.fillStyle = `rgba(248,250,252,${(expand * 0.9).toFixed(2)})`;
+        ctx.textAlign = qx < width / 2 ? "left" : "right";
+        ctx.fillText(group.text, qx + (qx < width / 2 ? 14 : -14), qy + 4);
+      }
 
       // Interactive spring line to cursor
       if (mouse.active) {
-        data.forEach(group => {
-          const dx = mouse.x - group.x;
-          const dy = mouse.y - group.y;
+        for (let q = 0; q < questions.length; q++) {
+          const qx = questions[q].xPct * width;
+          const qy = questions[q].yPct * height;
+          const dx = mouse.x - qx;
+          const dy = mouse.y - qy;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 240) {
-            ctx.save();
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
-            ctx.lineTo(group.x, group.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.45 * (1 - dist / 240)})`;
+            ctx.lineTo(qx, qy);
+            ctx.strokeStyle = `rgba(255,255,255,${(0.45 * (1 - dist / 240)).toFixed(2)})`;
             ctx.lineWidth = 1.2;
             ctx.stroke();
-            ctx.restore();
           }
-        });
+        }
       }
     }
 
-    requestAnimationFrame(animate);
+    animFrameId = requestAnimationFrame(animate);
   }
 
-  animate();
+  // Start only if visible
+  if (isVisible) {
+    animFrameId = requestAnimationFrame(animate);
+  }
 }
