@@ -26,8 +26,8 @@ class SheetAnimation {
       spacingZ: 125,              // Depth spacing between grid nodes
       
       // 2. Color Palette (RGB format)
-      nodeColor: '14, 165, 233',   // Electric Blue accent (#0ea5e9)
-      lineColor: '43, 43, 43',     // Dark wireframe edge (#2b2b2b)
+      nodeColor: '240, 165, 30',   // Amber Gold accent (#f0a51e)
+      lineColor: '212, 125, 20',   // Warm bronze/amber wireframe edge (#d47d14)
       faceColor: '255, 255, 255',  // Mesh face fill (White)
       
       // 3. Node (Point) Properties
@@ -289,7 +289,7 @@ class SheetAnimation {
       // Core Highlight
       this.ctx.beginPath();
       this.ctx.arc(p.x - radius * 0.25, p.y - radius * 0.25, radius * 0.35, 0, Math.PI * 2);
-      this.ctx.fillStyle = `rgba(255,255,255,${(nodeAlpha * 0.9).toFixed(2)})`;
+      this.ctx.fillStyle = `rgba(255,235,175,${(nodeAlpha * 0.9).toFixed(2)})`;
       this.ctx.fill();
     }
 

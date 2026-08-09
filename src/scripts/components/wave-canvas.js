@@ -177,7 +177,7 @@ function initParticleCanvas() {
       ctx.fill();
     }
 
-    // 2. Wireframe Crisp Dark Charcoal Grid Lines
+    // 2. Wireframe Warm Bronze/Amber Grid Lines
     for (let i = 0; i < lines.length; i++) {
       const [idxA, idxB] = lines[i];
       const pA = projected[idxA];
@@ -190,27 +190,27 @@ function initParticleCanvas() {
       ctx.beginPath();
       ctx.moveTo(pA.x, pA.y);
       ctx.lineTo(pB.x, pB.y);
-      ctx.strokeStyle = `rgba(55, 55, 55, ${alpha.toFixed(2)})`;
+      ctx.strokeStyle = `rgba(212, 125, 20, ${alpha.toFixed(2)})`;
       ctx.lineWidth = Math.max(1, 2.4 * avgScale);
       ctx.stroke();
     }
 
-    // 3. Electric Blue Glowing Node Dots (#0ea5e9)
+    // 3. Glowing Amber/Gold Node Dots
     for (let i = 0; i < projected.length; i++) {
       const p = projected[i];
       const alpha = Math.max(0.35, Math.min(0.98, (p.z + 450) / 600));
       const radius = Math.max(2.8, 6.2 * p.scale);
 
-      // Electric Blue Accent Outer Glow Circle
+      // Amber/Gold Accent Outer Glow Circle
       ctx.beginPath();
       ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(14, 165, 233, ${alpha.toFixed(2)})`;
+      ctx.fillStyle = `rgba(240, 165, 30, ${alpha.toFixed(2)})`;
       ctx.fill();
 
-      // Inner White Core Highlight Spot
+      // Inner Warm Gold Core Highlight Spot
       ctx.beginPath();
       ctx.arc(p.x - radius * 0.25, p.y - radius * 0.25, radius * 0.35, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${(alpha * 0.9).toFixed(2)})`;
+      ctx.fillStyle = `rgba(255, 235, 175, ${(alpha * 0.9).toFixed(2)})`;
       ctx.fill();
     }
 
