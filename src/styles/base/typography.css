@@ -1,0 +1,14 @@
+/* Typography Tokens & Utilities */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+.u-font-frama {
+  font-family: var(--font-family-frama, 'Outfit', sans-serif);
+}
+
+.u-font-montreal {
+  font-family: var(--font-family-neue-montreal, 'Inter', sans-serif);
+}
+
+.u-font-mono {
+  font-family: var(--font-family-supply-mono, 'Space Mono', monospace);
+}

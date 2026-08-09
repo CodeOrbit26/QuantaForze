@@ -1,0 +1,13 @@
+/* Layout & Container Grid Utilities */
+.u-container {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .u-container {
+    padding: 0 1.25rem;
+  }
+}

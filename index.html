@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuantaForze | Intelligence for a Connected World</title>
+  <meta name="description" content="QuantaForze Technologies Inc. builds intelligent infrastructure, autonomous AI agents, AxioVital healthcare operating environment, and device-to-device interoperability systems.">
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Master Bundle -->
+  <link rel="stylesheet" href="/src/styles/main.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- ============================================================
+       1. HEADER — QuantaForze Header Navbar
+       ============================================================ -->
+  <header class="site-head quanta-navbar">
+    <div class="q-nav-container">
+      <!-- Left: Logo -->
+      <a href="/index.html" class="q-logo" aria-label="QuantaForze Home">
+        <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-logo-img">
+      </a>
+
+      <!-- Right: Links & Action Buttons -->
+      <div class="q-nav-right">
+        <nav class="q-nav-menu">
+          <a href="/src/pages/ecosystem/index.html" class="q-nav-link">Ecosystem</a>
+          <a href="#loop" class="q-nav-link">Research</a>
+          <a href="/src/pages/products/index.html" class="q-nav-link">Products</a>
+          <a href="#sdk" class="q-nav-link">Technology</a>
+        </nav>
+
+        <div class="q-nav-actions">
+          <a href="/src/pages/docs/index.html" class="q-btn-docs">Docs</a>
+          <a href="/src/pages/contact/index.html" class="q-btn-get-started">Get Started</a>
+          <button class="q-btn-theme" id="themeToggle" aria-label="Toggle Theme" title="Toggle Theme">🌙</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="l-front-page">
+
+      <!-- ============================================================
+           2. HERO SECTION — QuantaForze Core Vision
+           ============================================================ -->
+      <section class="s-hero">
+        <canvas id="particle-canvas"></canvas>
+
+        <div class="u-container">
+          <ul class="s__awards t-l-lg js-reveal">
+            <li class="s__award"><span class="u-height-fix">Organize Complexity</span></li>
+            <li class="s__award"><span class="u-height-fix">Connect Intelligence</span></li>
+            <li class="s__award"><span class="u-height-fix">Automate Action</span></li>
+          </ul>
+
+          <h1 class="s__title t-h-3xl js-reveal js-reveal-delay-1">
+            Intelligence for a connected world.
+          </h1>
+
+          <p class="s__text t-t-lg js-reveal js-reveal-delay-2">
+            QuantaForze Technologies Inc. builds intelligent infrastructure, software platforms, and autonomous AI agents designed to transform fragmented systems into connected, understandable environments.
+          </p>
+
+          <div class="s__clients js-reveal js-reveal-delay-3">
+            <p class="s__clients-label t-l-md">Product Ecosystem & Core Architecture</p>
+            <ul class="s__logos">
+              <li class="s__logo-item" style="font-family: var(--font-family-frama); font-weight: 700; font-size: 1.1rem; color: var(--color-black);">
+                AxioVital
+              </li>
+              <li class="s__logo-item" style="font-family: var(--font-family-frama); font-weight: 700; font-size: 1.1rem; color: var(--color-black);">
+                Autonomous Agent
+              </li>
+              <li class="s__logo-item" style="font-family: var(--font-family-frama); font-weight: 700; font-size: 1.1rem; color: var(--color-black);">
+                Intelligence Layer
+              </li>
+              <li class="s__logo-item" style="font-family: var(--font-family-frama); font-weight: 700; font-size: 1.1rem; color: var(--color-black);">
+                QuantaForze Connect
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           3. USPs SECTION — Scroll-Driven Card Stack (Product Ecosystem)
+           ============================================================ -->
+      <section id="usps" class="s-usps" style="--usps-count: 4;">
+        <div class="s__outer">
+          <div class="s__header">
+            <h2 class="s__title t-h-2xl">Product Ecosystem & Platforms</h2>
+            <p class="s__text t-t-md">Transforming fragmented applications, healthcare infrastructure, and desktop computing into autonomous intelligent loops.</p>
+          </div>
+          <div class="s__usps">
+            <ul class="s__list">
+              <!-- Card 1: AxioVital -->
+              <li class="s__item">
+                <span class="s__usp-wrapper">
+                  <div class="b-usp-card s__usp">
+                    <div class="b__inner">
+                      <div class="b__asset">
+                        <div class="b-usp-asset-continuity" aria-hidden="true">
+                          <svg class="b__svg" xmlns="http://www.w3.org/2000/svg">
+                            <g class="b__svg__squares"></g>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="b__content">
+                        <h3 class="b__title t-h-md">AxioVital Platform</h3>
+                        <p class="b__text t-t-sm">Healthcare Operating Environment unifying clinical data, hospital operations, patient profiles, and inter-hospital care continuity.</p>
+                      </div>
+                    </div>
+                    <div class="b__overlay"></div>
+                  </div>
+                </span>
+              </li>
+
+              <!-- Card 2: Autonomous AI Agent -->
+              <li class="s__item">
+                <span class="s__usp-wrapper">
+                  <div class="b-usp-card s__usp">
+                    <div class="b__inner">
+                      <div class="b__asset">
+                        <div class="b-usp-asset-capacity" aria-hidden="true">
+                          <svg class="b__svg" xmlns="http://www.w3.org/2000/svg">
+                            <g class="b__svg__rects"></g>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="b__content">
+                        <h3 class="b__title t-h-md">Autonomous AI Agent</h3>
+                        <p class="b__text t-t-sm">Speak. Delegate. Done. Natural language & voice computing that understands objectives, coordinates software, and executes workflows.</p>
+                      </div>
+                    </div>
+                    <div class="b__overlay"></div>
+                  </div>
+                </span>
+              </li>
+
+              <!-- Card 3: Intelligence Layer -->
+              <li class="s__item">
+                <span class="s__usp-wrapper">
+                  <div class="b-usp-card s__usp">
+                    <div class="b__inner">
+                      <div class="b__asset">
+                        <div class="b-usp-asset-collaboration" aria-hidden="true">
+                          <svg class="b__svg" xmlns="http://www.w3.org/2000/svg">
+                            <g class="b__svg__circles"></g>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="b__content">
+                        <h3 class="b__title t-h-md">Intelligence Layer</h3>
+                        <p class="b__text t-t-sm">Shared AI reasoning, context retrieval, knowledge graphs, and multimodal integration with models like Google Gemini 3.6 Flash.</p>
+                      </div>
+                    </div>
+                    <div class="b__overlay"></div>
+                  </div>
+                </span>
+              </li>
+
+              <!-- Card 4: QuantaForze Connect & SDK -->
+              <li class="s__item">
+                <span class="s__usp-wrapper">
+                  <div class="b-usp-card s__usp">
+                    <div class="b__inner">
+                      <div class="b__asset">
+                        <div class="b-usp-asset-experience" aria-hidden="true">
+                          <svg class="b__svg" xmlns="http://www.w3.org/2000/svg">
+                            <g class="b__svg__rects"></g>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="b__content">
+                        <h3 class="b__title t-h-md">QuantaForze Connect & SDK</h3>
+                        <p class="b__text t-t-sm">Device-to-device interoperability protocol, keyboard-first CLI, agentic IDE, and @quantaforze/core TypeScript SDK.</p>
+                      </div>
+                    </div>
+                    <div class="b__overlay"></div>
+                  </div>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           4. 6-STAGE AUTONOMOUS VALUE LOOP SECTION
+           ============================================================ -->
+      <section id="loop" class="s-work u-container" style="padding-top: 5rem;">
+        <div class="s__work-grid">
+          <div class="b-execution js-reveal">
+            <h2 class="b__title t-h-xl">6-Stage Value Loop</h2>
+            <canvas class="b__canvas" aria-hidden="true"></canvas>
+          </div>
+
+          <div class="b-quote js-reveal js-reveal-delay-1">
+            <blockquote class="b__content t-h-xl">
+              <p class="b__text">Human &rarr; expresses intent &rarr; intelligent system coordinates technology &rarr; task completed.</p>
+              <footer class="b__author t-t-sm">The QuantaForze Shift</footer>
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="s__delivery js-reveal">
+          <div class="b-delivery">
+            <div class="b__header">
+              <div class="b__header__top">
+                <h2 class="b__title t-h-xs">Autonomous Execution Architecture</h2>
+                <p class="b__text t-t-2xs">How QuantaForze converts natural language intent into verified action.</p>
+              </div>
+              <button class="btn-main btn-main--primary btn-main--black btn-main--sm b__cta" onclick="openContactModal()">
+                <span class="btn-main__outer">
+                  <span class="btn-main__inner"><span class="btn-main__text u-height-fix">Contact Architecture Team</span></span>
+                  <span class="btn-main__hover"><span class="btn-main__text u-height-fix">Contact Architecture Team</span></span>
+                </span>
+              </button>
+            </div>
+
+            <ul class="b__projects" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+              <li class="sb-project">
+                <p class="sb__description t-t-sm"><strong>01. Understand</strong><br>Interprets human intent, unstructured data, and natural language objectives.</p>
+                <div class="sb__footer"><div class="sb__meta"><span class="sb__pill"><span class="u-height-fix">Stage 1</span></span></div></div>
+              </li>
+              <li class="sb-project">
+                <p class="sb__description t-t-sm"><strong>02. Connect</strong><br>Bridges applications, devices, databases, and enterprise systems into a unified layer.</p>
+                <div class="sb__footer"><div class="sb__meta"><span class="sb__pill"><span class="u-height-fix">Stage 2</span></span></div></div>
+              </li>
+              <li class="sb-project">
+                <p class="sb__description t-t-sm"><strong>03. Organize</strong><br>Transforms raw, fragmented information into structured, actionable context.</p>
+                <div class="sb__footer"><div class="sb__meta"><span class="sb__pill"><span class="u-height-fix">Stage 3</span></span></div></div>
+              </li>
+              <li class="sb-project">
+                <p class="sb__description t-t-sm"><strong>04. Reason</strong><br>Plans multi-step execution workflows across permissions and system capabilities.</p>
+                <div class="sb__footer"><div class="sb__meta"><span class="sb__pill"><span class="u-height-fix">Stage 4</span></span></div></div>
+              </li>
+              <li class="sb-project">
+                <p class="sb__description t-t-sm"><strong>05. Act</strong><br>Executes complex operations across devices, APIs, and software interfaces.</p>
+                <div class="sb__footer"><div class="sb__meta"><span class="sb__pill"><span class="u-height-fix">Stage 5</span></span></div></div>
+              </li>
+              <li class="sb-project">
+                <p class="sb__description t-t-sm"><strong>06. Automate</strong><br>Reduces repetitive administrative work into self-running autonomous loops.</p>
+                <div class="sb__footer"><div class="sb__meta"><span class="sb__pill"><span class="u-height-fix">Stage 6</span></span></div></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           6. DEVELOPER QUICKSTART
+           ============================================================ -->
+      <section id="sdk" class="u-container u-section">
+        <div style="background: #0f172a; color: #ffffff; padding: 3.5rem; border-radius: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+          <div style="max-width: 600px;">
+            <span style="font-family: var(--font-family-supply-mono); font-size: 0.8rem; color: #38bdf8; letter-spacing: 0.12em;">DEVELOPER PLATFORM V2.4</span>
+            <h2 class="t-h-2xl" style="color: #ffffff; margin-top: 0.5rem; margin-bottom: 1rem;">QuantaForze CLI & SDK</h2>
+            <p style="color: #94a3b8; font-size: 1.05rem; line-height: 1.6;">
+              Build autonomous agentic execution loops using <code>@quantaforze/core</code> and the keyboard-first terminal CLI harness.
+            </p>
+          </div>
+          <div>
+            <a href="/src/pages/docs/index.html" style="display: inline-block; background: #38bdf8; color: #0f172a; padding: 1rem 2.25rem; border-radius: 9999px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: transform 0.2s ease;">Explore Full Documentation &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           7. CORE PRINCIPLES & FAQ
+           ============================================================ -->
+      <section id="principles" class="s-pricing u-container u-section">
+        <div class="s-pricing__left js-reveal">
+        </div>
+
+        <div class="s__questions js-reveal js-reveal-delay-1">
+          <div class="b-faq">
+            <h3 class="t-t-md b__title"><button type="button" class="b__toggle" aria-expanded="false">How does QuantaForze connect software systems?</button></h3>
+            <div class="b__wrapper"><div class="b__text">QuantaForze Connect creates unified protocol bindings across APIs, desktop operating software, and hardware sensors. This enables autonomous agents to securely communicate and act across boundaries.</div></div>
+          </div>
+          <div class="b-faq">
+            <h3 class="t-t-md b__title"><button type="button" class="b__toggle" aria-expanded="false">What is the AxioVital Platform?</button></h3>
+            <div class="b__wrapper"><div class="b__text">AxioVital is an operating environment built specifically for healthcare enterprise ecosystems, unifying patient telemetry, EHR data pipelines, clinical workflows, and emergency dispatch.</div></div>
+          </div>
+          <div class="b-faq">
+            <h3 class="t-t-md b__title"><button type="button" class="b__toggle" aria-expanded="false">How are autonomous agents secured?</button></h3>
+            <div class="b__wrapper"><div class="b__text">Every action undergoes zero-trust credential verification, role-based boundary constraints, and sandboxed isolated execution environments directed by user authorization policies.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           8. FINAL CTA
+           ============================================================ -->
+      <section class="s-final-cta">
+        <div class="s__background-wrapper" aria-hidden="true">
+          <canvas class="b-fluid__canvas" id="ctaCanvas"></canvas>
+        </div>
+        <div class="u-container s__inner js-reveal">
+          <h2 class="s__title t-h-3xl">Build your next<br>intelligent system with us</h2>
+          <button class="btn-main btn-main--primary btn-main--black btn-main--lg s__btn s__menu-link--cta" onclick="openContactModal()">
+            <span class="btn-main__outer">
+              <span class="btn-main__inner"><span class="btn-main__text u-height-fix">Start a conversation</span></span>
+              <span class="btn-main__hover"><span class="btn-main__text u-height-fix">Start a conversation</span></span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           8. CONTACT MODAL SHEET
+           ============================================================ -->
+      <section class="s-modal" role="dialog" aria-modal="true" aria-label="Contact form">
+        <div class="s__overlay" onclick="closeContactModal()"></div>
+        <div class="s__outer">
+          <div class="s__inner">
+            <button type="button" class="s__close" aria-label="Close modal" onclick="closeContactModal()">✕</button>
+
+            <h2 class="t-h-sm" style="font-family: var(--font-family-frama); font-size: 2.25rem; margin-bottom: 0.75rem;">Start a conversation</h2>
+            <p class="t-t-2xs" style="color: var(--color-gray-dark); font-size: 0.95rem; line-height: 1.4; margin-bottom: 1.5rem;">
+              Tell us about your organization or send us a direct email at <a href="mailto:hello@quantaforze.com" style="color: var(--color-black); text-decoration: underline;">hello@quantaforze.com</a>
+            </p>
+
+            <form class="s__form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent to QuantaForze.'); closeContactModal();">
+              <div class="form-group">
+                <input type="text" placeholder="Your Name*" required>
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Your Email*" required>
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Organization / Industry (optional)">
+              </div>
+              <div class="form-group">
+                <textarea placeholder="Tell us about your project or objectives..." rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn-main btn-main--primary btn-main--black btn-main--md" style="margin-top: 0.75rem; width: 100%;">
+                <span class="btn-main__outer">
+                  <span class="btn-main__inner"><span class="btn-main__text u-height-fix">Send message</span></span>
+                  <span class="btn-main__hover"><span class="btn-main__text u-height-fix">Send message</span></span>
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============================================================
+       9. FOOTER — QuantaForze Multi-Column Light Theme Footer
+       ============================================================ -->
+  <footer class="quanta-footer">
+    <div class="q-footer-container">
+      <div class="q-footer-grid">
+
+        <!-- Column 1: Logo, Slogan, Newsletter -->
+        <div class="q-footer-col q-footer-brand">
+          <a href="/index.html" class="q-footer-logo" aria-label="QuantaForze Home">
+            <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-footer-logo-img">
+          </a>
+          <p class="q-footer-slogan">
+            Organize complexity. Connect intelligence. Automate action. Building intelligent infrastructure for connected environments.
+          </p>
+          <form class="q-footer-newsletter" onsubmit="event.preventDefault(); alert('Subscribed to QuantaForze updates!');">
+            <input type="email" placeholder="Subscribe to engineering updates..." required>
+            <button type="submit" class="q-newsletter-btn">Join &rarr;</button>
+          </form>
+        </div>
+
+        <!-- Column 2: Ecosystem -->
+        <div class="q-footer-col">
+          <h3 class="q-footer-title"><span class="q-title-bar">|</span> ECOSYSTEM</h3>
+          <ul class="q-footer-links">
+            <li><a href="/src/pages/ecosystem/index.html">AxioVital Platform</a></li>
+            <li><a href="/src/pages/products/index.html">QuantaForze Agent</a></li>
+            <li><a href="/src/pages/products/index.html">Intelligence Layer</a></li>
+            <li><a href="/src/pages/ecosystem/index.html">QuantaForze Connect</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Developers -->
+        <div class="q-footer-col">
+          <h3 class="q-footer-title"><span class="q-title-bar">|</span> DEVELOPERS</h3>
+          <ul class="q-footer-links">
+            <li><a href="/src/pages/docs/index.html">Documentation</a></li>
+            <li><a href="/src/pages/docs/index.html#cli">API Reference</a></li>
+            <li><a href="https://github.com/CodeOrbit26/QuantaForze" target="_blank" rel="noopener noreferrer">GitHub Repository &nearr;</a></li>
+            <li><a href="/src/pages/support/index.html">Support & Help Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Company -->
+        <div class="q-footer-col">
+          <h3 class="q-footer-title"><span class="q-title-bar">|</span> COMPANY</h3>
+          <ul class="q-footer-links">
+            <li><a href="/src/pages/founders/index.html">Founders & Team</a></li>
+            <li><a href="#loop">Philosophy & Vision</a></li>
+            <li><a href="/src/pages/docs/index.html">Research Papers</a></li>
+            <li><a href="/src/pages/privacy/index.html">Privacy & Security</a></li>
+            <li><a href="/src/pages/contact/index.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="q-footer-bottom">
+        <div class="q-footer-copyright">
+          &copy; 2026 QuantaForze Technologies Inc. All rights reserved.
+        </div>
+        <div class="q-footer-legal">
+          <a href="/src/pages/privacy/index.html">Privacy Policy</a> &bull; <a href="/src/pages/terms/index.html">Terms of Service</a>
+        </div>
+        <div class="q-footer-socials">
+          <a href="https://github.com/CodeOrbit26/QuantaForze" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="q-social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" class="q-social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="q-social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="module" src="/src/pages/home/home.js"></script>
+</body>
+</html>

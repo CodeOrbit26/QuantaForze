@@ -1,0 +1,143 @@
+/* Animation & Interactive Styles - Professional Overhaul */
+
+/* ================================================================
+   SCROLL REVEAL SYSTEM
+   ================================================================ */
+.js-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+.js-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grouped reveal elements */
+.js-reveal-delay-1 { transition-delay: 0.12s; }
+.js-reveal-delay-2 { transition-delay: 0.24s; }
+.js-reveal-delay-3 { transition-delay: 0.36s; }
+.js-reveal-delay-4 { transition-delay: 0.48s; }
+
+/* Reveal from scale */
+.js-reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+.js-reveal-scale.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* USP card visuals are now inline SVGs with dot-grid patterns — no CSS animations needed */
+
+/* ================================================================
+   MODAL OVERLAY
+   ================================================================ */
+.s-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.s-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.s-modal .s__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(43, 43, 43, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.s-modal .s__inner {
+  position: relative;
+  z-index: 2;
+  background: var(--color-white);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  max-width: 28rem;
+  width: calc(100% - 3rem);
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.12);
+}
+
+.s-modal.is-open .s__inner {
+  transform: translateY(0) scale(1);
+}
+
+.s-modal .s__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--color-gray-dark);
+  transition: color 0.15s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.s-modal .s__close:hover {
+  color: var(--color-black);
+  transform: rotate(90deg);
+}
+
+/* Modal Form Inputs */
+.s-modal input,
+.s-modal textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--color-white-darker);
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-family: var(--font-family-text);
+  font-size: 0.9375rem;
+  color: var(--color-black);
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.s-modal input::placeholder,
+.s-modal textarea::placeholder {
+  color: var(--color-gray);
+}
+
+.s-modal input:focus,
+.s-modal textarea:focus {
+  border-color: var(--color-black);
+  background: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(43, 43, 43, 0.06);
+}
+
+.s-modal textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ================================================================
+   CUSTOM CURSOR DOT
+   ================================================================ */
+.b-cursor {
+  display: none !important;
+}

@@ -1,0 +1,6 @@
+/* Navigation Links & Dropdowns */
+.q-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
