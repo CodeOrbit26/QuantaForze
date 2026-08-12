@@ -247,16 +247,14 @@
 
     let currentIndex = 2;
     const cards = document.querySelectorAll('.f-card');
+    const deck = document.getElementById('founderDeck');
 
     function updateDeckTransforms() {
       cards.forEach((card, i) => {
-        const diff = (i - currentIndex + 5) % 5;
-        card.setAttribute('data-index', diff);
-        if (diff === 2) {
-          card.classList.add('active');
-        } else {
-          card.classList.remove('active');
-        }
+        let offset = i - currentIndex;
+        if (offset < -2) offset += 5;
+        if (offset > 2) offset -= 5;
+        card.setAttribute('data-offset', offset);
       });
     }
 
@@ -264,6 +262,50 @@
       currentIndex = (currentIndex + dir + 5) % 5;
       updateDeckTransforms();
     }
+
+    // Interactive Drag & Touch Gestures
+    let startX = 0;
+    let isDragging = false;
+
+    deck.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const diffX = e.clientX - startX;
+      if (Math.abs(diffX) > 60) {
+        rotateDeck(diffX > 0 ? -1 : 1);
+        startX = e.clientX;
+        isDragging = false;
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    deck.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    deck.addEventListener('touchmove', (e) => {
+      const diffX = e.touches[0].clientX - startX;
+      if (Math.abs(diffX) > 50) {
+        rotateDeck(diffX > 0 ? -1 : 1);
+        startX = e.touches[0].clientX;
+      }
+    }, { passive: true });
+
+    // Keyboard Navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') rotateDeck(-1);
+      if (e.key === 'ArrowRight') rotateDeck(1);
+    });
+
+    // Initialize
+    updateDeckTransforms();
 
     function openFounderModal(id) {
       const data = founderData[id];

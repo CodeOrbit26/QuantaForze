@@ -1,4 +1,4 @@
-/* Founders 3D Perspective Fan Deck & Interactive Carousel Styles */
+/* Founders 3D Perspective Fan Deck & Interactive Drag Carousel */
 
 .f-body {
   background-color: #000000 !important;
@@ -11,8 +11,8 @@
 /* Hero Section */
 .f-hero-section {
   text-align: center;
-  padding-top: 8rem;
-  padding-bottom: 3rem;
+  padding-top: 7rem;
+  padding-bottom: 2rem;
   max-width: 900px;
   margin: 0 auto;
   padding-left: 1.5rem;
@@ -31,12 +31,12 @@
 }
 
 .f-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.75rem, 5.5vw, 4.25rem);
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
-  line-height: 1.1;
+  line-height: 1.08;
 }
 
 .f-subtitle {
@@ -47,100 +47,106 @@
   margin: 0 auto;
 }
 
-/* 3D Perspective Deck Canvas */
+/* 3D Perspective Deck Viewport */
 .f-deck-viewport {
   position: relative;
   width: 100%;
-  max-width: 1400px;
-  margin: 2rem auto 6rem auto;
-  padding: 3rem 1rem 5rem 1rem;
-  perspective: 1400px;
-  perspective-origin: 50% 40%;
+  max-width: 1500px;
+  margin: 1rem auto 4rem auto;
+  padding: 3rem 1rem 4rem 1rem;
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
 }
 
 .f-deck-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
   transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 540px;
+  min-height: 620px;
+  cursor: grab;
+  touch-action: pan-y;
 }
 
-@media (max-width: 1024px) {
-  .f-deck-container {
-    flex-wrap: wrap;
-    transform: none !important;
-    perspective: none;
-  }
+.f-deck-container:active {
+  cursor: grabbing;
 }
 
-/* Individual 3D Founder Card */
+/* Larger 3D Founder Card with Corner Fan Rotation */
 .f-card {
-  width: 280px;
-  height: 480px;
-  background: linear-gradient(160deg, #18181b 0%, #09090b 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.5rem;
-  padding: 1.75rem;
+  position: absolute;
+  width: 360px;
+  height: 560px;
+  background: linear-gradient(165deg, #18181b 0%, #09090b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.75rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transform-origin: bottom center;
   transform-style: preserve-3d;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-  position: relative;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8),
-              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
   user-select: none;
 }
 
-/* 3D Fan Default Transforms */
-.f-card[data-index="0"] {
-  transform: rotateY(18deg) rotateZ(-4deg) translateY(10px) translateZ(-60px);
+@media (max-width: 768px) {
+  .f-card {
+    width: 300px;
+    height: 480px;
+    padding: 1.5rem;
+  }
 }
 
-.f-card[data-index="1"] {
-  transform: rotateY(9deg) rotateZ(-2deg) translateY(0px) translateZ(-10px);
+/* Dynamic Fan Positions based on offset from active index (-2, -1, 0, 1, 2) */
+.f-card[data-offset="-2"] {
+  transform: rotateZ(-22deg) rotateY(30deg) translateX(-320px) translateY(35px) translateZ(-120px) scale(0.85);
+  opacity: 0.65;
+  z-index: 10;
 }
 
-.f-card[data-index="2"] {
-  transform: rotateY(0deg) rotateZ(0deg) translateY(-20px) translateZ(80px);
-  border-color: rgba(2, 132, 199, 0.5);
-  box-shadow: 0 30px 60px rgba(2, 132, 199, 0.25),
-              inset 0 1px 1px rgba(255, 255, 255, 0.3);
+.f-card[data-offset="-1"] {
+  transform: rotateZ(-11deg) rotateY(16deg) translateX(-160px) translateY(10px) translateZ(-40px) scale(0.95);
+  opacity: 0.88;
+  z-index: 25;
 }
 
-.f-card[data-index="3"] {
-  transform: rotateY(-9deg) rotateZ(2deg) translateY(0px) translateZ(-10px);
+.f-card[data-offset="0"] {
+  transform: rotateZ(0deg) rotateY(0deg) translateX(0px) translateY(-30px) translateZ(120px) scale(1.08);
+  opacity: 1;
+  z-index: 50;
+  border-color: #38bdf8;
+  box-shadow: 0 40px 80px rgba(2, 132, 199, 0.35),
+              inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
-.f-card[data-index="4"] {
-  transform: rotateY(-18deg) rotateZ(4deg) translateY(10px) translateZ(-60px);
+.f-card[data-offset="1"] {
+  transform: rotateZ(11deg) rotateY(-16deg) translateX(160px) translateY(10px) translateZ(-40px) scale(0.95);
+  opacity: 0.88;
+  z-index: 25;
 }
 
-/* Card Hover State */
+.f-card[data-offset="2"] {
+  transform: rotateZ(22deg) rotateY(-30deg) translateX(320px) translateY(35px) translateZ(-120px) scale(0.85);
+  opacity: 0.65;
+  z-index: 10;
+}
+
+/* Card Hover Boost */
 .f-card:hover {
-  transform: rotateY(0deg) rotateZ(0deg) translateY(-30px) translateZ(140px) scale(1.05) !important;
-  border-color: #0284c7 !important;
-  box-shadow: 0 35px 70px rgba(2, 132, 199, 0.35),
-              inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
-  z-index: 50 !important;
+  border-color: #0284c7;
+  box-shadow: 0 45px 90px rgba(2, 132, 199, 0.4),
+              inset 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* Active Focused Card State */
-.f-card.active {
-  transform: rotateY(0deg) rotateZ(0deg) translateY(-25px) translateZ(100px) scale(1.04) !important;
-  border-color: #38bdf8 !important;
-  z-index: 40 !important;
-}
-
-/* Visual Card Header Art / Mesh */
+/* Card Header Artwork Canvas */
 .f-card-art {
-  height: 160px;
+  height: 200px;
   width: 100%;
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   overflow: hidden;
   position: relative;
   margin-bottom: 1.25rem;
@@ -148,15 +154,21 @@
   background-position: center;
 }
 
+@media (max-width: 768px) {
+  .f-card-art {
+    height: 150px;
+  }
+}
+
 .f-card-art-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.9) 100%);
 }
 
 .f-role-tag {
   font-family: var(--font-family-space-mono, monospace);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #38bdf8;
@@ -165,23 +177,23 @@
 }
 
 .f-founder-name {
-  font-size: 1.45rem;
-  font-weight: 700;
+  font-size: 1.65rem;
+  font-weight: 800;
   color: #ffffff;
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: 0.25rem;
 }
 
 .f-founder-spec {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: #a1a1aa;
   margin-bottom: 1rem;
 }
 
 .f-founder-bio {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: #d4d4d8;
-  line-height: 1.5;
+  line-height: 1.55;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -199,8 +211,8 @@
 .f-card-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.8rem;
+  gap: 0.4rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #ffffff;
   text-decoration: none;
@@ -211,20 +223,38 @@
   color: #38bdf8;
 }
 
-/* Carousel Control Bar */
+/* Drag Indicator & Controls Bar */
 .f-controls {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.f-drag-hint {
+  font-family: var(--font-family-space-mono, monospace);
+  font-size: 0.8rem;
+  color: #71717a;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.f-ctrl-btns {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 .f-ctrl-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.75rem;
+  padding: 0.85rem 2rem;
   border-radius: 9999px;
   background: #18181b;
   color: #ffffff;
@@ -239,9 +269,10 @@
   background: #27272a;
   border-color: #38bdf8;
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
 }
 
-/* Detail Drawer Modal */
+/* Detail Modal */
 .f-modal-overlay {
   position: fixed;
   top: 0;
