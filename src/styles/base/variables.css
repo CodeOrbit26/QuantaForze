@@ -132,10 +132,25 @@
 @media only screen and (max-width: 767px) {
   :root {
     --grid-offset: 24px;
-    --font-size-h-3xl: min(4.2rem, 12vw);
-    --font-size-h-2xl: min(3.2rem, 10vw);
-    --font-size-h-xl: 2.5rem;
-    --font-size-h-lg: 1.85rem;
+    --section-spacing: 3rem;
+    --font-size-h-3xl: clamp(2.5rem, 8vw, 4.2rem);
+    --font-size-h-2xl: clamp(2.2rem, 7vw, 3.2rem);
+    --font-size-h-xl: clamp(1.85rem, 6vw, 2.5rem);
+    --font-size-h-lg: clamp(1.5rem, 5vw, 1.85rem);
     --font-size-t-lg: 1.125rem;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  :root {
+    --grid-offset: 16px;
+    --section-spacing: 2.25rem;
+    --font-size-h-3xl: clamp(2.2rem, 9vw, 3rem);
+    --font-size-h-2xl: clamp(1.8rem, 8vw, 2.4rem);
+    --font-size-h-xl: clamp(1.6rem, 7vw, 2rem);
+    --font-size-h-lg: 1.35rem;
+    --font-size-h-md: 1.25rem;
+    --font-size-t-lg: 1rem;
+  }
+}
+

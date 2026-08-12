@@ -390,7 +390,57 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScrollNavbar, { passive: true });
     window.addEventListener('mousemove', resetIdleTimer, { passive: true });
     onScrollNavbar();
+
+    // Mobile Navigation Menu Toggle Logic
+    const navToggle = quantaNavbar.querySelector('.q-nav-toggle');
+    const mobileMenu = quantaNavbar.querySelector('.q-mobile-menu');
+    const mobileBackdrop = quantaNavbar.querySelector('.q-mobile-menu-backdrop');
+    const mobileLinks = quantaNavbar.querySelectorAll('.q-mobile-link, .q-mobile-btn');
+
+    const openMobileMenu = () => {
+      quantaNavbar.classList.add('is-menu-open');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+      if (mobileMenu) mobileMenu.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMobileMenu = () => {
+      quantaNavbar.classList.remove('is-menu-open');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+      if (mobileMenu) mobileMenu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    const toggleMobileMenu = () => {
+      if (quantaNavbar.classList.contains('is-menu-open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    };
+
+    if (navToggle) {
+      navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+    }
+
+    if (mobileBackdrop) {
+      mobileBackdrop.addEventListener('click', closeMobileMenu);
+    }
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && quantaNavbar.classList.contains('is-menu-open')) {
+        closeMobileMenu();
+      }
+    });
   }
+
 
   // Light Mode Enforcer (Dark Mode Completely Removed)
   try {

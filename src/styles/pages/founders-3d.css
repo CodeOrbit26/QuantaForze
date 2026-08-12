@@ -76,6 +76,25 @@
   }
 }
 
+@media (max-width: 768px) {
+  .f-hero-section {
+    padding-top: 5.5rem;
+  }
+
+  .f-deck-viewport {
+    margin: 1.5rem auto 3rem auto;
+    padding: 1rem 0.5rem;
+  }
+
+  .f-card {
+    width: min(290px, calc(100vw - 2.5rem));
+    height: auto;
+    min-height: 440px;
+    margin: 0 auto;
+  }
+}
+
+
 /* Individual 3D Founder Card (Solid Opaque Light Theme) */
 .f-card {
   --card-scale: 1;
@@ -102,7 +121,7 @@
   opacity: 1 !important;
 }
 
-/* Spread-Out Arching 3D Fan Arc Positions with CSS Variable Scale */
+/* Spread-Out Arching 3D Fan Arc Positions with CSS Variable Scale (Desktop Only) */
 .f-card[data-index="0"] {
   transform: rotateY(16deg) rotateZ(-10deg) translateX(-100px) translateY(45px) translateZ(0px) scale(var(--card-scale));
   z-index: 15;
@@ -131,7 +150,7 @@
   z-index: 15;
 }
 
-/* Card Hover Focus Spotlight State (Prevents touching hero subtitle text) */
+/* Card Hover Focus Spotlight State */
 .f-card:hover {
   transform: rotateY(0deg) rotateZ(0deg) translateY(-20px) translateZ(180px) scale(1.05) !important;
   border-color: #0284c7 !important;
@@ -303,3 +322,96 @@
 .f-modal-close:hover {
   color: #0f172a;
 }
+
+/* ================================================================
+   TABLET & MOBILE RESPONSIVE OVERRIDES (PLACED AT BOTTOM FOR OVERRIDE PRIORITY)
+   ================================================================ */
+@media (max-width: 1024px) {
+  .f-deck-viewport {
+    perspective: none !important;
+    margin: 2rem auto 4rem auto;
+    padding: 1rem 1rem 3rem 1rem;
+  }
+
+  .f-deck-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    min-height: auto !important;
+    transform: none !important;
+  }
+
+  .f-card,
+  .f-card[data-index="0"],
+  .f-card[data-index="1"],
+  .f-card[data-index="2"],
+  .f-card[data-index="3"],
+  .f-card[data-index="4"] {
+    transform: none !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    height: auto !important;
+    min-height: auto !important;
+    filter: none !important;
+    opacity: 1 !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .f-card.active {
+    border-color: #0284c7 !important;
+    box-shadow: 0 12px 35px rgba(2, 132, 199, 0.14) !important;
+  }
+
+  .f-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 16px 40px rgba(2, 132, 199, 0.2) !important;
+  }
+
+  .f-deck-container:hover .f-card:not(:hover) {
+    --card-scale: 1;
+    filter: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .f-hero-section {
+    padding-top: 5.5rem;
+  }
+
+  .f-title {
+    font-size: 2.25rem;
+  }
+
+  .f-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .f-deck-viewport {
+    margin: 1rem auto 2.5rem auto;
+    padding: 0.5rem 0.5rem 2rem 0.5rem;
+  }
+
+  .f-card,
+  .f-card[data-index="0"],
+  .f-card[data-index="1"],
+  .f-card[data-index="2"],
+  .f-card[data-index="3"],
+  .f-card[data-index="4"] {
+    max-width: calc(100vw - 2rem) !important;
+    padding: 1.25rem !important;
+  }
+
+  .f-modal-card {
+    padding: 1.75rem 1.25rem;
+    max-width: calc(100vw - 2rem);
+  }
+}
+

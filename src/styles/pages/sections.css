@@ -185,11 +185,163 @@
   background: #000000;
 }
 
+/* Mobile Toggle Button */
+.quanta-navbar .q-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 1010;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quanta-navbar .q-nav-toggle:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.25);
+  transform: scale(1.04);
+}
+
+.quanta-navbar .q-nav-toggle .q-toggle-bar {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background-color: var(--color-black, #2b2b2b);
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.site-head.quanta-navbar.is-menu-open .q-nav-toggle .q-toggle-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.site-head.quanta-navbar.is-menu-open .q-nav-toggle .q-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.site-head.quanta-navbar.is-menu-open .q-nav-toggle .q-toggle-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile Menu Overlay Drawer */
+.quanta-navbar .q-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0.35s ease, opacity 0.35s ease;
+}
+
+.site-head.quanta-navbar.is-menu-open .q-mobile-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.quanta-navbar .q-mobile-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.quanta-navbar .q-mobile-menu-content {
+  position: absolute;
+  top: 4.75rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-15px);
+  width: calc(100% - 2rem);
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 1.5rem;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-head.quanta-navbar.is-menu-open .q-mobile-menu-content {
+  transform: translateX(-50%) translateY(0);
+}
+
+.quanta-navbar .q-mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quanta-navbar .q-mobile-link {
+  font-family: var(--font-family-frama, 'Outfit', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-black, #2b2b2b);
+  text-decoration: none;
+  padding: 0.65rem 1rem;
+  border-radius: 0.85rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.quanta-navbar .q-mobile-link:hover,
+.quanta-navbar .q-mobile-link:focus {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000;
+  transform: translateX(4px);
+}
+
+.quanta-navbar .q-mobile-menu-footer {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quanta-navbar .q-mobile-btn {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+}
+
 @media only screen and (max-width: 860px) {
-  .quanta-navbar .q-nav-menu {
+  .quanta-navbar .q-nav-menu,
+  .quanta-navbar .q-nav-actions {
     display: none;
   }
+
+  .quanta-navbar .q-nav-toggle {
+    display: flex;
+  }
+
+  .quanta-navbar .q-nav-container {
+    padding: 0 1.25rem;
+  }
+
+  .site-head.quanta-navbar.is-scrolled {
+    width: calc(100% - 1.5rem);
+    top: 0.75rem;
+  }
 }
+
 
 /* ================================================================
    2. HERO SECTION — incredibles.dev Exact Dense Dot-Grid BG (Full Width)
