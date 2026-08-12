@@ -104,13 +104,13 @@
 
 /* Spread-Out Arching 3D Fan Arc Positions with CSS Variable Scale */
 .f-card[data-index="0"] {
-  transform: rotateY(18deg) rotateZ(-10deg) translateX(-70px) translateY(50px) translateZ(-60px) scale(var(--card-scale));
-  z-index: 10;
+  transform: rotateY(16deg) rotateZ(-10deg) translateX(-100px) translateY(45px) translateZ(0px) scale(var(--card-scale));
+  z-index: 15;
 }
 
 .f-card[data-index="1"] {
-  transform: rotateY(9deg) rotateZ(-5deg) translateX(-30px) translateY(-10px) translateZ(30px) scale(var(--card-scale));
-  z-index: 25;
+  transform: rotateY(8deg) rotateZ(-4deg) translateX(-40px) translateY(-10px) translateZ(40px) scale(var(--card-scale));
+  z-index: 30;
 }
 
 .f-card[data-index="2"] {
@@ -122,22 +122,23 @@
 }
 
 .f-card[data-index="3"] {
-  transform: rotateY(-9deg) rotateZ(5deg) translateX(30px) translateY(-10px) translateZ(30px) scale(var(--card-scale));
-  z-index: 25;
+  transform: rotateY(-8deg) rotateZ(4deg) translateX(40px) translateY(-10px) translateZ(40px) scale(var(--card-scale));
+  z-index: 30;
 }
 
 .f-card[data-index="4"] {
-  transform: rotateY(-18deg) rotateZ(10deg) translateX(70px) translateY(50px) translateZ(-60px) scale(var(--card-scale));
-  z-index: 10;
+  transform: rotateY(-16deg) rotateZ(10deg) translateX(100px) translateY(45px) translateZ(0px) scale(var(--card-scale));
+  z-index: 15;
 }
 
 /* Card Hover Focus Spotlight State */
 .f-card:hover {
-  transform: rotateY(0deg) rotateZ(0deg) translateY(-45px) translateZ(180px) scale(1.08) !important;
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-45px) translateZ(200px) scale(1.08) !important;
   border-color: #0284c7 !important;
   box-shadow: 0 40px 80px rgba(2, 132, 199, 0.32) !important;
-  z-index: 100 !important;
+  z-index: 1000 !important;
   filter: none !important;
+  pointer-events: auto !important;
 }
 
 /* Shrink non-hovered cards while preserving their exact 3D fan arc rotations */
