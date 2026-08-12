@@ -41,8 +41,8 @@ class SheetAnimation {
       lineMaxAlpha: 0.55,         // Maximum transparency for close lines
       
       // 5. Mesh Surface Fill Properties
-      faceMinAlpha: 0.02,         // Minimum transparency for mesh face fills
-      faceMaxAlpha: 0.2,          // Maximum transparency for mesh face fills
+      faceMinAlpha: 0,            // Minimum transparency for mesh face fills (transparent)
+      faceMaxAlpha: 0,            // Maximum transparency for mesh face fills (transparent)
       
       // 6. Motion & Wave Physics
       speed: 0.015,               // Wave animation speed multiplier
@@ -82,10 +82,7 @@ class SheetAnimation {
   }
 
   init() {
-    this.updateDimensions();
-    this.initMesh();
-    this.setupEvents();
-    this.start();
+    return; // Animation completely removed
   }
 
   updateDimensions() {
@@ -239,7 +236,7 @@ class SheetAnimation {
       };
     }
 
-    // Step 1: Draw Mesh Polygon Faces
+    // Step 1: Draw Mesh Polygon Faces (Transparent)
     for (let f = 0; f < this.faces.length; f++) {
       const [i1, i2, i3] = this.faces[f];
       const p1 = projected[i1];
@@ -249,13 +246,15 @@ class SheetAnimation {
       const avgZ = (p1.z + p2.z + p3.z) / 3;
       const faceAlpha = Math.max(faceMinAlpha, Math.min(faceMaxAlpha, (avgZ + 400) / 950));
 
-      this.ctx.beginPath();
-      this.ctx.moveTo(p1.x, p1.y);
-      this.ctx.lineTo(p2.x, p2.y);
-      this.ctx.lineTo(p3.x, p3.y);
-      this.ctx.closePath();
-      this.ctx.fillStyle = `rgba(${faceColor},${faceAlpha.toFixed(2)})`;
-      this.ctx.fill();
+      if (faceAlpha > 0) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(p1.x, p1.y);
+        this.ctx.lineTo(p2.x, p2.y);
+        this.ctx.lineTo(p3.x, p3.y);
+        this.ctx.closePath();
+        this.ctx.fillStyle = `rgba(${faceColor},${faceAlpha.toFixed(2)})`;
+        this.ctx.fill();
+      }
     }
 
     // Step 2: Draw Wireframe Edges
@@ -322,11 +321,9 @@ class SheetAnimation {
   }
 }
 
-// Auto-initialize on particle-canvas element
+// Auto-initialize on particle-canvas element (Disabled)
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('particle-canvas')) {
-    window.sheetAnimInstance = new SheetAnimation('particle-canvas');
-  }
+  // Animation completely removed
 });
 
 if (typeof window !== 'undefined') {

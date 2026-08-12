@@ -203,13 +203,7 @@
 }
 
 #particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
+  display: none !important;
 }
 
 .s-hero .u-container {
@@ -219,7 +213,8 @@
   position: relative;
   z-index: 2;
   margin: 0 auto;
-  max-width: 1200px;
+  width: 96%;
+  max-width: 1840px;
 }
 
 .s-hero .s__awards {
@@ -576,6 +571,10 @@
   position: relative;
   z-index: 1;
   padding-bottom: 2rem;
+  width: 96%;
+  max-width: 1840px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .s-work .s__work-grid {
@@ -1136,9 +1135,11 @@
    ================================================================ */
 .s-final-cta {
   position: relative;
-  margin: 4rem 1.5rem 1.5rem;
+  width: 96%;
+  max-width: 1840px;
+  margin: 4rem auto 1.5rem;
   padding: 10rem 0;
-  background: var(--color-white-darker);
+  background: var(--color-white-dark);
   border-radius: 1.5rem;
   text-align: center;
   overflow: hidden;
@@ -1424,10 +1425,10 @@
 }
 
 .quanta-footer .q-footer-container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0 4rem;
+  width: 96%;
+  max-width: 1840px;
+  margin: 0 auto;
+  padding: 0 2rem;
   box-sizing: border-box;
 }
 

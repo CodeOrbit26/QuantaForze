@@ -4,10 +4,7 @@
    ================================================================ */
 
 function initParticleCanvas() {
-  const canvas = document.getElementById("particle-canvas");
-  if (!canvas) return;
-
-  const ctx = canvas.getContext("2d", { alpha: true });
+  return; // Animation completely removed
   const container = canvas.parentElement || document.body;
 
   let width = canvas.width = container.clientWidth || window.innerWidth;
@@ -158,7 +155,7 @@ function initParticleCanvas() {
       };
     }
 
-    // 1. Light Facet Fill
+    // 1. Transparent Facet Fill (No grey color fill under grid lines)
     for (let i = 0; i < triangles.length; i++) {
       const [idxA, idxB, idxC] = triangles[i];
       const pA = projected[idxA];
@@ -166,15 +163,17 @@ function initParticleCanvas() {
       const pC = projected[idxC];
 
       const avgZ = (pA.z + pB.z + pC.z) / 3;
-      const alpha = Math.max(0.02, Math.min(0.2, (avgZ + 400) / 950));
+      const alpha = 0; // Keep facet fill 100% transparent
 
-      ctx.beginPath();
-      ctx.moveTo(pA.x, pA.y);
-      ctx.lineTo(pB.x, pB.y);
-      ctx.lineTo(pC.x, pC.y);
-      ctx.closePath();
-      ctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(2)})`;
-      ctx.fill();
+      if (alpha > 0) {
+        ctx.beginPath();
+        ctx.moveTo(pA.x, pA.y);
+        ctx.lineTo(pB.x, pB.y);
+        ctx.lineTo(pC.x, pC.y);
+        ctx.closePath();
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(2)})`;
+        ctx.fill();
+      }
     }
 
     // 2. Wireframe Warm Bronze/Amber Grid Lines
