@@ -534,32 +534,3 @@
 .q-btn-download-nav:hover svg {
   transform: translateY(1.5px);
 }
-
-/* Toast Notification for OS Detection */
-.pd-download-toast {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 9999;
-  background: #0f172a;
-  color: #ffffff;
-  padding: 1rem 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  font-size: 0.875rem;
-  line-height: 1.4;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: pdToastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes pdToastIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}

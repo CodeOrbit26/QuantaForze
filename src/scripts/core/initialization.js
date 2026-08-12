@@ -475,21 +475,6 @@ document.addEventListener('DOMContentLoaded', () => {
           targetCard.style.boxShadow = '';
         }, 3000);
       }
-
-      // Display OS detection toast notification
-      const existingToast = document.querySelector('.pd-download-toast');
-      if (existingToast) existingToast.remove();
-
-      const toast = document.createElement('div');
-      toast.className = 'pd-download-toast';
-      toast.innerHTML = `<span style="color: #38bdf8; font-weight: 700;">⚡ OS Detected: ${detectedOS}</span><br>Highlighted optimal package for ${detectedOS}.`;
-      document.body.appendChild(toast);
-
-      setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(20px)';
-        setTimeout(() => toast.remove(), 400);
-      }, 3500);
     });
   });
 
