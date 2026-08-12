@@ -15,10 +15,10 @@
 }
 
 .pd-container {
-  width: 96%;
-  max-width: 1840px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 /* Hero Header Section */
@@ -507,9 +507,9 @@
 }
 
 .pd-main-page .quanta-navbar .q-nav-container {
-  width: 96%;
-  max-width: 1840px;
-  padding: 0 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1rem;
 }
 
 .pd-main-page .site-head.quanta-navbar.is-scrolled {
