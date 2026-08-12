@@ -1,0 +1,293 @@
+/* Founders 3D Perspective Fan Deck & Interactive Carousel Styles */
+
+.f-body {
+  background-color: #000000 !important;
+  color: #ededed;
+  font-family: var(--font-family-inter, system-ui, -apple-system, sans-serif);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.f-hero-section {
+  text-align: center;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.f-badge {
+  display: inline-block;
+  font-family: var(--font-family-space-mono, monospace);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #0284c7;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.f-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.f-subtitle {
+  font-size: 1.1rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* 3D Perspective Deck Canvas */
+.f-deck-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 2rem auto 6rem auto;
+  padding: 3rem 1rem 5rem 1rem;
+  perspective: 1400px;
+  perspective-origin: 50% 40%;
+}
+
+.f-deck-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 540px;
+}
+
+@media (max-width: 1024px) {
+  .f-deck-container {
+    flex-wrap: wrap;
+    transform: none !important;
+    perspective: none;
+  }
+}
+
+/* Individual 3D Founder Card */
+.f-card {
+  width: 280px;
+  height: 480px;
+  background: linear-gradient(160deg, #18181b 0%, #09090b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  user-select: none;
+}
+
+/* 3D Fan Default Transforms */
+.f-card[data-index="0"] {
+  transform: rotateY(18deg) rotateZ(-4deg) translateY(10px) translateZ(-60px);
+}
+
+.f-card[data-index="1"] {
+  transform: rotateY(9deg) rotateZ(-2deg) translateY(0px) translateZ(-10px);
+}
+
+.f-card[data-index="2"] {
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-20px) translateZ(80px);
+  border-color: rgba(2, 132, 199, 0.5);
+  box-shadow: 0 30px 60px rgba(2, 132, 199, 0.25),
+              inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.f-card[data-index="3"] {
+  transform: rotateY(-9deg) rotateZ(2deg) translateY(0px) translateZ(-10px);
+}
+
+.f-card[data-index="4"] {
+  transform: rotateY(-18deg) rotateZ(4deg) translateY(10px) translateZ(-60px);
+}
+
+/* Card Hover State */
+.f-card:hover {
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-30px) translateZ(140px) scale(1.05) !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 35px 70px rgba(2, 132, 199, 0.35),
+              inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+  z-index: 50 !important;
+}
+
+/* Active Focused Card State */
+.f-card.active {
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-25px) translateZ(100px) scale(1.04) !important;
+  border-color: #38bdf8 !important;
+  z-index: 40 !important;
+}
+
+/* Visual Card Header Art / Mesh */
+.f-card-art {
+  height: 160px;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1.25rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.f-card-art-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.85) 100%);
+}
+
+.f-role-tag {
+  font-family: var(--font-family-space-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #38bdf8;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.f-founder-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.f-founder-spec {
+  font-size: 0.82rem;
+  color: #a1a1aa;
+  margin-bottom: 1rem;
+}
+
+.f-founder-bio {
+  font-size: 0.85rem;
+  color: #d4d4d8;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.f-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.f-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.f-card-link:hover {
+  color: #38bdf8;
+}
+
+/* Carousel Control Bar */
+.f-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.f-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  background: #18181b;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid #27272a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.f-ctrl-btn:hover {
+  background: #27272a;
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+/* Detail Drawer Modal */
+.f-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.f-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.f-modal-card {
+  background: #09090b;
+  border: 1px solid #27272a;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+}
+
+.f-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
+  color: #71717a;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.f-modal-close:hover {
+  color: #ffffff;
+}
