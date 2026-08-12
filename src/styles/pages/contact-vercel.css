@@ -16,6 +16,14 @@
   padding: 5rem 1.25rem 6rem 1.25rem;
 }
 
+/* Contact Page Navbar Alignment Match */
+.v-contact-body .quanta-navbar .q-nav-container {
+  max-width: 1440px;
+  width: 94%;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
 /* Giant Vercel H1 Header */
 .v-contact-main-title {
   font-size: clamp(3rem, 5.5vw, 4.5rem);
