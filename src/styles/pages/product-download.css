@@ -463,14 +463,14 @@
 
 .pd-main-page .site-head.quanta-navbar.is-scrolled {
   top: 1rem;
-  width: 96%;
-  max-width: 1840px;
+  width: calc(100% - 3rem);
+  max-width: 1080px;
   height: 3.75rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(28px) saturate(210%);
   -webkit-backdrop-filter: blur(28px) saturate(210%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.12),
               inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
 }
@@ -478,7 +478,7 @@
 .pd-main-page .site-head.quanta-navbar.is-scrolled .q-nav-container {
   width: 100%;
   max-width: 100%;
-  padding: 0 1.75rem;
+  padding: 0 1.5rem;
 }
 
 .q-btn-download-nav {
