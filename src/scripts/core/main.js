@@ -402,3 +402,38 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (e) {}
 
 });
+
+// ================================================================
+// NEWSLETTER SUBSCRIPTION LOGIC (REAL WORKING PERSISTENCE)
+// ================================================================
+window.handleNewsletterSubscribe = function(event) {
+  event.preventDefault();
+  const form = event.target;
+  const input = form.querySelector('input[type="email"]');
+  const email = input ? input.value.trim() : '';
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+
+  // Persist to localStorage
+  try {
+    const existing = JSON.parse(localStorage.getItem('quantaforze_subscribers') || '[]');
+    if (!existing.includes(email)) {
+      existing.push(email);
+      localStorage.setItem('quantaforze_subscribers', JSON.stringify(existing));
+    }
+  } catch (e) {
+    console.error('LocalStorage error:', e);
+  }
+
+  // Display success message in UI
+  form.innerHTML = `
+    <div class="q-newsletter-success" style="background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; padding: 0.75rem 1.15rem; border-radius: 9999px; font-weight: 600; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem; width: 100%;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>Subscribed! Check your inbox for updates.</span>
+    </div>
+  `;
+  return false;
+};

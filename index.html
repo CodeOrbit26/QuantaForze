@@ -390,7 +390,7 @@
           <p class="q-footer-slogan">
             Organize complexity. Connect intelligence. Automate action. Building intelligent infrastructure for connected environments.
           </p>
-          <form class="q-footer-newsletter" onsubmit="event.preventDefault(); alert('Subscribed to QuantaForze updates!');">
+          <form class="q-footer-newsletter" onsubmit="return handleNewsletterSubscribe(event)">
             <input type="email" placeholder="Subscribe to engineering updates..." required>
             <button type="submit" class="q-newsletter-btn">Join &rarr;</button>
           </form>
