@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | QuantaForze Technologies Inc.</title>
-  <meta name="description" content="Get in touch with QuantaForze Technologies Inc. General inquiries, security vulnerabilities, enterprise solutions, and support contacts.">
+  <title>Contact Us &amp; Enterprise Sales | QuantaForze Technologies Inc.</title>
+  <meta name="description" content="Talk to an expert. Contact QuantaForze sales, enterprise architecture teams, security inquiries, and technical support.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- CSS Master Bundle -->
   <link rel="stylesheet" href="/src/styles/main.css">
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
-<body style="background-color: #ebebeb; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Crect width='1.5' height='1.5' x='2.25' y='2.25' fill='rgba(0,0,0,0.16)'/%3E%3C/svg%3E&quot;);">
+<body class="v-contact-body">
 
-  <!-- HEADER -->
-  <header class="site-head quanta-navbar">
+  <!-- Ambient Radial Glow -->
+  <div class="v-ambient-bg"></div>
+
+  <!-- HEADER NAVBAR -->
+  <header class="site-head quanta-navbar" style="background: rgba(0, 0, 0, 0.75); border-bottom-color: rgba(255, 255, 255, 0.1);">
     <div class="q-nav-container">
-      <a href="/src/pages/home/index.html" class="q-logo" aria-label="QuantaForze Home">
+      <a href="/index.html" class="q-logo" aria-label="QuantaForze Home">
         <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-logo-img">
       </a>
       <div class="q-nav-right">
@@ -38,105 +41,176 @@
     </div>
   </header>
 
-  <main style="padding-top: 8rem; padding-bottom: 6rem;">
-    <div class="u-container" style="max-width: 1000px;">
-      <div style="text-align: center; margin-bottom: 4rem;">
-        <span style="font-family: var(--font-family-supply-mono); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; color: var(--color-accent); text-transform: uppercase;">Get In Touch</span>
-        <h1 class="t-h-3xl" style="margin-top: 0.5rem; margin-bottom: 1rem;">Contact QuantaForze</h1>
-        <p class="t-t-lg" style="color: #555555; max-width: 680px; margin: 0 auto; line-height: 1.6;">
-          Have questions about our AxioVital healthcare platform, autonomous AI agents, or zero-trust enterprise security? Reach out directly to our engineering leadership.
-        </p>
-      </div>
+  <!-- MAIN CONTACT HERO SECTION (Vercel Style) -->
+  <main class="v-contact-hero">
+    <div class="v-contact-grid">
+      
+      <!-- LEFT COLUMN: Value Propositions & Contact Details -->
+      <div class="v-left-col">
+        <div>
+          <span class="v-badge-pill">Contact Sales &amp; Architecture</span>
+          <h1 class="v-contact-title">Talk to an Expert</h1>
+          <p class="v-contact-subtitle">
+            Learn how QuantaForze software platforms, AxioVital OS, and autonomous AI agents can transform your enterprise systems and clinical infrastructure.
+          </p>
+        </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem;">
-        
-        <!-- Left: Direct Emails -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-          <div style="background: #ffffff; padding: 2rem; border-radius: 1.25rem; border: 1px solid rgba(0,0,0,0.08);">
-            <h3 style="font-family: var(--font-family-frama); font-size: 1.2rem; margin-bottom: 0.5rem;">General Inquiries</h3>
-            <a href="mailto:contact@quantaforze.com" style="color: var(--color-accent); font-weight: 600; text-decoration: none;">contact@quantaforze.com</a>
+        <!-- Trust Cards Stack -->
+        <div class="v-trust-stack">
+          <div class="v-trust-card">
+            <div class="v-trust-icon">⚡</div>
+            <div>
+              <div class="v-trust-title">Custom Enterprise Architecture</div>
+              <div class="v-trust-desc">Tailored deployment blueprints for hospital networks, clinical nodes, edge hardware, and high-concurrency environments.</div>
+            </div>
           </div>
 
-          <div style="background: #ffffff; padding: 2rem; border-radius: 1.25rem; border: 1px solid rgba(0,0,0,0.08);">
-            <h3 style="font-family: var(--font-family-frama); font-size: 1.2rem; margin-bottom: 0.5rem;">Security & Vulnerabilities</h3>
-            <a href="mailto:security@quantaforze.com" style="color: var(--color-accent); font-weight: 600; text-decoration: none;">security@quantaforze.com</a>
+          <div class="v-trust-card">
+            <div class="v-trust-icon">🔒</div>
+            <div>
+              <div class="v-trust-title">HIPAA &amp; Zero-Trust Security</div>
+              <div class="v-trust-desc">Hardware-encrypted record storage, sandboxed execution safety, and dedicated security compliance reviews.</div>
+            </div>
           </div>
 
-          <div style="background: #ffffff; padding: 2rem; border-radius: 1.25rem; border: 1px solid rgba(0,0,0,0.08);">
-            <h3 style="font-family: var(--font-family-frama); font-size: 1.2rem; margin-bottom: 0.5rem;">Developer Support</h3>
-            <a href="mailto:support@quantaforze.com" style="color: var(--color-accent); font-weight: 600; text-decoration: none;">support@quantaforze.com</a>
+          <div class="v-trust-card">
+            <div class="v-trust-icon">🤝</div>
+            <div>
+              <div class="v-trust-title">Direct Engineering SLA</div>
+              <div class="v-trust-desc">24/7 technical SLAs with direct communication channels to core platform architects and engineering leadership.</div>
+            </div>
           </div>
         </div>
 
-        <!-- Right: Contact Form -->
-        <div style="background: #ffffff; padding: 2.5rem; border-radius: 1.25rem; border: 1px solid rgba(0,0,0,0.08);">
-          <h2 style="font-family: var(--font-family-frama); font-size: 1.6rem; margin-bottom: 1.5rem;">Send us a message</h2>
-          <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent to QuantaForze Technologies Inc.');" style="display: flex; flex-direction: column; gap: 1.25rem;">
-            <div>
-              <label style="font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 0.35rem; display: block;">Your Name*</label>
-              <input type="text" placeholder="John Doe" required style="width: 100%; padding: 0.9rem 1rem; border: 1px solid #ddd; border-radius: 0.6rem; outline: none; box-sizing: border-box;">
-            </div>
-
-            <div>
-              <label style="font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 0.35rem; display: block;">Work Email*</label>
-              <input type="email" placeholder="john@company.com" required style="width: 100%; padding: 0.9rem 1rem; border: 1px solid #ddd; border-radius: 0.6rem; outline: none; box-sizing: border-box;">
-            </div>
-
-            <div>
-              <label style="font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 0.35rem; display: block;">Organization / Topic</label>
-              <input type="text" placeholder="AxioVital Integration / AI Agent Solution" style="width: 100%; padding: 0.9rem 1rem; border: 1px solid #ddd; border-radius: 0.6rem; outline: none; box-sizing: border-box;">
-            </div>
-
-            <div>
-              <label style="font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 0.35rem; display: block;">Message*</label>
-              <textarea placeholder="Describe your objectives or project scope..." rows="5" required style="width: 100%; padding: 0.9rem 1rem; border: 1px solid #ddd; border-radius: 0.6rem; outline: none; box-sizing: border-box; resize: vertical;"></textarea>
-            </div>
-
-            <button type="submit" style="background: #2b2b2b; color: #fff; padding: 1rem 2rem; border: none; border-radius: 9999px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s ease;" onmouseover="this.style.background='#000'" onmouseout="this.style.background='#2b2b2b'">
-              Send Message &rarr;
-            </button>
-          </form>
+        <!-- Direct Emails Row -->
+        <div class="v-direct-info">
+          <div>
+            <div class="v-info-item-label">General &amp; Sales</div>
+            <a href="mailto:hello@quantaforze.com" class="v-info-item-value">hello@quantaforze.com</a>
+          </div>
+          <div>
+            <div class="v-info-item-label">Security Team</div>
+            <a href="mailto:security@quantaforze.com" class="v-info-item-value">security@quantaforze.com</a>
+          </div>
+          <div>
+            <div class="v-info-item-label">Developer Support</div>
+            <a href="mailto:support@quantaforze.com" class="v-info-item-value">support@quantaforze.com</a>
+          </div>
         </div>
-
       </div>
+
+      <!-- RIGHT COLUMN: Glassmorphic Form Card -->
+      <div class="v-form-card">
+        <h2 class="v-form-title">Get in Touch</h2>
+        <p class="v-form-subtitle">Fill out the form below and an architecture engineer will reach out within 1 business day.</p>
+
+        <form onsubmit="event.preventDefault(); alert('Thank you for contacting QuantaForze! An architecture team member will be in touch shortly.');">
+          
+          <div class="v-form-group v-form-row">
+            <div>
+              <label class="v-form-label">First Name*</label>
+              <input type="text" class="v-form-input" placeholder="Sarah" required>
+            </div>
+            <div>
+              <label class="v-form-label">Last Name*</label>
+              <input type="text" class="v-form-input" placeholder="Chen" required>
+            </div>
+          </div>
+
+          <div class="v-form-group">
+            <label class="v-form-label">Work Email*</label>
+            <input type="email" class="v-form-input" placeholder="sarah@enterprise.com" required>
+          </div>
+
+          <div class="v-form-group">
+            <label class="v-form-label">Company / Organization*</label>
+            <input type="text" class="v-form-input" placeholder="Acme Health Systems" required>
+          </div>
+
+          <div class="v-form-group">
+            <label class="v-form-label">Primary Topic / Interest</label>
+            <select class="v-form-select">
+              <option value="enterprise">Enterprise Architecture Deployment</option>
+              <option value="axiovital">AxioVital Clinical OS</option>
+              <option value="agent">Autonomous AI Agent</option>
+              <option value="sdk">CLI &amp; TypeScript SDK</option>
+              <option value="security">Zero-Trust &amp; HIPAA Review</option>
+              <option value="other">Other Inquiry</option>
+            </select>
+          </div>
+
+          <div class="v-form-group">
+            <label class="v-form-label">Project Details &amp; Objectives*</label>
+            <textarea class="v-form-textarea" rows="4" placeholder="Tell us about your infrastructure goals, timeline, or deployment requirements..." required></textarea>
+          </div>
+
+          <button type="submit" class="v-form-submit-btn">
+            Submit Inquiry &rarr;
+          </button>
+        </form>
+      </div>
+
     </div>
   </main>
 
+  <!-- BOTTOM RESOURCES SECTION -->
+  <section class="v-resources-section">
+    <h2 class="v-resources-title">Explore QuantaForze Resources</h2>
+    <div class="v-resources-grid">
+      
+      <a href="/src/pages/docs/index.html" class="v-resource-card">
+        <div class="v-resource-card-title">Developer Documentation &rarr;</div>
+        <div class="v-resource-card-desc">Explore API references, CLI commands, TypeScript SDK setup, and quickstart guides.</div>
+      </a>
+
+      <a href="/src/pages/support/index.html" class="v-resource-card">
+        <div class="v-resource-card-title">Support &amp; Help Center &rarr;</div>
+        <div class="v-resource-card-desc">Find deployment guides, troubleshoot worker pools, and review security policies.</div>
+      </a>
+
+      <a href="/src/pages/founders/index.html" class="v-resource-card">
+        <div class="v-resource-card-title">Founders &amp; Leadership &rarr;</div>
+        <div class="v-resource-card-desc">Meet the engineering team and minds behind QuantaForze Technologies Inc.</div>
+      </a>
+
+    </div>
+  </section>
+
   <!-- FOOTER -->
-  <footer class="quanta-footer">
+  <footer class="quanta-footer" style="background: #000000; border-top-color: rgba(255, 255, 255, 0.1); color: #a1a1aa;">
     <div class="q-footer-container">
       <div class="q-footer-grid">
         <div class="q-footer-col q-footer-brand">
-          <a href="index.html" class="q-footer-logo" aria-label="QuantaForze Home">
-            <img src="images/Quantaforze.png" alt="QuantaForze" class="q-footer-logo-img">
+          <a href="/index.html" class="q-footer-logo" aria-label="QuantaForze Home">
+            <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-footer-logo-img">
           </a>
-          <p class="q-footer-slogan">Organize complexity. Connect intelligence. Automate action.</p>
+          <p class="q-footer-slogan" style="color: #71717a;">Organize complexity. Connect intelligence. Automate action.</p>
         </div>
         <div class="q-footer-col">
-          <h3 class="q-footer-title"><span class="q-title-bar">|</span> ECOSYSTEM</h3>
+          <h3 class="q-footer-title" style="color: #ffffff;"><span class="q-title-bar">|</span> ECOSYSTEM</h3>
           <ul class="q-footer-links">
-            <li><a href="index.html#usps">AxioVital Platform</a></li>
-            <li><a href="index.html#usps">QuantaForze Agent</a></li>
+            <li><a href="/src/pages/products/axiovital/index.html" style="color: #a1a1aa;">AxioVital Platform</a></li>
+            <li><a href="/src/pages/products/autonomous-agent/index.html" style="color: #a1a1aa;">QuantaForze Agent</a></li>
           </ul>
         </div>
         <div class="q-footer-col">
-          <h3 class="q-footer-title"><span class="q-title-bar">|</span> DEVELOPERS</h3>
+          <h3 class="q-footer-title" style="color: #ffffff;"><span class="q-title-bar">|</span> DEVELOPERS</h3>
           <ul class="q-footer-links">
-            <li><a href="docs.html">Documentation</a></li>
-            <li><a href="support.html">Support & Help</a></li>
+            <li><a href="/src/pages/docs/index.html" style="color: #a1a1aa;">Documentation</a></li>
+            <li><a href="/src/pages/support/index.html" style="color: #a1a1aa;">Support &amp; Help</a></li>
           </ul>
         </div>
         <div class="q-footer-col">
-          <h3 class="q-footer-title"><span class="q-title-bar">|</span> COMPANY</h3>
+          <h3 class="q-footer-title" style="color: #ffffff;"><span class="q-title-bar">|</span> COMPANY</h3>
           <ul class="q-footer-links">
-            <li><a href="founders.html">Founders & Team</a></li>
-            <li><a href="/src/pages/privacy/index.html">Privacy Policy</a></li>
-            <li><a href="/src/pages/terms/index.html">Terms of Service</a></li>
-            <li><a href="/src/pages/contact/index.html">Contact Us</a></li>
+            <li><a href="/src/pages/founders/index.html" style="color: #a1a1aa;">Founders &amp; Team</a></li>
+            <li><a href="/src/pages/privacy/index.html" style="color: #a1a1aa;">Privacy Policy</a></li>
+            <li><a href="/src/pages/terms/index.html" style="color: #a1a1aa;">Terms of Service</a></li>
+            <li><a href="/src/pages/contact/index.html" style="color: #a1a1aa;">Contact Us</a></li>
           </ul>
         </div>
       </div>
-      <div class="q-footer-bottom">
+      <div class="q-footer-bottom" style="border-top-color: rgba(255, 255, 255, 0.08); color: #71717a;">
         <div>&copy; 2026 QuantaForze Technologies Inc. All rights reserved.</div>
       </div>
     </div>
