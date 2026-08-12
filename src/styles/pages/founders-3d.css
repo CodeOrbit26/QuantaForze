@@ -52,8 +52,8 @@
   position: relative;
   width: 100%;
   max-width: 1600px;
-  margin: 1rem auto 4rem auto;
-  padding: 3rem 1rem 4rem 1rem;
+  margin: 3rem auto 6rem auto;
+  padding: 3rem 1rem 5rem 1rem;
   perspective: 1200px;
   perspective-origin: 50% 45%;
 }
@@ -131,9 +131,9 @@
   z-index: 15;
 }
 
-/* Card Hover Focus Spotlight State */
+/* Card Hover Focus Spotlight State (Prevents touching hero subtitle text) */
 .f-card:hover {
-  transform: rotateY(0deg) rotateZ(0deg) translateY(-45px) translateZ(200px) scale(1.08) !important;
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-20px) translateZ(180px) scale(1.05) !important;
   border-color: #0284c7 !important;
   box-shadow: 0 40px 80px rgba(2, 132, 199, 0.32) !important;
   z-index: 1000 !important;
