@@ -436,4 +436,61 @@ document.addEventListener('DOMContentLoaded', () => {
     type();
   });
 
+  // Smart OS Detection & Direct Download for Product Pages
+  const downloadNavButtons = document.querySelectorAll('.q-btn-download-nav');
+  downloadNavButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Detect User OS
+      const ua = navigator.userAgent || navigator.platform || '';
+      let detectedOS = 'macOS';
+      if (/Win|Windows/i.test(ua)) detectedOS = 'Windows';
+      else if (/Linux|Ubuntu|Debian|Fedora/i.test(ua)) detectedOS = 'Linux';
+      else if (/Mac|Macintosh/i.test(ua)) detectedOS = 'macOS';
+
+      // Find the corresponding OS card on the page
+      const osCards = document.querySelectorAll('.pd-os-card');
+      let targetCard = null;
+      osCards.forEach(card => {
+        if (card.textContent.includes(detectedOS)) {
+          targetCard = card;
+        }
+      });
+
+      // Scroll to #app section smoothly
+      const appSection = document.getElementById('app');
+      if (appSection) {
+        appSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Highlight detected OS card with a glow pulse effect
+      if (targetCard) {
+        targetCard.style.transition = 'all 0.4s ease';
+        targetCard.style.outline = '2px solid #0284c7';
+        targetCard.style.boxShadow = '0 0 25px rgba(2, 132, 199, 0.35)';
+
+        setTimeout(() => {
+          targetCard.style.outline = 'none';
+          targetCard.style.boxShadow = '';
+        }, 3000);
+      }
+
+      // Display OS detection toast notification
+      const existingToast = document.querySelector('.pd-download-toast');
+      if (existingToast) existingToast.remove();
+
+      const toast = document.createElement('div');
+      toast.className = 'pd-download-toast';
+      toast.innerHTML = `<span style="color: #38bdf8; font-weight: 700;">⚡ OS Detected: ${detectedOS}</span><br>Highlighted optimal package for ${detectedOS}.`;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(20px)';
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    });
+  });
+
 });
