@@ -13,8 +13,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        products: resolve(__dirname, 'src/pages/products/index.html'),
-        ecosystem: resolve(__dirname, 'src/pages/ecosystem/index.html'),
         docs: resolve(__dirname, 'src/pages/docs/index.html'),
         founders: resolve(__dirname, 'src/pages/founders/index.html'),
         contact: resolve(__dirname, 'src/pages/contact/index.html'),

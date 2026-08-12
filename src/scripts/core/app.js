@@ -392,37 +392,13 @@ document.addEventListener('DOMContentLoaded', () => {
     onScrollNavbar();
   }
 
-  // Theme Manager (Dark / Light Theme Switcher)
-  const themeToggleBtns = document.querySelectorAll('.q-btn-theme, #themeToggle');
-  const storedTheme = localStorage.getItem('quanta-theme');
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  const applyTheme = (theme) => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('theme-dark');
-      document.body.classList.add('theme-dark');
-      document.documentElement.classList.remove('theme-light');
-      document.body.classList.remove('theme-light');
-      themeToggleBtns.forEach(btn => { btn.innerHTML = '☀️'; btn.setAttribute('title', 'Switch to Light Mode'); });
-    } else {
-      document.documentElement.classList.remove('theme-dark');
-      document.body.classList.remove('theme-dark');
-      document.documentElement.classList.add('theme-light');
-      document.body.classList.add('theme-light');
-      themeToggleBtns.forEach(btn => { btn.innerHTML = '🌙'; btn.setAttribute('title', 'Switch to Dark Mode'); });
-    }
-  };
-
-  const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
-  applyTheme(initialTheme);
-
-  themeToggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const isDark = document.body.classList.contains('theme-dark');
-      const newTheme = isDark ? 'light' : 'dark';
-      localStorage.setItem('quanta-theme', newTheme);
-      applyTheme(newTheme);
-    });
-  });
+  // Light Mode Enforcer (Dark Mode Completely Removed)
+  try {
+    localStorage.removeItem('quanta-theme');
+    document.documentElement.classList.remove('theme-dark');
+    document.body.classList.remove('theme-dark');
+    document.documentElement.classList.add('theme-light');
+    document.body.classList.add('theme-light');
+  } catch (e) {}
 
 });
