@@ -32,11 +32,11 @@
 }
 
 .pd-hero-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  letter-spacing: -0.035em;
+  font-size: 3.25rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   color: #0f172a;
-  line-height: 1.08;
+  line-height: 1.15;
   max-width: 100%;
 }
 
