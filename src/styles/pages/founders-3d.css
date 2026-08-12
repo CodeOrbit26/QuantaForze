@@ -52,8 +52,8 @@
   position: relative;
   width: 100%;
   max-width: 1600px;
-  margin: 1rem auto 6rem auto;
-  padding: 4rem 1rem 6rem 1rem;
+  margin: 1rem auto 4rem auto;
+  padding: 3rem 1rem 4rem 1rem;
   perspective: 1200px;
   perspective-origin: 50% 45%;
 }
@@ -64,7 +64,7 @@
   align-items: center;
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 640px;
+  min-height: 520px;
 }
 
 @media (max-width: 1024px) {
@@ -76,15 +76,15 @@
   }
 }
 
-/* Individual 3D Founder Card (Increased Size & Corner Overlap) */
+/* Individual 3D Founder Card (Compact & Spread Out) */
 .f-card {
-  width: 360px;
-  height: 580px;
-  margin: 0 -2.5rem;
+  width: 290px;
+  height: 490px;
+  margin: 0 -0.5rem;
   background: linear-gradient(165deg, #1c1c21 0%, #09090b 100%);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 1.75rem;
-  padding: 2rem;
+  border-radius: 1.5rem;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -92,51 +92,51 @@
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85),
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85),
               inset 0 1px 1px rgba(255, 255, 255, 0.2);
   user-select: none;
   flex-shrink: 0;
 }
 
-/* Overlapping Arching 3D Fan Arc Positions */
+/* Spread-Out Arching 3D Fan Arc Positions */
 .f-card[data-index="0"] {
-  transform: rotateY(24deg) rotateZ(-15deg) translateX(-50px) translateY(70px) translateZ(-80px);
+  transform: rotateY(20deg) rotateZ(-12deg) translateX(-110px) translateY(50px) translateZ(-60px);
   z-index: 10;
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 .f-card[data-index="1"] {
-  transform: rotateY(12deg) rotateZ(-7deg) translateX(-20px) translateY(-10px) translateZ(30px);
+  transform: rotateY(10deg) rotateZ(-6deg) translateX(-45px) translateY(-10px) translateZ(30px);
   z-index: 25;
   opacity: 0.96;
 }
 
 .f-card[data-index="2"] {
-  transform: rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(-85px) translateZ(150px) scale(1.06);
+  transform: rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(-65px) translateZ(130px) scale(1.05);
   z-index: 50;
   opacity: 1;
   border-color: rgba(56, 189, 248, 0.7);
-  box-shadow: 0 45px 90px rgba(2, 132, 199, 0.4),
+  box-shadow: 0 35px 75px rgba(2, 132, 199, 0.4),
               inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
 .f-card[data-index="3"] {
-  transform: rotateY(-12deg) rotateZ(7deg) translateX(20px) translateY(-10px) translateZ(30px);
+  transform: rotateY(-10deg) rotateZ(6deg) translateX(45px) translateY(-10px) translateZ(30px);
   z-index: 25;
   opacity: 0.96;
 }
 
 .f-card[data-index="4"] {
-  transform: rotateY(-24deg) rotateZ(15deg) translateX(50px) translateY(70px) translateZ(-80px);
+  transform: rotateY(-20deg) rotateZ(12deg) translateX(110px) translateY(50px) translateZ(-60px);
   z-index: 10;
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 /* Card Hover State */
 .f-card:hover {
-  transform: rotateY(0deg) rotateZ(0deg) translateY(-40px) translateZ(180px) scale(1.08) !important;
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-35px) translateZ(160px) scale(1.06) !important;
   border-color: #38bdf8 !important;
-  box-shadow: 0 45px 90px rgba(2, 132, 199, 0.45),
+  box-shadow: 0 40px 80px rgba(2, 132, 199, 0.45),
               inset 0 1px 2px rgba(255, 255, 255, 0.5) !important;
   z-index: 100 !important;
   opacity: 1 !important;
@@ -144,12 +144,12 @@
 
 /* Visual Card Header Art */
 .f-card-art {
-  height: 210px;
+  height: 165px;
   width: 100%;
-  border-radius: 1.15rem;
+  border-radius: 1.1rem;
   overflow: hidden;
   position: relative;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   background-size: cover;
   background-position: center;
 }
