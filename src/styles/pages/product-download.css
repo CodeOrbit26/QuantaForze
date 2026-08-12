@@ -484,27 +484,36 @@
 .q-btn-download-nav {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.4rem;
+  gap: 0.6rem;
+  padding: 0.65rem 1.65rem;
   border-radius: 9999px;
-  background: #0f172a;
+  background: #0c101a;
   color: #ffffff;
-  font-size: 0.925rem;
-  font-weight: 600;
+  font-family: Georgia, 'Playfair Display', 'Times New Roman', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-  border: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -4px rgba(12, 16, 26, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
 }
 
 .q-btn-download-nav:hover {
-  background: #0284c7;
+  background: #000000;
   color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .q-btn-download-nav svg {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.q-btn-download-nav:hover svg {
+  transform: translateY(2px);
 }
