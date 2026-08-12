@@ -446,3 +446,37 @@
   color: #0f172a;
   border-color: #38bdf8;
 }
+
+/* ================================================================
+   PRODUCT PAGE EXCLUSIVE NAVBAR & SCROLL ANIMATION
+   ================================================================ */
+.pd-main-page .site-head.quanta-navbar {
+  width: 100%;
+  max-width: 100%;
+}
+
+.pd-main-page .quanta-navbar .q-nav-container {
+  width: 96%;
+  max-width: 1840px;
+  padding: 0 1.5rem;
+}
+
+.pd-main-page .site-head.quanta-navbar.is-scrolled {
+  top: 1rem;
+  width: 96%;
+  max-width: 1840px;
+  height: 3.75rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(28px) saturate(210%);
+  -webkit-backdrop-filter: blur(28px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.12),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.pd-main-page .site-head.quanta-navbar.is-scrolled .q-nav-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1.75rem;
+}

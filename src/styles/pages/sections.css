@@ -23,8 +23,8 @@
 
 .site-head.quanta-navbar.is-scrolled {
   top: 1rem;
-  width: 96%;
-  max-width: 1840px;
+  width: calc(100% - 3rem);
+  max-width: 1200px;
   height: 3.75rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.55);
@@ -53,10 +53,10 @@
 }
 
 .quanta-navbar .q-nav-container {
-  width: 96%;
-  max-width: 1840px;
+  width: 100%;
+  max-width: 1380px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
