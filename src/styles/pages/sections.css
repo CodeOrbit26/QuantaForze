@@ -566,9 +566,27 @@
 .b-usp-card .b__asset {
   position: relative;
   width: 100%;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   overflow: hidden;
-  background: var(--color-white-darker);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.b-usp-card:hover .b__asset {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.b-usp-card .b__asset img {
+  filter: drop-shadow(0 15px 25px rgba(15, 23, 42, 0.22)) drop-shadow(0 4px 10px rgba(15, 23, 42, 0.12));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.b-usp-card:hover .b__asset img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 22px 35px rgba(15, 23, 42, 0.32)) drop-shadow(0 8px 16px rgba(2, 132, 199, 0.2));
 }
 
 .b-usp-card .b__asset:before {
