@@ -655,14 +655,77 @@
 
 .s-work .s__work-grid {
   display: grid;
-  grid-template-columns: 7fr 5fr;
+  grid-template-columns: 8.5fr 3.5fr;
   gap: 1.25rem;
 }
 
-@media only screen and (max-width: 987px) {
+@media only screen and (max-width: 1200px) {
   .s-work .s__work-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Delivery Flow Diagram Card */
+.b-delivery {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1.75rem;
+  padding: 2.25rem;
+  background: var(--color-white-dark);
+  border-radius: 1.5rem;
+}
+
+@media only screen and (max-width: 1536px) {
+  .b-delivery {
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+}
+
+.b-delivery .b__header {
+  flex-shrink: 0;
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.b-delivery .b__header__top {
+  flex: 1;
+}
+
+.b-delivery .b__title {
+  margin: 0 0 0.4rem;
+}
+
+.b-delivery .b__text {
+  color: var(--color-gray-dark);
+  text-wrap: balance;
+}
+
+.b-delivery .b__cta {
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 576px) {
+  .b-delivery .b__cta {
+    display: none;
+  }
+}
+
+.b-delivery .b__projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  flex: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Execution Card */
