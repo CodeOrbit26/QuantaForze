@@ -78,6 +78,7 @@
 
 /* Individual 3D Founder Card (Solid Opaque Light Theme) */
 .f-card {
+  --card-scale: 1;
   width: 290px;
   height: 490px;
   margin: 0 0.25rem;
@@ -101,19 +102,19 @@
   opacity: 1 !important;
 }
 
-/* Spread-Out Arching 3D Fan Arc Positions */
+/* Spread-Out Arching 3D Fan Arc Positions with CSS Variable Scale */
 .f-card[data-index="0"] {
-  transform: rotateY(18deg) rotateZ(-10deg) translateX(-70px) translateY(50px) translateZ(-60px);
+  transform: rotateY(18deg) rotateZ(-10deg) translateX(-70px) translateY(50px) translateZ(-60px) scale(var(--card-scale));
   z-index: 10;
 }
 
 .f-card[data-index="1"] {
-  transform: rotateY(9deg) rotateZ(-5deg) translateX(-30px) translateY(-10px) translateZ(30px);
+  transform: rotateY(9deg) rotateZ(-5deg) translateX(-30px) translateY(-10px) translateZ(30px) scale(var(--card-scale));
   z-index: 25;
 }
 
 .f-card[data-index="2"] {
-  transform: rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(-65px) translateZ(130px) scale(1.05);
+  transform: rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(-65px) translateZ(130px) scale(calc(1.05 * var(--card-scale)));
   z-index: 50;
   border-color: #0284c7;
   box-shadow: 0 35px 75px rgba(2, 132, 199, 0.22),
@@ -121,12 +122,12 @@
 }
 
 .f-card[data-index="3"] {
-  transform: rotateY(-9deg) rotateZ(5deg) translateX(30px) translateY(-10px) translateZ(30px);
+  transform: rotateY(-9deg) rotateZ(5deg) translateX(30px) translateY(-10px) translateZ(30px) scale(var(--card-scale));
   z-index: 25;
 }
 
 .f-card[data-index="4"] {
-  transform: rotateY(-18deg) rotateZ(10deg) translateX(70px) translateY(50px) translateZ(-60px);
+  transform: rotateY(-18deg) rotateZ(10deg) translateX(70px) translateY(50px) translateZ(-60px) scale(var(--card-scale));
   z-index: 10;
 }
 
@@ -139,8 +140,9 @@
   filter: none !important;
 }
 
-/* Tone down brightness of non-hovered cards while preserving their exact 3D fan rotations */
+/* Shrink non-hovered cards while preserving their exact 3D fan arc rotations */
 .f-deck-container:hover .f-card:not(:hover) {
+  --card-scale: 0.88;
   filter: brightness(0.92) contrast(0.9) grayscale(20%);
 }
 
