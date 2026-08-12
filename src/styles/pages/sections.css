@@ -641,175 +641,190 @@
 /* ================================================================
    4. WORK SECTION
    ================================================================ */
-/* ================================================================
-   4. WORK SECTION - REDESIGNED VALUE LOOP GRID
-   ================================================================ */
 .s-work {
   position: relative;
   z-index: 1;
-  padding-bottom: 2.5rem;
-  width: 96% !important;
-  max-width: 1840px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  padding-bottom: 2rem;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .s-work .s__work-grid {
   display: grid;
-  grid-template-columns: 7.2fr 4.8fr;
-  gap: 1.5rem;
-  align-items: stretch;
+  grid-template-columns: 7fr 5fr;
+  gap: 1.25rem;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 987px) {
   .s-work .s__work-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Delivery Flow Diagram Card */
-.b-delivery {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 2.5rem;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 1.5rem;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-@media only screen and (max-width: 1536px) {
-  .b-delivery {
-    padding: 2rem;
-  }
-}
-
-.b-delivery .b__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  width: 100%;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.b-delivery .b__header__top {
-  flex: 1;
-}
-
-.b-delivery .b__title {
-  margin: 0.25rem 0 0.35rem 0;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.b-delivery .b__text {
-  color: #64748b;
-  font-size: 0.88rem;
-  line-height: 1.4;
-  margin: 0;
-}
-
-.b-delivery .b__cta {
-  flex-shrink: 0;
-}
-
-@media only screen and (max-width: 640px) {
-  .b-delivery .b__header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* 3x2 Grid for 6 Stage Cards */
-.b-delivery .b__projects {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-@media only screen and (max-width: 900px) {
-  .b-delivery .b__projects {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .b-delivery .b__projects {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Individual Stage Card Styling */
-.b-delivery .sb-project {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.85rem;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.85rem;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-}
-
-.b-delivery .sb-project:hover {
-  transform: translateY(-3px);
-  border-color: #0284c7;
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
-}
-
-.b-delivery .sb__description {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #334155;
-  margin: 0;
-}
-
-.b-delivery .sb__description strong {
-  color: #0f172a;
-  font-size: 0.92rem;
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-
-.b-delivery .sb__pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.65rem;
-  border-radius: 9999px;
-  background: #f1f5f9;
-  color: #0284c7;
-  font-family: var(--font-family-supply-mono, monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* Execution Card */
+/* Execution Card & 6-Stage Value Loop Diagrammatic Flow */
 .b-execution {
   position: relative;
   width: 100%;
   min-height: 28rem;
-  background: var(--color-white-dark);
+  background: #f8fafc !important;
   border-radius: 1.5rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
 @media only screen and (max-width: 1536px) {
   .b-execution {
     border-radius: 1rem;
+    padding: 2rem;
+  }
+}
+
+.b-loop-flow-mesh {
+  position: relative;
+  width: 100%;
+  padding: 1.5rem 0 0.5rem 0;
+  margin-top: 1rem;
+}
+
+.b-loop-svg-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes strokeFlowPulse {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -100; }
+}
+
+.pulse-flow-line {
+  animation: strokeFlowPulse 8s linear infinite;
+}
+
+.b-flow-nodes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.25rem 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .b-flow-nodes-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .b-flow-nodes-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.b-flow-node {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.b-flow-node:hover {
+  transform: translateY(-3px);
+  border-color: #0284c7;
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.15);
+}
+
+.b-node-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: var(--font-family-space-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.b-flow-node:hover .b-node-badge {
+  background: #0284c7;
+}
+
+.b-node-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.b-node-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.b-node-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+.b-node-arrow,
+.b-node-arrow-down,
+.b-node-arrow-left,
+.b-node-arrow-up {
+  position: absolute;
+  color: #0284c7;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.b-node-arrow {
+  right: -1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.b-node-arrow-down {
+  bottom: -1.3rem;
+  right: 2rem;
+}
+
+.b-node-arrow-left {
+  left: -1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.b-node-arrow-up {
+  top: -1.3rem;
+  left: 2rem;
+}
+
+@media (max-width: 900px) {
+  .b-node-arrow, .b-node-arrow-down, .b-node-arrow-left, .b-node-arrow-up {
+    display: none;
   }
 }
 
