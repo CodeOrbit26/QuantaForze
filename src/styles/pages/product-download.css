@@ -33,7 +33,7 @@
 
 .pd-hero-title {
   font-size: 3.25rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.015em;
   color: #0f172a;
   line-height: 1.15;
@@ -222,8 +222,8 @@
 
 .pd-section-title {
   font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.025em;
+  font-weight: 500;
+  letter-spacing: -0.015em;
   color: #0f172a;
 }
 
