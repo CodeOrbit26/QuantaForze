@@ -19,20 +19,20 @@
 <body class="f-body">
 
   <!-- HEADER -->
-  <header class="site-head quanta-navbar" style="background: rgba(0, 0, 0, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+  <header class="site-head quanta-navbar">
     <div class="q-nav-container">
       <a href="/index.html" class="q-logo" aria-label="QuantaForze Home">
         <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-logo-img">
       </a>
       <div class="q-nav-right">
         <nav class="q-nav-menu">
-          <a href="/index.html#usps" class="q-nav-link" style="color: #a1a1aa;">Products</a>
-          <a href="/index.html#loop" class="q-nav-link" style="color: #a1a1aa;">Technology</a>
-          <a href="/index.html#sdk" class="q-nav-link" style="color: #a1a1aa;">Research</a>
+          <a href="/index.html#usps" class="q-nav-link">Products</a>
+          <a href="/index.html#loop" class="q-nav-link">Technology</a>
+          <a href="/index.html#sdk" class="q-nav-link">Research</a>
         </nav>
         <div class="q-nav-actions">
-          <a href="/src/pages/docs/index.html" class="q-btn-docs" style="background: #18181b; color: #ffffff; border: 1px solid #27272a;">Docs</a>
-          <a href="/src/pages/contact/index.html" class="q-btn-get-started" style="background: #ffffff; color: #000000;">Get Started</a>
+          <a href="/src/pages/docs/index.html" class="q-btn-docs">Docs</a>
+          <a href="/src/pages/contact/index.html" class="q-btn-get-started">Get Started</a>
         </div>
       </div>
     </div>
@@ -53,18 +53,18 @@
     <div class="f-deck-viewport">
       <div id="founderDeck" class="f-deck-container">
 
-        <!-- Card 1: Somraj Lodhi -->
-        <div class="f-card" data-index="0" onclick="selectCard(0, 'somraj')">
+        <!-- Card 1 (data-index 0): Sudhanshu Patel -->
+        <div class="f-card" data-index="0" onclick="selectCard(0, 'sudhanshu')">
           <div>
-            <div class="f-card-art" style="background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);">
-              <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">⚡</div>
+            <div class="f-card-art" style="background: linear-gradient(135deg, #ec4899 0%, #831843 100%);">
+              <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">🚀</div>
               <div class="f-card-art-overlay"></div>
             </div>
-            <div class="f-role-tag">FOUNDER &amp; LEAD ARCHITECT</div>
-            <h2 class="f-founder-name">Somraj Lodhi</h2>
-            <div class="f-founder-spec">Front-End &amp; Research &amp; Development</div>
+            <div class="f-role-tag">CO-FOUNDER &amp; HEAD OF GROWTH &amp; WEB OPS</div>
+            <h2 class="f-founder-name">Sudhanshu Patel</h2>
+            <div class="f-founder-spec">Brand Strategy &amp; Web Infrastructure</div>
             <p class="f-founder-bio">
-              Spearheading front-end innovation, visual interface design systems, 3D interaction physics, and core R&amp;D at QuantaForze.
+              Directing web platform development, brand strategy, digital growth marketing, and developer outreach.
             </p>
           </div>
           <div class="f-card-footer">
@@ -72,7 +72,7 @@
           </div>
         </div>
 
-        <!-- Card 2: Abhay Gupta -->
+        <!-- Card 2 (data-index 1): Abhay Gupta -->
         <div class="f-card" data-index="1" onclick="selectCard(1, 'abhay')">
           <div>
             <div class="f-card-art" style="background: linear-gradient(135deg, #6366f1 0%, #1e1b4b 100%);">
@@ -91,8 +91,27 @@
           </div>
         </div>
 
-        <!-- Card 3: Yug Mittal (Center Active Default) -->
-        <div class="f-card active" data-index="2" onclick="selectCard(2, 'yug')">
+        <!-- Card 3 (data-index 2 - CENTER ACTIVE DEFAULT): SOMRAJ LODHI -->
+        <div class="f-card active" data-index="2" onclick="selectCard(2, 'somraj')">
+          <div>
+            <div class="f-card-art" style="background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);">
+              <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">⚡</div>
+              <div class="f-card-art-overlay"></div>
+            </div>
+            <div class="f-role-tag">FOUNDER &amp; LEAD ARCHITECT</div>
+            <h2 class="f-founder-name">Somraj Lodhi</h2>
+            <div class="f-founder-spec">Front-End &amp; Research &amp; Development</div>
+            <p class="f-founder-bio">
+              Spearheading front-end innovation, visual interface design systems, 3D interaction physics, and core R&amp;D at QuantaForze.
+            </p>
+          </div>
+          <div class="f-card-footer">
+            <span class="f-card-link">View Architecture Profile &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Card 4 (data-index 3): Yug Mittal -->
+        <div class="f-card" data-index="3" onclick="selectCard(3, 'yug')">
           <div>
             <div class="f-card-art" style="background: linear-gradient(135deg, #10b981 0%, #064e3b 100%);">
               <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">🌐</div>
@@ -110,8 +129,8 @@
           </div>
         </div>
 
-        <!-- Card 4: Yash Kushwaha -->
-        <div class="f-card" data-index="3" onclick="selectCard(3, 'yash')">
+        <!-- Card 5 (data-index 4): Yash Kushwaha -->
+        <div class="f-card" data-index="4" onclick="selectCard(4, 'yash')">
           <div>
             <div class="f-card-art" style="background: linear-gradient(135deg, #f59e0b 0%, #7c2d12 100%);">
               <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">🔒</div>
@@ -122,25 +141,6 @@
             <div class="f-founder-spec">Zero-Trust &amp; Sandbox Security</div>
             <p class="f-founder-bio">
               Enforcing zero-trust security protocols, end-to-end encryption, and sandboxed agent execution environments.
-            </p>
-          </div>
-          <div class="f-card-footer">
-            <span class="f-card-link">View Architecture Profile &rarr;</span>
-          </div>
-        </div>
-
-        <!-- Card 5: Sudhanshu Patel -->
-        <div class="f-card" data-index="4" onclick="selectCard(4, 'sudhanshu')">
-          <div>
-            <div class="f-card-art" style="background: linear-gradient(135deg, #ec4899 0%, #831843 100%);">
-              <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">🚀</div>
-              <div class="f-card-art-overlay"></div>
-            </div>
-            <div class="f-role-tag">CO-FOUNDER &amp; HEAD OF GROWTH &amp; WEB OPS</div>
-            <h2 class="f-founder-name">Sudhanshu Patel</h2>
-            <div class="f-founder-spec">Brand Strategy &amp; Web Infrastructure</div>
-            <p class="f-founder-bio">
-              Directing web platform development, brand strategy, digital growth marketing, and developer outreach.
             </p>
           </div>
           <div class="f-card-footer">
@@ -167,40 +167,40 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="quanta-footer" style="background: #000000; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+  <footer class="quanta-footer">
     <div class="q-footer-container">
       <div class="q-footer-grid">
         <div class="q-footer-col q-footer-brand">
           <a href="/index.html" class="q-footer-logo" aria-label="QuantaForze Home">
             <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-footer-logo-img">
           </a>
-          <p class="q-footer-slogan" style="color: #a1a1aa;">Organize complexity. Connect intelligence. Automate action.</p>
+          <p class="q-footer-slogan">Organize complexity. Connect intelligence. Automate action.</p>
         </div>
         <div class="q-footer-col">
-          <h3 class="q-footer-title" style="color: #ffffff;"><span class="q-title-bar">|</span> ECOSYSTEM</h3>
+          <h3 class="q-footer-title"><span class="q-title-bar">|</span> ECOSYSTEM</h3>
           <ul class="q-footer-links">
-            <li><a href="/src/pages/products/axiovital/index.html" style="color: #a1a1aa;">AxioVital Platform</a></li>
-            <li><a href="/src/pages/products/autonomous-agent/index.html" style="color: #a1a1aa;">QuantaForze Agent</a></li>
+            <li><a href="/src/pages/products/axiovital/index.html">AxioVital Platform</a></li>
+            <li><a href="/src/pages/products/autonomous-agent/index.html">QuantaForze Agent</a></li>
           </ul>
         </div>
         <div class="q-footer-col">
-          <h3 class="q-footer-title" style="color: #ffffff;"><span class="q-title-bar">|</span> DEVELOPERS</h3>
+          <h3 class="q-footer-title"><span class="q-title-bar">|</span> DEVELOPERS</h3>
           <ul class="q-footer-links">
-            <li><a href="/src/pages/docs/index.html" style="color: #a1a1aa;">Documentation</a></li>
-            <li><a href="/src/pages/support/index.html" style="color: #a1a1aa;">Support &amp; Help</a></li>
+            <li><a href="/src/pages/docs/index.html">Documentation</a></li>
+            <li><a href="/src/pages/support/index.html">Support &amp; Help</a></li>
           </ul>
         </div>
         <div class="q-footer-col">
-          <h3 class="q-footer-title" style="color: #ffffff;"><span class="q-title-bar">|</span> COMPANY</h3>
+          <h3 class="q-footer-title"><span class="q-title-bar">|</span> COMPANY</h3>
           <ul class="q-footer-links">
-            <li><a href="/src/pages/founders/index.html" style="color: #a1a1aa;">Founders &amp; Team</a></li>
-            <li><a href="/src/pages/privacy/index.html" style="color: #a1a1aa;">Privacy Policy</a></li>
-            <li><a href="/src/pages/terms/index.html" style="color: #a1a1aa;">Terms of Service</a></li>
-            <li><a href="/src/pages/contact/index.html" style="color: #a1a1aa;">Contact Us</a></li>
+            <li><a href="/src/pages/founders/index.html">Founders &amp; Team</a></li>
+            <li><a href="/src/pages/privacy/index.html">Privacy Policy</a></li>
+            <li><a href="/src/pages/terms/index.html">Terms of Service</a></li>
+            <li><a href="/src/pages/contact/index.html">Contact Us</a></li>
           </ul>
         </div>
       </div>
-      <div class="q-footer-bottom" style="border-top: 1px solid rgba(255, 255, 255, 0.08); color: #71717a;">
+      <div class="q-footer-bottom">
         <div>&copy; 2026 QuantaForze Technologies Inc. All rights reserved.</div>
       </div>
     </div>
@@ -279,13 +279,13 @@
       if (!data) return;
       
       const content = `
-        <div style="font-family: var(--font-family-space-mono, monospace); font-size: 0.75rem; color: #38bdf8; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.1em;">${data.title}</div>
-        <h2 style="font-size: 2rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">${data.name}</h2>
-        <div style="font-size: 0.9rem; color: #a1a1aa; margin-bottom: 1.5rem;">${data.spec}</div>
-        <p style="font-size: 0.95rem; color: #d4d4d8; line-height: 1.6; margin-bottom: 2rem;">${data.bio}</p>
-        <h4 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">Core Expertise &amp; R&amp;D Domains:</h4>
+        <div style="font-family: var(--font-family-space-mono, monospace); font-size: 0.75rem; color: #0284c7; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.1em;">${data.title}</div>
+        <h2 style="font-size: 2rem; font-weight: 800; color: #0f172a; margin-bottom: 0.25rem;">${data.name}</h2>
+        <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">${data.spec}</div>
+        <p style="font-size: 0.95rem; color: #334155; line-height: 1.6; margin-bottom: 2rem;">${data.bio}</p>
+        <h4 style="font-size: 0.85rem; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">Core Expertise &amp; R&amp;D Domains:</h4>
         <ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem;">
-          ${data.skills.map(s => `<li style="background: rgba(255,255,255,0.06); color: #e4e4e7; font-size: 0.82rem; padding: 0.4rem 0.85rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.1);">${s}</li>`).join('')}
+          ${data.skills.map(s => `<li style="background: #f1f5f9; color: #0f172a; font-size: 0.82rem; padding: 0.4rem 0.85rem; border-radius: 9999px; border: 1px solid #cbd5e1;">${s}</li>`).join('')}
         </ul>
       `;
       document.getElementById('modalContent').innerHTML = content;

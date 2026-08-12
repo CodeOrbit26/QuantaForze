@@ -1,8 +1,8 @@
-/* Founders 3D Perspective Fan Deck & Interactive Carousel Styles */
+/* Founders Light Theme 3D Perspective Fan Deck Styles */
 
 .f-body {
-  background-color: #000000 !important;
-  color: #ededed;
+  background-color: #ffffff !important;
+  color: #0f172a;
   font-family: var(--font-family-inter, system-ui, -apple-system, sans-serif);
   min-height: 100vh;
   overflow-x: hidden;
@@ -11,8 +11,8 @@
 /* Hero Section */
 .f-hero-section {
   text-align: center;
-  padding-top: 8rem;
-  padding-bottom: 3rem;
+  padding-top: 7rem;
+  padding-bottom: 2rem;
   max-width: 900px;
   margin: 0 auto;
   padding-left: 1.5rem;
@@ -33,7 +33,7 @@
 .f-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
-  color: #ffffff;
+  color: #0f172a;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
   line-height: 1.1;
@@ -41,7 +41,7 @@
 
 .f-subtitle {
   font-size: 1.1rem;
-  color: #a1a1aa;
+  color: #64748b;
   line-height: 1.6;
   max-width: 720px;
   margin: 0 auto;
@@ -76,13 +76,13 @@
   }
 }
 
-/* Individual 3D Founder Card (Compact & Spread Out) */
+/* Individual 3D Founder Card (Light Theme) */
 .f-card {
   width: 290px;
   height: 490px;
   margin: 0 -0.5rem;
-  background: linear-gradient(165deg, #1c1c21 0%, #09090b 100%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 1.5rem;
   padding: 1.6rem;
   display: flex;
@@ -92,8 +92,8 @@
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85),
-              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08),
+              0 4px 12px rgba(15, 23, 42, 0.04);
   user-select: none;
   flex-shrink: 0;
 }
@@ -115,9 +115,9 @@
   transform: rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(-65px) translateZ(130px) scale(1.05);
   z-index: 50;
   opacity: 1;
-  border-color: rgba(56, 189, 248, 0.7);
-  box-shadow: 0 35px 75px rgba(2, 132, 199, 0.4),
-              inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  border-color: #0284c7;
+  box-shadow: 0 35px 75px rgba(2, 132, 199, 0.22),
+              0 10px 25px rgba(15, 23, 42, 0.1);
 }
 
 .f-card[data-index="3"] {
@@ -135,9 +135,8 @@
 /* Card Hover State */
 .f-card:hover {
   transform: rotateY(0deg) rotateZ(0deg) translateY(-35px) translateZ(160px) scale(1.06) !important;
-  border-color: #38bdf8 !important;
-  box-shadow: 0 40px 80px rgba(2, 132, 199, 0.45),
-              inset 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 40px 80px rgba(2, 132, 199, 0.28) !important;
   z-index: 100 !important;
   opacity: 1 !important;
 }
@@ -157,7 +156,7 @@
 .f-card-art-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.4) 100%);
 }
 
 .f-role-tag {
@@ -165,28 +164,28 @@
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #38bdf8;
+  color: #0284c7;
   text-transform: uppercase;
   margin-bottom: 0.35rem;
 }
 
 .f-founder-name {
   font-size: 1.45rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  color: #0f172a;
   line-height: 1.2;
   margin-bottom: 0.25rem;
 }
 
 .f-founder-spec {
   font-size: 0.82rem;
-  color: #a1a1aa;
-  margin-bottom: 1rem;
+  color: #64748b;
+  margin-bottom: 0.85rem;
 }
 
 .f-founder-bio {
   font-size: 0.85rem;
-  color: #d4d4d8;
+  color: #334155;
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -199,7 +198,7 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid #e2e8f0;
 }
 
 .f-card-link {
@@ -208,13 +207,13 @@
   gap: 0.35rem;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #0f172a;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .f-card-link:hover {
-  color: #38bdf8;
+  color: #0284c7;
 }
 
 /* Carousel Control Bar */
@@ -223,7 +222,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .f-ctrl-btn {
@@ -232,30 +231,31 @@
   justify-content: center;
   padding: 0.75rem 1.75rem;
   border-radius: 9999px;
-  background: #18181b;
+  background: #0f172a;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 600;
-  border: 1px solid #27272a;
+  border: 1px solid #0f172a;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .f-ctrl-btn:hover {
-  background: #27272a;
-  border-color: #38bdf8;
+  background: #0284c7;
+  border-color: #0284c7;
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
 }
 
-/* Detail Drawer Modal */
+/* Light Theme Modal Overlay */
 .f-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
   z-index: 999;
   display: flex;
   align-items: center;
@@ -272,14 +272,14 @@
 }
 
 .f-modal-card {
-  background: #09090b;
-  border: 1px solid #27272a;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 1.5rem;
   padding: 2.5rem;
   width: 100%;
   max-width: 580px;
   position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
 .f-modal-close {
@@ -288,12 +288,12 @@
   right: 1.25rem;
   background: transparent;
   border: none;
-  color: #71717a;
+  color: #94a3b8;
   font-size: 1.4rem;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .f-modal-close:hover {
-  color: #ffffff;
+  color: #0f172a;
 }
