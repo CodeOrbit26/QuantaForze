@@ -54,7 +54,7 @@
       <div id="founderDeck" class="f-deck-container">
 
         <!-- Card 1: Somraj Lodhi -->
-        <div class="f-card" data-index="0" onclick="openFounderModal('somraj')">
+        <div class="f-card" data-index="0" onclick="selectCard(0, 'somraj')">
           <div>
             <div class="f-card-art" style="background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);">
               <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">⚡</div>
@@ -73,7 +73,7 @@
         </div>
 
         <!-- Card 2: Abhay Gupta -->
-        <div class="f-card" data-index="1" onclick="openFounderModal('abhay')">
+        <div class="f-card" data-index="1" onclick="selectCard(1, 'abhay')">
           <div>
             <div class="f-card-art" style="background: linear-gradient(135deg, #6366f1 0%, #1e1b4b 100%);">
               <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">🛡️</div>
@@ -92,7 +92,7 @@
         </div>
 
         <!-- Card 3: Yug Mittal (Center Active Default) -->
-        <div class="f-card active" data-index="2" onclick="openFounderModal('yug')">
+        <div class="f-card active" data-index="2" onclick="selectCard(2, 'yug')">
           <div>
             <div class="f-card-art" style="background: linear-gradient(135deg, #10b981 0%, #064e3b 100%);">
               <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">🌐</div>
@@ -111,7 +111,7 @@
         </div>
 
         <!-- Card 4: Yash Kushwaha -->
-        <div class="f-card" data-index="3" onclick="openFounderModal('yash')">
+        <div class="f-card" data-index="3" onclick="selectCard(3, 'yash')">
           <div>
             <div class="f-card-art" style="background: linear-gradient(135deg, #f59e0b 0%, #7c2d12 100%);">
               <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">🔒</div>
@@ -130,7 +130,7 @@
         </div>
 
         <!-- Card 5: Sudhanshu Patel -->
-        <div class="f-card" data-index="4" onclick="openFounderModal('sudhanshu')">
+        <div class="f-card" data-index="4" onclick="selectCard(4, 'sudhanshu')">
           <div>
             <div class="f-card-art" style="background: linear-gradient(135deg, #ec4899 0%, #831843 100%);">
               <div style="position: absolute; bottom: 1rem; left: 1rem; font-size: 2rem;">🚀</div>
@@ -247,65 +247,32 @@
 
     let currentIndex = 2;
     const cards = document.querySelectorAll('.f-card');
-    const deck = document.getElementById('founderDeck');
 
     function updateDeckTransforms() {
       cards.forEach((card, i) => {
-        let offset = i - currentIndex;
-        if (offset < -2) offset += 5;
-        if (offset > 2) offset -= 5;
-        card.setAttribute('data-offset', offset);
+        const diff = (i - currentIndex + 5) % 5;
+        card.setAttribute('data-index', diff);
+        if (diff === 2) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
       });
+    }
+
+    function selectCard(cardIndex, founderId) {
+      if (currentIndex === cardIndex) {
+        openFounderModal(founderId);
+      } else {
+        currentIndex = cardIndex;
+        updateDeckTransforms();
+      }
     }
 
     function rotateDeck(dir) {
       currentIndex = (currentIndex + dir + 5) % 5;
       updateDeckTransforms();
     }
-
-    // Interactive Drag & Touch Gestures
-    let startX = 0;
-    let isDragging = false;
-
-    deck.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.clientX;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      const diffX = e.clientX - startX;
-      if (Math.abs(diffX) > 60) {
-        rotateDeck(diffX > 0 ? -1 : 1);
-        startX = e.clientX;
-        isDragging = false;
-      }
-    });
-
-    window.addEventListener('mouseup', () => {
-      isDragging = false;
-    });
-
-    deck.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-    }, { passive: true });
-
-    deck.addEventListener('touchmove', (e) => {
-      const diffX = e.touches[0].clientX - startX;
-      if (Math.abs(diffX) > 50) {
-        rotateDeck(diffX > 0 ? -1 : 1);
-        startX = e.touches[0].clientX;
-      }
-    }, { passive: true });
-
-    // Keyboard Navigation
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') rotateDeck(-1);
-      if (e.key === 'ArrowRight') rotateDeck(1);
-    });
-
-    // Initialize
-    updateDeckTransforms();
 
     function openFounderModal(id) {
       const data = founderData[id];
