@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | QuantaForze Technologies Inc.</title>
-  <meta name="description" content="Get in touch with QuantaForze Technologies Inc. General inquiries, security vulnerabilities, enterprise solutions, and support contacts.">
+  <meta name="description" content="Contact QuantaForze Technologies Inc. General inquiries, enterprise architecture support, AI deployment sales, and community resources.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,11 +18,8 @@
 </head>
 <body class="v-contact-body">
 
-  <!-- Radial Glow Background -->
-  <div class="v-ambient-bg"></div>
-
-  <!-- HEADER NAVBAR -->
-  <header class="site-head quanta-navbar" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <!-- HEADER -->
+  <header class="site-head quanta-navbar" style="background: rgba(0, 0, 0, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
     <div class="q-nav-container">
       <a href="/index.html" class="q-logo" aria-label="QuantaForze Home">
         <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-logo-img">
@@ -34,146 +31,138 @@
           <a href="/index.html#sdk" class="q-nav-link" style="color: #a1a1aa;">Research</a>
         </nav>
         <div class="q-nav-actions">
-          <a href="/src/pages/docs/index.html" class="q-btn-docs" style="color: #ffffff; border-color: rgba(255,255,255,0.2);">Docs</a>
-          <a href="/src/pages/contact/index.html" class="q-btn-get-started active" style="font-weight: 700; background: #ffffff; color: #000000;">Get Started</a>
+          <a href="/src/pages/docs/index.html" class="q-btn-docs" style="background: #18181b; color: #ffffff; border: 1px solid #27272a;">Docs</a>
+          <a href="/src/pages/contact/index.html" class="q-btn-get-started" style="background: #ffffff; color: #000000;">Get Started</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN CONTACT HERO -->
-  <main class="v-contact-hero">
-    <div class="v-contact-grid">
+  <!-- MAIN VERCEL CONTACT CONTAINER -->
+  <main class="v-contact-container">
+    <h1 class="v-contact-main-title">Contact us</h1>
+
+    <!-- TOP 2-COLUMN SPLIT GRID -->
+    <div class="v-top-split-grid">
       
-      <!-- LEFT COLUMN -->
-      <div class="v-left-col">
-        <span class="v-badge-pill">Contact Sales &amp; Engineering</span>
-        <h1 class="v-contact-title">Talk to our platform team</h1>
-        <p class="v-contact-subtitle">
-          Interested in AxioVital OS, Autonomous AI Agents, or custom enterprise solutions? Tell us about your goals and our team will get in touch.
-        </p>
-
-        <!-- TRUST CARDS STACK -->
-        <div class="v-trust-stack">
-          <div class="v-trust-card">
-            <div class="v-trust-icon">⚡</div>
-            <div>
-              <div class="v-trust-title">Dedicated Infrastructure &amp; Deployment</div>
-              <div class="v-trust-desc">Custom clinical node builds, hospital rack ISO images, and dedicated enterprise agent sandboxes.</div>
-            </div>
-          </div>
-
-          <div class="v-trust-card">
-            <div class="v-trust-icon">🛡️</div>
-            <div>
-              <div class="v-trust-title">Zero-Trust &amp; HIPAA Compliance</div>
-              <div class="v-trust-desc">Hardware-level AES-256 encryption, zero-trust authorization guardrails, and audit logging.</div>
-            </div>
-          </div>
-
-          <div class="v-trust-card">
-            <div class="v-trust-icon">🤝</div>
-            <div>
-              <div class="v-trust-title">Direct Engineering Partnership</div>
-              <div class="v-trust-desc">Work directly with senior AI architects, systems engineers, and platform developers.</div>
-            </div>
-          </div>
+      <!-- Card 1: Product Support -->
+      <div class="v-card-col">
+        <div class="v-card-category">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Product support
         </div>
-
-        <!-- DIRECT EMAIL CONTACTS -->
-        <div class="v-direct-info">
-          <div>
-            <div class="v-info-item-label">General Inquiries</div>
-            <a href="mailto:contact@quantaforze.com" class="v-info-item-value">contact@quantaforze.com</a>
-          </div>
-          <div>
-            <div class="v-info-item-label">Security &amp; Vulnerabilities</div>
-            <a href="mailto:security@quantaforze.com" class="v-info-item-value">security@quantaforze.com</a>
+        <div class="v-card-headline">
+          Get help from the community. If you're on a paid plan, submit a ticket to our support team.
+        </div>
+        <div class="v-card-actions">
+          <a href="/src/pages/docs/index.html" class="v-btn-primary">Get Support</a>
+          <div class="v-status-badge">
+            <span class="v-status-dot"></span>
+            All systems normal
           </div>
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: VERCEL GLASS FORM CARD -->
-      <div class="v-form-card">
-        <h2 class="v-form-title">Send us a message</h2>
-        <p class="v-form-subtitle">Fill out the form below and an engineer will respond within 24 hours.</p>
+      <!-- Card 2: Enterprise & Sales -->
+      <div class="v-card-col">
+        <div class="v-card-category">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          Sales team
+        </div>
+        <div class="v-card-headline">
+          Discuss your requirements, learn about custom pricing, or request a demonstration.
+        </div>
+        <div class="v-card-actions">
+          <button class="v-btn-primary" onclick="openVercelContactModal()">Contact sales</button>
+        </div>
+      </div>
 
-        <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been received. A QuantaForze engineer will reach out to you shortly.');">
-          <div class="v-form-row">
-            <div class="v-form-group">
-              <label class="v-form-label">First Name *</label>
-              <input type="text" class="v-form-input" placeholder="Sarah" required>
-            </div>
-            <div class="v-form-group">
-              <label class="v-form-label">Last Name *</label>
-              <input type="text" class="v-form-input" placeholder="Chen" required>
-            </div>
-          </div>
+    </div>
 
-          <div class="v-form-group">
-            <label class="v-form-label">Work Email *</label>
-            <input type="email" class="v-form-input" placeholder="sarah@hospital.org" required>
-          </div>
+    <!-- BOTTOM 3-COLUMN RESOURCE GRID -->
+    <div class="v-bottom-grid">
+      
+      <!-- Resource 1: Architecture Advisory -->
+      <div class="v-res-card">
+        <div class="v-res-category">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          Hire Experts
+        </div>
+        <div class="v-res-desc">
+          Hire a QuantaForze and AxioVital expert. Adopt best practices, remove blockers, and ship on time.
+        </div>
+        <a href="#" class="v-btn-pill-muted" onclick="openVercelContactModal(); return false;">Find an Expert</a>
+      </div>
 
-          <div class="v-form-group">
-            <label class="v-form-label">Organization / Industry</label>
-            <input type="text" class="v-form-input" placeholder="Health System / Enterprise / Startup">
-          </div>
+      <!-- Resource 2: Follow QuantaForze -->
+      <div class="v-res-card">
+        <div class="v-res-category">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Follow QuantaForze
+        </div>
+        <div class="v-res-desc">
+          Follow us on X. Get QuantaForze news, company information, and media resources.
+        </div>
+        <a href="https://github.com/CodeOrbit26/QuantaForze" target="_blank" class="v-btn-pill-muted">Follow @quantaforze</a>
+      </div>
 
-          <div class="v-form-group">
-            <label class="v-form-label">Primary Interest *</label>
-            <select class="v-form-select" required style="color: #ffffff;">
-              <option value="" disabled selected style="background: #0a0a0a; color: #71717a;">Select a platform area...</option>
-              <option value="axiovital" style="background: #0a0a0a; color: #ffffff;">AxioVital OS &amp; Health Systems</option>
-              <option value="agent" style="background: #0a0a0a; color: #ffffff;">Autonomous AI Agent Loop</option>
-              <option value="intelligence" style="background: #0a0a0a; color: #ffffff;">Intelligence Layer &amp; Gemini Models</option>
-              <option value="sdk" style="background: #0a0a0a; color: #ffffff;">@quantaforze/core SDK &amp; CLI</option>
-              <option value="custom" style="background: #0a0a0a; color: #ffffff;">Custom Enterprise Solution</option>
-            </select>
-          </div>
-
-          <div class="v-form-group">
-            <label class="v-form-label">How can we help? *</label>
-            <textarea class="v-form-textarea" rows="4" placeholder="Tell us about your project scope, technical requirements, or deployment schedule..." required></textarea>
-          </div>
-
-          <button type="submit" class="v-form-submit-btn">
-            Submit Request &rarr;
-          </button>
-        </form>
+      <!-- Resource 3: Join Community -->
+      <div class="v-res-card">
+        <div class="v-res-category">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Join Community
+        </div>
+        <div class="v-res-desc">
+          Join our community. For code related discussions, join our community forum.
+        </div>
+        <a href="https://github.com/CodeOrbit26/QuantaForze/discussions" target="_blank" class="v-btn-pill-muted">View our Community forum</a>
       </div>
 
     </div>
   </main>
 
-  <!-- BOTTOM RESOURCES SECTION -->
-  <section class="v-resources-section">
-    <h2 class="v-resources-title">Explore more QuantaForze resources</h2>
-    <div class="v-resources-grid">
-      <a href="/src/pages/docs/index.html" class="v-resource-card">
-        <div class="v-resource-card-title">Documentation &rarr;</div>
-        <div class="v-resource-card-desc">Comprehensive SDK guides, CLI commands, and architecture technical specifications.</div>
-      </a>
-      <a href="/src/pages/founders/index.html" class="v-resource-card">
-        <div class="v-resource-card-title">Founders &amp; Team &rarr;</div>
-        <div class="v-resource-card-desc">Meet the engineering leaders and researchers building QuantaForze.</div>
-      </a>
-      <a href="/src/pages/docs/index.html#zero-trust" class="v-resource-card">
-        <div class="v-resource-card-title">Zero-Trust Security &rarr;</div>
-        <div class="v-resource-card-desc">Learn about sandboxed agent execution, HIPAA compliance, and hardware safety rules.</div>
-      </a>
+  <!-- INTERACTIVE CONTACT SALES MODAL DRAWER -->
+  <div id="vercelContactModal" class="v-modal-overlay">
+    <div class="v-modal-card">
+      <button class="v-modal-close" onclick="closeVercelContactModal()">&times;</button>
+      <h2 class="v-modal-title">Contact Sales &amp; Architecture</h2>
+      <p class="v-modal-subtitle">Speak directly with QuantaForze engineering leadership.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Thank you! Your inquiry has been sent to QuantaForze sales & engineering.'); closeVercelContactModal();">
+        <div class="v-form-field">
+          <label class="v-form-label">Full Name*</label>
+          <input type="text" class="v-form-input" placeholder="Alex Morgan" required>
+        </div>
+
+        <div class="v-form-field">
+          <label class="v-form-label">Work Email*</label>
+          <input type="email" class="v-form-input" placeholder="alex@company.com" required>
+        </div>
+
+        <div class="v-form-field">
+          <label class="v-form-label">Company / Organization</label>
+          <input type="text" class="v-form-input" placeholder="Acme Health / Tech Corp">
+        </div>
+
+        <div class="v-form-field">
+          <label class="v-form-label">How can we help?*</label>
+          <textarea class="v-form-textarea" rows="4" placeholder="Tell us about your requirements or deployment scope..." required></textarea>
+        </div>
+
+        <button type="submit" class="v-form-submit">Submit Inquiry &rarr;</button>
+      </form>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
-  <footer class="quanta-footer" style="background: #000000; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #a1a1aa;">
+  <footer class="quanta-footer" style="background: #000000; border-top: 1px solid rgba(255, 255, 255, 0.08);">
     <div class="q-footer-container">
       <div class="q-footer-grid">
         <div class="q-footer-col q-footer-brand">
           <a href="/index.html" class="q-footer-logo" aria-label="QuantaForze Home">
             <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-footer-logo-img">
           </a>
-          <p class="q-footer-slogan" style="color: #71717a;">Organize complexity. Connect intelligence. Automate action.</p>
+          <p class="q-footer-slogan" style="color: #a1a1aa;">Organize complexity. Connect intelligence. Automate action.</p>
         </div>
         <div class="q-footer-col">
           <h3 class="q-footer-title" style="color: #ffffff;"><span class="q-title-bar">|</span> ECOSYSTEM</h3>
@@ -205,6 +194,13 @@
     </div>
   </footer>
 
-  <script type="module" src="/src/pages/contact/contact.js"></script>
+  <script>
+    function openVercelContactModal() {
+      document.getElementById('vercelContactModal').classList.add('active');
+    }
+    function closeVercelContactModal() {
+      document.getElementById('vercelContactModal').classList.remove('active');
+    }
+  </script>
 </body>
 </html>

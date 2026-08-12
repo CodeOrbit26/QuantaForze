@@ -1,240 +1,296 @@
-/* Vercel Inspired Contact Page Styles */
+/* Vercel Contact Page Exact Aesthetic Styles */
 
 .v-contact-body {
-  background-color: #000000;
+  background-color: #000000 !important;
   color: #ededed;
   font-family: var(--font-family-inter, system-ui, -apple-system, sans-serif);
   min-height: 100vh;
 }
 
-/* Background Ambient Radial Spotlight */
-.v-ambient-bg {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 1200px;
-  height: 600px;
-  background: radial-gradient(circle at 50% 0%, rgba(2, 132, 199, 0.15), transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.v-contact-hero {
-  position: relative;
-  z-index: 1;
-  padding-top: 8rem;
-  padding-bottom: 6rem;
-  max-width: 1240px;
+/* Page Container */
+.v-contact-container {
+  max-width: 1140px;
   margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding: 8rem 1.5rem 6rem 1.5rem;
 }
 
-/* 2-Column Split Grid */
-.v-contact-grid {
+/* Giant Vercel H1 Header */
+.v-contact-main-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  margin-bottom: 4rem;
+  line-height: 1.05;
+}
+
+@media (max-width: 768px) {
+  .v-contact-main-title {
+    font-size: 2.75rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Top 2-Column Split Cards Row */
+.v-top-split-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 4rem;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  margin-bottom: 5rem;
 }
 
-@media (max-width: 992px) {
-  .v-contact-grid {
+@media (max-width: 900px) {
+  .v-top-split-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 }
 
-/* Left Column Styling */
-.v-left-col {
+.v-card-col {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
-.v-badge-pill {
+.v-card-category {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #38bdf8;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  width: fit-content;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
 }
 
-.v-contact-title {
-  font-size: 3rem;
-  font-weight: 800;
+.v-card-headline {
+  font-size: 1.35rem;
+  font-weight: 500;
   color: #ffffff;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  margin-top: 0.5rem;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  margin-bottom: 2rem;
+  flex-grow: 1;
 }
 
-@media (max-width: 640px) {
-  .v-contact-title {
-    font-size: 2.25rem;
+.v-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Vercel Action Buttons */
+.v-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.v-btn-primary:hover {
+  background: #e4e4e7;
+  border-color: #e4e4e7;
+  transform: translateY(-1px);
+}
+
+.v-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  background: #18181b;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #27272a;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.v-btn-secondary:hover {
+  background: #27272a;
+  border-color: #3f3f46;
+  color: #ffffff;
+}
+
+.v-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #a1a1aa;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.v-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+}
+
+/* Bottom 3-Column Resource Grid */
+.v-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 900px) {
+  .v-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 }
 
-.v-contact-subtitle {
-  font-size: 1.1rem;
-  color: #a1a1aa;
-  line-height: 1.65;
-  max-width: 520px;
-}
-
-/* Trust Cards Stack */
-.v-trust-stack {
+.v-res-card {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 1rem;
 }
 
-.v-trust-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.85rem;
-  padding: 1.25rem;
-  transition: all 0.25s ease;
+.v-res-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  margin-bottom: 0.85rem;
+  font-weight: 500;
 }
 
-.v-trust-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(56, 189, 248, 0.3);
+.v-res-desc {
+  font-size: 0.92rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
-.v-trust-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.6rem;
-  background: rgba(56, 189, 248, 0.1);
-  color: #38bdf8;
+.v-btn-pill-muted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  width: fit-content;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.v-btn-pill-muted:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Dark Glass Contact Form Modal */
+.v-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
 }
 
-.v-trust-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.25rem;
+.v-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.v-trust-desc {
-  font-size: 0.88rem;
-  color: #a1a1aa;
-  line-height: 1.5;
+.v-modal-card {
+  background: #0a0a0a;
+  border: 1px solid #27272a;
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
 }
 
-/* Direct Contact Info Box */
-.v-direct-info {
-  margin-top: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.v-info-item-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.v-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
   color: #71717a;
-  margin-bottom: 0.3rem;
-}
-
-.v-info-item-value {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #ffffff;
-  text-decoration: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.35rem;
   transition: color 0.2s ease;
 }
 
-.v-info-item-value:hover {
-  color: #38bdf8;
+.v-modal-close:hover {
+  color: #ffffff;
 }
 
-/* Right Form Glass Card */
-.v-form-card {
-  background: rgba(18, 18, 18, 0.8);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.25rem;
-  padding: 2.5rem;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-}
-
-@media (max-width: 640px) {
-  .v-form-card {
-    padding: 1.75rem;
-  }
-}
-
-.v-form-title {
-  font-size: 1.5rem;
+.v-modal-title {
+  font-size: 1.6rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
-.v-form-subtitle {
-  font-size: 0.88rem;
+.v-modal-subtitle {
+  font-size: 0.9rem;
   color: #71717a;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
-.v-form-group {
+.v-form-field {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
   margin-bottom: 1.25rem;
 }
 
-.v-form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-@media (max-width: 640px) {
-  .v-form-row {
-    grid-template-columns: 1fr;
-  }
-}
-
 .v-form-label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #d4d4d8;
+  color: #a1a1aa;
 }
 
 .v-form-input,
-.v-form-select,
 .v-form-textarea {
   width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 0.6rem;
-  background: #0a0a0a;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: #121212;
+  border: 1px solid #27272a;
   color: #ffffff;
   font-size: 0.92rem;
   font-family: inherit;
@@ -244,95 +300,25 @@
 }
 
 .v-form-input:focus,
-.v-form-select:focus,
 .v-form-textarea:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
 }
 
-.v-form-input::placeholder,
-.v-form-textarea::placeholder {
-  color: #52525b;
-}
-
-.v-form-submit-btn {
+.v-form-submit {
   width: 100%;
-  padding: 0.95rem 1.5rem;
-  border-radius: 0.6rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 9999px;
   background: #ffffff;
   color: #000000;
   border: none;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
   transition: all 0.2s ease;
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
 }
 
-.v-form-submit-btn:hover {
-  background: #38bdf8;
-  color: #000000;
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
-  transform: translateY(-1px);
-}
-
-/* Bottom Resources Banner */
-.v-resources-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 4rem 1.5rem 6rem 1.5rem;
-  max-width: 1240px;
-  margin: 0 auto;
-}
-
-.v-resources-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.v-resources-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .v-resources-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.v-resource-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.85rem;
-  padding: 1.5rem;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.2s ease;
-}
-
-.v-resource-card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.v-resource-card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.4rem;
-}
-
-.v-resource-card-desc {
-  font-size: 0.88rem;
-  color: #a1a1aa;
-  line-height: 1.5;
+.v-form-submit:hover {
+  background: #e4e4e7;
 }
