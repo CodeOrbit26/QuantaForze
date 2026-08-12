@@ -1,48 +1,50 @@
-/* QuantaForze Light Theme Contact Page (Vercel Exact Specs) */
+/* Pixel-Perfect Vercel Contact Page Specs for QuantaForze Light Theme */
 
 .v-contact-body {
   background-color: #ffffff !important;
-  color: #000000;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0f172a;
+  font-family: var(--font-family-inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
 
-/* Page Container — Vercel 1120px Centered Canvas */
+/* Main Container Geometry */
 .v-contact-container {
-  max-width: 1120px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 7rem 2rem 6rem 2rem;
+  padding: 6rem 2rem 6rem 2rem;
 }
 
 /* Giant Vercel H1 Header */
 .v-contact-main-title {
-  font-size: 3.75rem;
+  font-size: clamp(3rem, 5.5vw, 4.5rem);
   font-weight: 800;
-  color: #000000;
+  color: #0f172a;
   letter-spacing: -0.04em;
-  margin-bottom: 5rem;
   line-height: 1.05;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
 }
 
 @media (max-width: 768px) {
   .v-contact-main-title {
-    font-size: 2.5rem;
+    margin-top: 1rem;
     margin-bottom: 3rem;
   }
 }
 
-/* Top 2-Column Split Cards Row */
+/* Top 2-Column Split Grid */
 .v-top-split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 4rem 6rem;
   margin-bottom: 6rem;
 }
 
 @media (max-width: 900px) {
   .v-top-split-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
   }
 }
 
@@ -51,72 +53,78 @@
   flex-direction: column;
 }
 
-/* Vercel 13px Category Label */
 .v-card-category {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.8125rem; /* 13px */
-  color: #666666;
-  margin-bottom: 0.85rem;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
   font-weight: 500;
+  color: #64748b;
+  margin-bottom: 1rem;
 }
 
-/* Vercel 20px Headline */
 .v-card-headline {
-  font-size: 1.25rem; /* 20px */
-  font-weight: 400;
-  color: #000000;
-  line-height: 1.5;
-  letter-spacing: -0.015em;
-  margin-bottom: 1.75rem;
-  max-width: 440px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  max-width: 480px;
   flex-grow: 1;
+}
+
+@media (max-width: 640px) {
+  .v-card-headline {
+    font-size: 1.25rem;
+  }
 }
 
 .v-card-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
-/* Vercel Action Buttons (13px, 100px Pill radius) */
+/* Vercel Action Buttons */
 .v-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1.15rem; /* 8px 18px */
+  height: 40px;
+  padding: 0 1.25rem;
   border-radius: 9999px;
-  background: #000000;
+  background: #0f172a;
   color: #ffffff;
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
-  border: 1px solid #000000;
-  transition: all 0.2s ease;
+  border: 1px solid #0f172a;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  letter-spacing: -0.01em;
 }
 
 .v-btn-primary:hover {
-  background: #2b2b2b;
-  border-color: #2b2b2b;
+  background: #0284c7;
+  border-color: #0284c7;
   color: #ffffff;
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
 }
 
 .v-status-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.5rem 1.1rem;
+  gap: 0.5rem;
+  height: 40px;
+  padding: 0 1.15rem;
   border-radius: 9999px;
-  background: #f5f5f5;
-  color: #666666;
-  font-size: 0.8125rem; /* 13px */
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.8125rem;
   font-weight: 500;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e2e8f0;
 }
 
 .v-status-dot {
@@ -124,16 +132,16 @@
   height: 7px;
   border-radius: 50%;
   background: #10b981;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  box-shadow: 0 0 8px #10b981;
 }
 
-/* Bottom 3-Column Resource Grid (Vercel Exact Spacing) */
+/* Bottom 3-Column Resource Grid */
 .v-bottom-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 3.5rem;
   padding-top: 4rem;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #e2e8f0;
 }
 
 @media (max-width: 900px) {
@@ -151,18 +159,18 @@
 .v-res-category {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.8125rem; /* 13px */
-  color: #666666;
-  margin-bottom: 0.75rem;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
   font-weight: 500;
+  color: #64748b;
+  margin-bottom: 0.75rem;
 }
 
 .v-res-desc {
-  font-size: 0.875rem; /* 14px */
-  color: #666666;
+  font-size: 0.875rem;
+  color: #64748b;
   line-height: 1.5;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
   flex-grow: 1;
 }
 
@@ -170,33 +178,34 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.45rem 1rem;
+  height: 36px;
+  padding: 0 1rem;
   border-radius: 9999px;
-  background: #f5f5f5;
-  color: #000000;
-  font-size: 0.75rem; /* 12px */
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 0.8125rem;
   font-weight: 500;
   text-decoration: none;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e2e8f0;
   width: fit-content;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   cursor: pointer;
 }
 
 .v-btn-pill-muted:hover {
-  background: #ebebeb;
-  border-color: #d4d4d4;
-  color: #000000;
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+  color: #0f172a;
 }
 
-/* Light Theme Contact Form Modal */
+/* Contact Sales Modal Drawer */
 .v-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(8px);
   z-index: 999;
   display: flex;
@@ -215,13 +224,13 @@
 
 .v-modal-card {
   background: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 1rem;
-  padding: 2.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 2.5rem;
   width: 100%;
-  max-width: 500px;
+  max-width: 540px;
   position: relative;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
 .v-modal-close {
@@ -230,7 +239,7 @@
   right: 1.25rem;
   background: transparent;
   border: none;
-  color: #888888;
+  color: #94a3b8;
   font-size: 1.25rem;
   cursor: pointer;
   padding: 0.35rem;
@@ -238,44 +247,44 @@
 }
 
 .v-modal-close:hover {
-  color: #000000;
+  color: #0f172a;
 }
 
 .v-modal-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #000000;
-  margin-bottom: 0.35rem;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
 }
 
 .v-modal-subtitle {
-  font-size: 0.875rem;
-  color: #666666;
-  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1.75rem;
 }
 
 .v-form-field {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  margin-bottom: 1.15rem;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
 }
 
 .v-form-label {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #444444;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
 }
 
 .v-form-input,
 .v-form-textarea {
   width: 100%;
-  padding: 0.7rem 0.9rem;
+  padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  background: #fafafa;
-  border: 1px solid #e5e5e5;
-  color: #000000;
-  font-size: 0.875rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-size: 0.92rem;
   font-family: inherit;
   outline: none;
   box-sizing: border-box;
@@ -284,25 +293,26 @@
 
 .v-form-input:focus,
 .v-form-textarea:focus {
-  border-color: #000000;
+  border-color: #0284c7;
   background: #ffffff;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
 }
 
 .v-form-submit {
   width: 100%;
-  padding: 0.75rem 1.25rem;
+  padding: 0.85rem 1.5rem;
   border-radius: 9999px;
-  background: #000000;
+  background: #0f172a;
   color: #ffffff;
   border: none;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.92rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 0.5rem;
 }
 
 .v-form-submit:hover {
-  background: #2b2b2b;
+  background: #0284c7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
 }
