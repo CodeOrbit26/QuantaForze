@@ -1,0 +1,512 @@
+/* Google Cloud Documentation Inspired Portal Styles */
+
+.gc-docs-body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-family: var(--font-family-inter, system-ui, -apple-system, sans-serif);
+}
+
+/* Docs Header & Search Sub-Bar */
+.gc-docs-hero-bar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 2.5rem 0 2rem 0;
+  margin-top: 4.5rem;
+}
+
+.gc-docs-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.gc-docs-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem;
+}
+
+.gc-docs-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  max-width: 720px;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+
+/* Search Bar Box */
+.gc-search-container {
+  max-width: 680px;
+  position: relative;
+}
+
+.gc-search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gc-search-icon {
+  position: absolute;
+  left: 1.1rem;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.gc-search-input {
+  width: 100%;
+  padding: 0.85rem 3.5rem 0.85rem 3rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  font-size: 0.95rem;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.gc-search-input:focus {
+  outline: none;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+}
+
+.gc-search-kbd {
+  position: absolute;
+  right: 1rem;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.35rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-family: var(--font-family-supply-mono, monospace);
+  color: #64748b;
+}
+
+/* Product Hub Cards Grid (Google Cloud Docs Featured Products) */
+.gc-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .gc-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .gc-products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gc-product-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  padding: 1.35rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.gc-product-card:hover {
+  transform: translateY(-2px);
+  border-color: #0284c7;
+  box-shadow: 0 10px 24px -4px rgba(2, 132, 199, 0.1);
+}
+
+.gc-product-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0284c7;
+  margin-bottom: 0.5rem;
+}
+
+.gc-product-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+.gc-product-card-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.gc-product-card-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #0284c7;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Docs Main Layout: Left Sidebar + Main Content + Right TOC */
+.gc-docs-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 220px;
+  gap: 2.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem 1.5rem;
+}
+
+@media (max-width: 1100px) {
+  .gc-docs-layout {
+    grid-template-columns: 240px 1fr;
+  }
+  .gc-docs-toc-col {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .gc-docs-layout {
+    grid-template-columns: 1fr;
+  }
+  .gc-docs-sidebar-col {
+    display: none;
+  }
+}
+
+/* Left Sidebar Navigation Menu */
+.gc-sidebar {
+  position: sticky;
+  top: 5.5rem;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.gc-nav-group {
+  margin-bottom: 1.5rem;
+}
+
+.gc-nav-group-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 0.6rem;
+  padding-left: 0.5rem;
+}
+
+.gc-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.gc-nav-item a {
+  display: block;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.88rem;
+  color: #334155;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.gc-nav-item a:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.gc-nav-item.active a {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+}
+
+/* Main Documentation Article Container */
+.gc-article {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 2.75rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+.gc-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-bottom: 1.25rem;
+}
+
+.gc-breadcrumbs a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.gc-breadcrumbs a:hover {
+  color: #0284c7;
+}
+
+.gc-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.gc-meta-pill {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.gc-article h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.gc-article h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 2.25rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.gc-article h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.gc-article p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 1.25rem;
+}
+
+/* Code Snippet Box with Tab Switcher */
+.gc-code-box {
+  background: #0f172a;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border: 1px solid #1e293b;
+}
+
+.gc-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e293b;
+  padding: 0.4rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gc-code-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.gc-code-tab {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gc-code-tab.active {
+  background: #334155;
+  color: #ffffff;
+}
+
+.gc-copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.gc-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.gc-code-pre {
+  padding: 1.25rem;
+  margin: 0;
+  overflow-x: auto;
+  font-family: var(--font-family-supply-mono, monospace);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #f1f5f9;
+}
+
+/* Alert Callout Boxes (Google Cloud Docs Style) */
+.gc-callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.gc-callout-note {
+  background: #f0f9ff;
+  border-left: 4px solid #0284c7;
+  color: #0369a1;
+}
+
+.gc-callout-important {
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  color: #b45309;
+}
+
+.gc-callout-tip {
+  background: #ecfdf5;
+  border-left: 4px solid #10b981;
+  color: #047857;
+}
+
+.gc-callout-title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Page Navigation Footer (Previous / Next) */
+.gc-doc-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.gc-doc-nav-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.gc-doc-nav-card:hover {
+  border-color: #0284c7;
+  background: #f8fafc;
+}
+
+.gc-doc-nav-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+
+.gc-doc-nav-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+/* Right TOC (On this page) */
+.gc-toc {
+  position: sticky;
+  top: 5.5rem;
+}
+
+.gc-toc-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 0.85rem;
+}
+
+.gc-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-left: 2px solid #e2e8f0;
+}
+
+.gc-toc-item a {
+  display: block;
+  padding-left: 0.85rem;
+  font-size: 0.84rem;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.gc-toc-item a:hover {
+  color: #0284c7;
+}
+
+.gc-toc-item.active a {
+  color: #0284c7;
+  font-weight: 600;
+  border-left: 2px solid #0284c7;
+  margin-left: -2px;
+}
