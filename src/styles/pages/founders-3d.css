@@ -139,10 +139,9 @@
   filter: none !important;
 }
 
-/* Tone down brightness of non-hovered cards without making background transparent */
+/* Tone down brightness of non-hovered cards while preserving their exact 3D fan rotations */
 .f-deck-container:hover .f-card:not(:hover) {
   filter: brightness(0.92) contrast(0.9) grayscale(20%);
-  transform: scale(0.96);
 }
 
 /* Visual Card Header Art */
