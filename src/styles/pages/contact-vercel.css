@@ -1,8 +1,8 @@
-/* Vercel Contact Page Exact Aesthetic Styles */
+/* QuantaForze Light Theme Contact Page (Vercel Layout) */
 
 .v-contact-body {
-  background-color: #000000 !important;
-  color: #ededed;
+  background-color: #ffffff !important;
+  color: #0f172a;
   font-family: var(--font-family-inter, system-ui, -apple-system, sans-serif);
   min-height: 100vh;
 }
@@ -14,11 +14,11 @@
   padding: 8rem 1.5rem 6rem 1.5rem;
 }
 
-/* Giant Vercel H1 Header */
+/* Giant H1 Header */
 .v-contact-main-title {
   font-size: 4rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #0f172a;
   letter-spacing: -0.04em;
   margin-bottom: 4rem;
   line-height: 1.05;
@@ -56,15 +56,15 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: #a1a1aa;
+  color: #64748b;
   margin-bottom: 1.25rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .v-card-headline {
   font-size: 1.35rem;
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 600;
+  color: #0f172a;
   line-height: 1.5;
   letter-spacing: -0.015em;
   margin-bottom: 2rem;
@@ -78,27 +78,29 @@
   flex-wrap: wrap;
 }
 
-/* Vercel Action Buttons */
+/* Primary Action Buttons */
 .v-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.65rem 1.35rem;
   border-radius: 9999px;
-  background: #ffffff;
-  color: #000000;
+  background: #0f172a;
+  color: #ffffff;
   font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
-  border: 1px solid #ffffff;
+  border: 1px solid #0f172a;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
 .v-btn-primary:hover {
-  background: #e4e4e7;
-  border-color: #e4e4e7;
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
 }
 
 .v-btn-secondary {
@@ -107,20 +109,20 @@
   justify-content: center;
   padding: 0.65rem 1.35rem;
   border-radius: 9999px;
-  background: #18181b;
-  color: #ffffff;
+  background: #f1f5f9;
+  color: #0f172a;
   font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
-  border: 1px solid #27272a;
+  border: 1px solid #cbd5e1;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .v-btn-secondary:hover {
-  background: #27272a;
-  border-color: #3f3f46;
-  color: #ffffff;
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #0f172a;
 }
 
 .v-status-badge {
@@ -129,11 +131,11 @@
   gap: 0.5rem;
   padding: 0.65rem 1.35rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #a1a1aa;
+  background: #f8fafc;
+  color: #475569;
   font-size: 0.88rem;
   font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #e2e8f0;
 }
 
 .v-status-dot {
@@ -150,7 +152,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
   padding-top: 3.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid #e2e8f0;
 }
 
 @media (max-width: 900px) {
@@ -170,14 +172,14 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: #a1a1aa;
+  color: #64748b;
   margin-bottom: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .v-res-desc {
   font-size: 0.92rem;
-  color: #a1a1aa;
+  color: #64748b;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   flex-grow: 1;
@@ -189,32 +191,32 @@
   justify-content: center;
   padding: 0.55rem 1.15rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
+  background: #f1f5f9;
+  color: #0f172a;
   font-size: 0.82rem;
   font-weight: 600;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #cbd5e1;
   width: fit-content;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .v-btn-pill-muted:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #0f172a;
 }
 
-/* Dark Glass Contact Form Modal */
+/* Light Theme Contact Form Modal */
 .v-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
   z-index: 999;
   display: flex;
   align-items: center;
@@ -231,14 +233,14 @@
 }
 
 .v-modal-card {
-  background: #0a0a0a;
-  border: 1px solid #27272a;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 1.25rem;
   padding: 2.5rem;
   width: 100%;
   max-width: 540px;
   position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
 .v-modal-close {
@@ -247,7 +249,7 @@
   right: 1.25rem;
   background: transparent;
   border: none;
-  color: #71717a;
+  color: #94a3b8;
   font-size: 1.25rem;
   cursor: pointer;
   padding: 0.35rem;
@@ -255,19 +257,19 @@
 }
 
 .v-modal-close:hover {
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .v-modal-title {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   margin-bottom: 0.4rem;
 }
 
 .v-modal-subtitle {
   font-size: 0.9rem;
-  color: #71717a;
+  color: #64748b;
   margin-bottom: 1.75rem;
 }
 
@@ -281,7 +283,7 @@
 .v-form-label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #a1a1aa;
+  color: #334155;
 }
 
 .v-form-input,
@@ -289,9 +291,9 @@
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  background: #121212;
-  border: 1px solid #27272a;
-  color: #ffffff;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
   font-size: 0.92rem;
   font-family: inherit;
   outline: none;
@@ -301,16 +303,17 @@
 
 .v-form-input:focus,
 .v-form-textarea:focus {
-  border-color: #ffffff;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+  border-color: #0284c7;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
 }
 
 .v-form-submit {
   width: 100%;
   padding: 0.85rem 1.5rem;
   border-radius: 9999px;
-  background: #ffffff;
-  color: #000000;
+  background: #0f172a;
+  color: #ffffff;
   border: none;
   font-size: 0.92rem;
   font-weight: 700;
@@ -320,5 +323,6 @@
 }
 
 .v-form-submit:hover {
-  background: #e4e4e7;
+  background: #0284c7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
 }
