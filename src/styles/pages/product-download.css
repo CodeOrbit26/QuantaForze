@@ -54,8 +54,15 @@
 }
 
 @keyframes pdBlinkCursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 .pd-btn-release {
@@ -158,14 +165,17 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem 0;
   }
+
   .pd-spec-item {
     border-right: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     padding-bottom: 1rem;
   }
+
   .pd-spec-item:nth-child(2n) {
     border-right: none;
   }
+
   .pd-spec-item:nth-last-child(-n+2) {
     border-bottom: none;
     padding-bottom: 0;
@@ -177,11 +187,13 @@
     grid-template-columns: 1fr;
     gap: 1rem 0;
   }
+
   .pd-spec-item {
     padding: 0.5rem 0;
     border-right: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
+
   .pd-spec-item:last-child {
     border-bottom: none;
   }
@@ -222,8 +234,8 @@
 
 .pd-section-title {
   font-size: 2.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: 0;
   color: #0f172a;
 }
 
@@ -428,9 +440,17 @@
   border-radius: 50%;
 }
 
-.pd-dot-red { background: #ef4444; }
-.pd-dot-yellow { background: #f59e0b; }
-.pd-dot-green { background: #10b981; }
+.pd-dot-red {
+  background: #ef4444;
+}
+
+.pd-dot-yellow {
+  background: #f59e0b;
+}
+
+.pd-dot-green {
+  background: #10b981;
+}
 
 .pd-cli-title {
   font-family: var(--font-family-supply-mono, monospace);
@@ -523,7 +543,7 @@
   -webkit-backdrop-filter: blur(28px) saturate(210%);
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.12),
-              inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .pd-main-page .site-head.quanta-navbar.is-scrolled .q-nav-container {
