@@ -132,13 +132,20 @@
   opacity: 0.9;
 }
 
-/* Card Hover State */
+/* Card Hover Focus Spotlight State */
 .f-card:hover {
-  transform: rotateY(0deg) rotateZ(0deg) translateY(-35px) translateZ(160px) scale(1.06) !important;
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-45px) translateZ(180px) scale(1.08) !important;
   border-color: #0284c7 !important;
-  box-shadow: 0 40px 80px rgba(2, 132, 199, 0.28) !important;
+  box-shadow: 0 40px 80px rgba(2, 132, 199, 0.32) !important;
   z-index: 100 !important;
   opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Dim & Push Back Non-Hovered Cards when deck is hovered */
+.f-deck-container:hover .f-card:not(:hover) {
+  opacity: 0.35 !important;
+  filter: blur(1.5px) grayscale(30%);
 }
 
 /* Visual Card Header Art */
