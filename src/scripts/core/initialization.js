@@ -401,4 +401,39 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('theme-light');
   } catch (e) {}
 
+  // Typewriter Effect for Product Pages
+  const typewriterElements = document.querySelectorAll('.pd-typewriter');
+  typewriterElements.forEach(el => {
+    const words = JSON.parse(el.getAttribute('data-words') || '["macOS", "Windows", "Linux", "Enterprise"]');
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const type = () => {
+      const currentWord = words[wordIndex];
+      if (isDeleting) {
+        el.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        el.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = isDeleting ? 45 : 95;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 1800; // Pause at end of word
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 400; // Pause before next word
+      }
+
+      setTimeout(type, typeSpeed);
+    };
+
+    type();
+  });
+
 });
