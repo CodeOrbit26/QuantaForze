@@ -1,0 +1,304 @@
+/* ================================================================
+   PRODUCT DOWNLOAD & DETAILS PAGE STYLES (Google Antigravity Aesthetic)
+   ================================================================ */
+
+.pd-main {
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  background-color: #ffffff;
+  color: #0f172a;
+  min-height: 100vh;
+  font-family: var(--font-family-frama, system-ui, -apple-system, sans-serif);
+}
+
+.pd-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header & Navigation Pills */
+.pd-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.pd-hero-title {
+  font-size: 3.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  line-height: 1.1;
+  max-width: 800px;
+}
+
+.pd-btn-release {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.pd-btn-release:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Category Filter Tabs */
+.pd-tabs-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.pd-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pd-tab:hover,
+.pd-tab.active {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.pd-tab svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Product Section Blocks */
+.pd-section {
+  margin-bottom: 5rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pd-section:last-child {
+  border-bottom: none;
+}
+
+.pd-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.pd-section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.pd-version-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  background: #e0f2fe;
+  color: #0284c7;
+  font-size: 0.825rem;
+  font-weight: 600;
+  font-family: var(--font-family-supply-mono, monospace);
+}
+
+.pd-section-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 680px;
+  margin-bottom: 2.5rem;
+}
+
+/* 3-Column Download Grid */
+.pd-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .pd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pd-os-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 0.75rem;
+}
+
+.pd-os-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1.25rem;
+}
+
+.pd-os-title svg {
+  width: 20px;
+  height: 20px;
+}
+
+.pd-download-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.pd-btn-download-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border-radius: 9999px;
+  background: #18181b;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.pd-btn-download-main:hover {
+  background: #27272a;
+  transform: translateY(-1px);
+}
+
+.pd-btn-download-sub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border-radius: 9999px;
+  background: #f4f4f5;
+  color: #18181b;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.pd-btn-download-sub:hover {
+  background: #e4e4e7;
+}
+
+.pd-req-box {
+  margin-top: auto;
+}
+
+.pd-req-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 0.35rem;
+}
+
+.pd-req-text {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #71717a;
+}
+
+/* CLI Command Copy Blocks */
+.pd-cli-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 850px;
+}
+
+.pd-cli-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pd-cli-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #18181b;
+}
+
+.pd-code-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f4f4f5;
+  border-radius: 1rem;
+  padding: 0.9rem 1.25rem;
+  gap: 1rem;
+  border: 1px solid #e4e4e7;
+}
+
+.pd-code-text {
+  font-family: var(--font-family-supply-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.925rem;
+  color: #18181b;
+  word-break: break-all;
+}
+
+.pd-copy-btn {
+  background: transparent;
+  border: none;
+  color: #71717a;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.pd-copy-btn:hover {
+  background: #e4e4e7;
+  color: #18181b;
+}
