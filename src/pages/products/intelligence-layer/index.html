@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Intelligence Layer for MacOS, Windows & Linux | QuantaForze</title>
+  <title>Intelligence Layer | AI Context & Reasoning Engine | QuantaForze</title>
   <meta name="description" content="Download QuantaForze Intelligence Layer for macOS, Windows, and Linux. Shared AI reasoning, context retrieval, knowledge graphs, and model integration.">
   <link rel="stylesheet" href="/src/styles/base/layout.css">
   <link rel="stylesheet" href="/src/styles/base/base.css">
@@ -39,8 +39,8 @@
       
       <!-- Hero Header -->
       <div class="pd-hero-header">
-        <h1 class="pd-hero-title">Download Intelligence Layer for MacOS</h1>
-        <a href="#releases" class="pd-btn-release">View previous releases</a>
+        <h1 class="pd-hero-title">Download Intelligence Layer for macOS</h1>
+        <a href="#releases" class="pd-btn-release">View Previous Releases &rarr;</a>
       </div>
 
       <!-- Quick Filter Pills -->
@@ -52,14 +52,34 @@
           <span>&gt;_ Intelligence CLI</span>
         </a>
         <a href="#ide" class="pd-tab">
-          <span>&lt;&gt; Knowledge Graph Studio</span>
+          <span>&lt;&gt; Knowledge Studio</span>
         </a>
         <a href="#sdk" class="pd-tab">
           <span>📦 Intelligence SDK</span>
         </a>
       </div>
 
-      <!-- Section 1: Engine Download Grid -->
+      <!-- Architectural Specs Grid -->
+      <div class="pd-specs-grid">
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Reasoning Model</span>
+          <span class="pd-spec-value">Google Gemini 3.6 Flash Integration</span>
+        </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Memory Architecture</span>
+          <span class="pd-spec-value">Vector Graph Context Memory</span>
+        </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Throughput</span>
+          <span class="pd-spec-value">12,500 Tokens / sec Streaming</span>
+        </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Latest Version</span>
+          <span class="pd-spec-value">v2.7.1 Stable Release</span>
+        </div>
+      </div>
+
+      <!-- Section 1: Desktop Engine Download Grid -->
       <section id="app" class="pd-section">
         <div class="pd-section-header">
           <h2 class="pd-section-title">Intelligence Layer 2.0</h2>
@@ -71,51 +91,51 @@
           <!-- macOS -->
           <div class="pd-os-card">
             <div class="pd-os-title">
-              <span></span> macOS
+              <span class="pd-os-icon"></span> macOS
             </div>
             <div class="pd-download-stack">
-              <a href="#" class="pd-btn-download-main">Download for Apple Silicon</a>
+              <a href="#" class="pd-btn-download-main">Download for Apple Silicon &rarr;</a>
               <a href="#" class="pd-btn-download-sub">Download for Intel</a>
             </div>
             <div class="pd-req-box">
               <div class="pd-req-title">Minimum Requirements</div>
-              <p class="pd-req-text">macOS versions with Apple security update support. Min Version 12 (Monterey). x86 is supported via Intel build.</p>
+              <p class="pd-req-text">macOS versions with Apple security update support. Min Version 12 (Monterey). Universal binary supported.</p>
             </div>
           </div>
 
           <!-- Windows -->
           <div class="pd-os-card">
             <div class="pd-os-title">
-              <span>🪟</span> Windows
+              <span class="pd-os-icon">🪟</span> Windows
             </div>
             <div class="pd-download-stack">
-              <a href="#" class="pd-btn-download-main">Download for x64</a>
+              <a href="#" class="pd-btn-download-main">Download for x64 &rarr;</a>
               <a href="#" class="pd-btn-download-sub">Download for ARM64</a>
             </div>
             <div class="pd-req-box">
               <div class="pd-req-title">Minimum Requirements</div>
-              <p class="pd-req-text">Windows 10 / 11 (64 bit) with Webview2 Runtime installed.</p>
+              <p class="pd-req-text">Windows 10 / 11 (64-bit) with Microsoft WebView2 Runtime installed.</p>
             </div>
           </div>
 
           <!-- Linux -->
           <div class="pd-os-card">
             <div class="pd-os-title">
-              <span>🐧</span> Linux
+              <span class="pd-os-icon">🐧</span> Linux
             </div>
             <div class="pd-download-stack">
-              <a href="#" class="pd-btn-download-main">Download for x64 (.deb / .AppImage)</a>
-              <a href="#" class="pd-btn-download-sub">Download for ARM64 (.tar.gz)</a>
+              <a href="#" class="pd-btn-download-main">Download (.deb / .AppImage) &rarr;</a>
+              <a href="#" class="pd-btn-download-sub">Download (.tar.gz ARM64)</a>
             </div>
             <div class="pd-req-box">
               <div class="pd-req-title">Minimum Requirements</div>
-              <p class="pd-req-text">glibc &gt;= 2.28, glibcxx &gt;= 3.4.25 (e.g. Ubuntu 20.04+, Debian 10+, Fedora 36+).</p>
+              <p class="pd-req-text">glibc &gt;= 2.28, glibcxx &gt;= 3.4.25 (e.g., Ubuntu 20.04+, Debian 10+, Fedora 36+).</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Section 2: CLI Terminal Section -->
+      <!-- Section 2: CLI Terminal Window Widget -->
       <section id="cli" class="pd-section">
         <div class="pd-section-header">
           <h2 class="pd-section-title">Intelligence CLI</h2>
@@ -123,30 +143,34 @@
         </div>
         <p class="pd-section-desc">Query knowledge graphs, index local codebases into embeddings, and execute AI reasoning pipelines from the shell.</p>
 
-        <div class="pd-cli-group">
-          <!-- macOS / Linux Shell -->
-          <div class="pd-cli-item">
-            <div class="pd-cli-label">
-              <span> macOS</span> | <span>🐧 Linux</span>
+        <div class="pd-cli-widget">
+          <div class="pd-cli-topbar">
+            <div class="pd-cli-dots">
+              <span class="pd-cli-dot pd-dot-red"></span>
+              <span class="pd-cli-dot pd-dot-yellow"></span>
+              <span class="pd-cli-dot pd-dot-green"></span>
             </div>
-            <div class="pd-code-box">
-              <span class="pd-code-text">curl -fsSL https://quantaforze.com/intelligence/cli/install.sh | bash</span>
-              <button class="pd-copy-btn" onclick="navigator.clipboard.writeText('curl -fsSL https://quantaforze.com/intelligence/cli/install.sh | bash'); alert('Copied to clipboard!');" title="Copy to clipboard">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              </button>
-            </div>
+            <span class="pd-cli-title">bash — Intelligence CLI Terminal v1.1.12</span>
           </div>
-
-          <!-- Windows PowerShell -->
-          <div class="pd-cli-item">
-            <div class="pd-cli-label">
-              <span>🪟 Windows PowerShell</span>
+          <div class="pd-cli-body">
+            <div class="pd-cli-item">
+              <div class="pd-cli-label"> macOS &amp; 🐧 Linux (One-line Quick Install)</div>
+              <div class="pd-code-box">
+                <span class="pd-code-text">curl -fsSL https://quantaforze.com/intelligence/cli/install.sh | bash</span>
+                <button class="pd-copy-btn" onclick="navigator.clipboard.writeText('curl -fsSL https://quantaforze.com/intelligence/cli/install.sh | bash'); alert('Copied to clipboard!');">
+                  <span>Copy</span>
+                </button>
+              </div>
             </div>
-            <div class="pd-code-box">
-              <span class="pd-code-text">irm https://quantaforze.com/intelligence/cli/install.ps1 | iex</span>
-              <button class="pd-copy-btn" onclick="navigator.clipboard.writeText('irm https://quantaforze.com/intelligence/cli/install.ps1 | iex'); alert('Copied to clipboard!');" title="Copy to clipboard">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              </button>
+
+            <div class="pd-cli-item">
+              <div class="pd-cli-label">🪟 Windows PowerShell</div>
+              <div class="pd-code-box">
+                <span class="pd-code-text">irm https://quantaforze.com/intelligence/cli/install.ps1 | iex</span>
+                <button class="pd-copy-btn" onclick="navigator.clipboard.writeText('irm https://quantaforze.com/intelligence/cli/install.ps1 | iex'); alert('Copied to clipboard!');">
+                  <span>Copy</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -160,14 +184,24 @@
         </div>
         <p class="pd-section-desc">Connect custom LLM providers and retrieval engines into QuantaForze reasoning loops.</p>
 
-        <div class="pd-cli-group">
-          <div class="pd-cli-item">
-            <div class="pd-cli-label">npm / yarn / pnpm</div>
-            <div class="pd-code-box">
-              <span class="pd-code-text">npm install @quantaforze/intelligence-layer</span>
-              <button class="pd-copy-btn" onclick="navigator.clipboard.writeText('npm install @quantaforze/intelligence-layer'); alert('Copied to clipboard!');">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              </button>
+        <div class="pd-cli-widget">
+          <div class="pd-cli-topbar">
+            <div class="pd-cli-dots">
+              <span class="pd-cli-dot pd-dot-red"></span>
+              <span class="pd-cli-dot pd-dot-yellow"></span>
+              <span class="pd-cli-dot pd-dot-green"></span>
+            </div>
+            <span class="pd-cli-title">npm — @quantaforze/intelligence-layer</span>
+          </div>
+          <div class="pd-cli-body">
+            <div class="pd-cli-item">
+              <div class="pd-cli-label">Package Manager Installation</div>
+              <div class="pd-code-box">
+                <span class="pd-code-text">npm install @quantaforze/intelligence-layer</span>
+                <button class="pd-copy-btn" onclick="navigator.clipboard.writeText('npm install @quantaforze/intelligence-layer'); alert('Copied to clipboard!');">
+                  <span>Copy</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
