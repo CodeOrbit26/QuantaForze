@@ -5,8 +5,8 @@
 
 .site-head.quanta-navbar.is-scrolled {
   top: 1rem;
-  width: calc(100% - 3rem);
-  max-width: 1080px;
+  width: 96%;
+  max-width: 1840px;
   height: 3.75rem;
   border-radius: 9999px;
 }
