@@ -40,7 +40,7 @@
         <a href="#app" class="pd-tab active">
           <span>Autonomous AI Agent</span>
         </a>
-        <a href="#app" class="pd-tab">
+        <a href="#axiovital-os" class="pd-tab">
           <span>AxioVital OS</span>
         </a>
       </div>
@@ -114,6 +114,84 @@
             <div class="pd-req-box">
               <div class="pd-req-title">Minimum Requirements</div>
               <p class="pd-req-text">Linux builds (.deb / .AppImage) in development. Join early access release list.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: AxioVital OS Dedicated Section -->
+      <section id="axiovital-os" class="pd-section" style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(0, 0, 0, 0.08);">
+        <div class="pd-section-header">
+          <h2 class="pd-section-title">AxioVital OS</h2>
+          <span class="pd-version-badge" style="background: #ecfdf5; color: #059669; border-color: rgba(5, 150, 105, 0.2);">v3.0 Kernel</span>
+        </div>
+        <p class="pd-section-desc">Specialized healthcare operating environment &amp; zero-trust hospital kernel designed for real-time ICU telemetry, low-latency node synchronization, and mission-critical clinical infrastructure.</p>
+
+        <!-- OS Features / Capabilities Sub-Grid -->
+        <div class="pd-os-features-grid">
+          <div class="pd-os-feat-card">
+            <div class="pd-os-feat-icon">⚡</div>
+            <h3 class="pd-os-feat-title">Real-Time Telemetry Kernel</h3>
+            <p class="pd-os-feat-text">Microsecond-deterministic scheduling engine for continuous ICU patient vital monitoring, ECG telemetry, and emergency dispatch notifications.</p>
+          </div>
+
+          <div class="pd-os-feat-card">
+            <div class="pd-os-feat-icon">🔒</div>
+            <h3 class="pd-os-feat-title">HIPAA Hardware Vault</h3>
+            <p class="pd-os-feat-text">Hardware-enclave cryptographic storage for patient health records (EHR), compliant with HIPAA, ISO 27001, and SOC2 Type II standards.</p>
+          </div>
+
+          <div class="pd-os-feat-card">
+            <div class="pd-os-feat-icon">🌐</div>
+            <h3 class="pd-os-feat-title">HL7 FHIR &amp; DICOM Engine</h3>
+            <p class="pd-os-feat-text">Native pipeline drivers for bidirectional data exchange with hospital EHR systems including Epic, Cerner, and Allscripts.</p>
+          </div>
+        </div>
+
+        <!-- Deployment & Appliance Options Stack -->
+        <div class="pd-grid" style="margin-top: 2.5rem;">
+          <!-- Bare-Metal ISO -->
+          <div class="pd-os-card">
+            <div class="pd-os-title">
+              <span class="pd-os-icon">💿</span> Enterprise ISO Image
+            </div>
+            <div class="pd-download-stack">
+              <a href="#" class="pd-btn-download-main" onclick="alert('AxioVital OS ISO download started!'); return false;">Download Bare-Metal ISO &rarr;</a>
+              <a href="#" class="pd-btn-download-sub">SHA-256 Checksum</a>
+            </div>
+            <div class="pd-req-box">
+              <div class="pd-req-title">System Target</div>
+              <p class="pd-req-text">x86_64 / ARM64 Hospital Server Nodes. UEFI boot required. Min 16GB RAM, 128GB NVMe SSD.</p>
+            </div>
+          </div>
+
+          <!-- Virtual Appliance -->
+          <div class="pd-os-card">
+            <div class="pd-os-title">
+              <span class="pd-os-icon">🖥️</span> Virtual Appliance
+            </div>
+            <div class="pd-download-stack">
+              <a href="#" class="pd-btn-download-main" onclick="alert('AxioVital OS OVA Appliance download started!'); return false;">Download OVA Appliance &rarr;</a>
+              <a href="#" class="pd-btn-download-sub">Download QCOW2 Image</a>
+            </div>
+            <div class="pd-req-box">
+              <div class="pd-req-title">Supported Hypervisors</div>
+              <p class="pd-req-text">VMware ESXi 7.0+, Proxmox VE 8.0+, Microsoft Hyper-V, and KVM hypervisors.</p>
+            </div>
+          </div>
+
+          <!-- Cloud Deploy -->
+          <div class="pd-os-card">
+            <div class="pd-os-title">
+              <span class="pd-os-icon">☁️</span> Cloud Image
+            </div>
+            <div class="pd-download-stack">
+              <a href="#" class="pd-btn-download-main" onclick="alert('Redirecting to AWS Marketplace Deployment...'); return false;">Deploy on AWS AMI &rarr;</a>
+              <a href="#" class="pd-btn-download-sub">Azure &amp; GCP Images</a>
+            </div>
+            <div class="pd-req-box">
+              <div class="pd-req-title">Cloud Infrastructure</div>
+              <p class="pd-req-text">Pre-configured cloud images for automated Terraform &amp; Kubernetes cluster deployment.</p>
             </div>
           </div>
         </div>

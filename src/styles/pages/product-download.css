@@ -534,3 +534,57 @@
 .q-btn-download-nav:hover svg {
   transform: translateY(1.5px);
 }
+
+/* AxioVital OS Sub-Features Grid */
+.pd-os-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 992px) {
+  .pd-os-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pd-os-feat-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.pd-os-feat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: 0 12px 25px -4px rgba(0, 0, 0, 0.08);
+}
+
+.pd-os-feat-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: #f0f9ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.pd-os-feat-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.pd-os-feat-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #64748b;
+}
