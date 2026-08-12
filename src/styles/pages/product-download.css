@@ -480,3 +480,31 @@
   max-width: 100%;
   padding: 0 1.75rem;
 }
+
+.q-btn-download-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.925rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  border: none;
+}
+
+.q-btn-download-nav:hover {
+  background: #0284c7;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
+}
+
+.q-btn-download-nav svg {
+  width: 14px;
+  height: 14px;
+}
