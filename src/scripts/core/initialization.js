@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Typewriter Effect for Product Pages
   const typewriterElements = document.querySelectorAll('.pd-typewriter');
   typewriterElements.forEach(el => {
-    const words = JSON.parse(el.getAttribute('data-words') || '["macOS", "Windows", "Linux", "AxioVital OS"]');
+    const words = JSON.parse(el.getAttribute('data-words') || '["macOS", "Windows", "Linux", "Enterprise"]');
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
