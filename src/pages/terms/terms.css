@@ -1,2 +1,216 @@
-/* Terms Page Styles */
+/* Terms of Service Page Styles - Vercel Design Architecture with QuantaForze Signature Palette */
 @import '../../styles/main.css';
+
+:root {
+  --terms-border-color: rgba(0, 0, 0, 0.08);
+  --terms-bg-light: #ffffff;
+  --terms-text-main: #334155;
+  --terms-heading-color: #0f172a;
+  --terms-muted-color: #64748b;
+  --terms-accent-color: #0284c7;
+  --terms-accent-hover: #0369a1;
+}
+
+/* Page Background */
+body.terms-page {
+  background-color: #f8fafc;
+  color: var(--terms-text-main);
+  font-family: var(--font-family-sans, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
+}
+
+/* Hero Section with Grid Borders */
+.terms-hero {
+  position: relative;
+  width: 100%;
+  background: var(--terms-bg-light);
+  border-bottom: 1px solid var(--terms-border-color);
+  margin-top: 4.5rem;
+}
+
+.terms-hero-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  border-left: 1px solid var(--terms-border-color);
+  border-right: 1px solid var(--terms-border-color);
+}
+
+.terms-hero-title-box {
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--terms-border-color);
+}
+
+.terms-hero-title {
+  font-family: var(--font-family-display, 'Outfit', sans-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--terms-heading-color);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.terms-hero-date-box {
+  padding: 1.25rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--terms-muted-color);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Main Layout Grid */
+.terms-main-wrapper {
+  background: #ffffff;
+  border-bottom: 1px solid var(--terms-border-color);
+}
+
+.terms-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 4.5rem 2rem 6rem;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 4.5rem;
+  border-left: 1px solid var(--terms-border-color);
+  border-right: 1px solid var(--terms-border-color);
+}
+
+/* Document Body Content */
+.terms-content {
+  color: var(--terms-text-main);
+  font-size: 0.975rem;
+  line-height: 1.75;
+}
+
+.terms-section {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 7.5rem;
+}
+
+.terms-section h2 {
+  font-family: var(--font-family-display, 'Outfit', sans-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--terms-heading-color);
+  letter-spacing: -0.025em;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.terms-section p {
+  margin-bottom: 1.25rem;
+}
+
+.terms-section strong {
+  color: var(--terms-heading-color);
+  font-weight: 600;
+}
+
+.terms-section ul {
+  margin: 1rem 0 1.5rem 1.5rem;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.terms-section li {
+  margin-bottom: 0.5rem;
+}
+
+.terms-section a {
+  color: var(--terms-accent-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.terms-section a:hover {
+  color: var(--terms-accent-hover);
+}
+
+.terms-callout-box {
+  background: #f8fafc;
+  border: 1px solid var(--terms-border-color);
+  border-left: 3px solid var(--terms-accent-color);
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+
+/* Sticky Sidebar ("On this page") */
+.terms-sidebar {
+  position: sticky;
+  top: 7.5rem;
+  height: fit-content;
+  align-self: start;
+}
+
+.terms-toc-title {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--terms-heading-color);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.terms-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  border-left: 1px solid var(--terms-border-color);
+  padding-left: 1.25rem;
+}
+
+.terms-toc-link {
+  font-size: 0.875rem;
+  color: var(--terms-muted-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+  display: block;
+}
+
+.terms-toc-link:hover {
+  color: var(--terms-heading-color);
+}
+
+.terms-toc-link.is-active {
+  color: var(--terms-accent-color);
+  font-weight: 600;
+  transform: translateX(2px);
+}
+
+/* Responsive Stacking */
+@media (max-width: 960px) {
+  .terms-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .terms-hero-title {
+    font-size: 2.75rem;
+  }
+
+  .terms-sidebar {
+    position: relative;
+    top: 0;
+    order: -1;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--terms-border-color);
+  }
+
+  .terms-toc-list {
+    border-left: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service | QuantaForze Technologies Inc.</title>
+  <title>Terms of Service — QuantaForze</title>
   <meta name="description" content="Terms of Service and Software License Agreements for QuantaForze Technologies Inc.">
 
   <!-- Google Fonts -->
@@ -11,25 +11,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- CSS Master Bundle -->
-  <link rel="stylesheet" href="/src/styles/main.css">
+  <!-- CSS Bundle & Page Specific Styles -->
+  <link rel="stylesheet" href="/src/pages/terms/terms.css">
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="/images/branding/favicon.svg">
 </head>
-<body style="background-color: #ebebeb; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Crect width='1.5' height='1.5' x='2.25' y='2.25' fill='rgba(0,0,0,0.16)'/%3E%3C/svg%3E&quot;);">
+<body class="terms-page">
 
-  <!-- HEADER -->
+  <!-- HEADER NAVBAR -->
   <header class="site-head quanta-navbar">
     <div class="q-nav-container">
       <a href="/src/pages/home/index.html" class="q-logo" aria-label="QuantaForze Home">
         <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-logo-img">
       </a>
       <div class="q-nav-right">
-        <nav class="q-nav-menu">
-          <a href="/src/pages/home/index.html#loop" class="q-nav-link">Research</a>
-          <a href="/src/pages/home/index.html#usps" class="q-nav-link">Products</a>
-          <a href="/src/pages/home/index.html#sdk" class="q-nav-link">Technology</a>
-        </nav>
         <div class="q-nav-actions">
           <a href="/src/pages/docs/index.html" class="q-btn-docs">Docs</a>
           <a href="/src/pages/contact/index.html" class="q-btn-get-started">Get Started</a>
@@ -38,37 +33,146 @@
     </div>
   </header>
 
-  <main style="padding-top: 8rem; padding-bottom: 6rem;">
-    <div class="u-container" style="max-width: 860px;">
-      <div style="background: #ffffff; padding: 3.5rem; border-radius: 1.25rem; border: 1px solid rgba(0,0,0,0.08);">
-        <span style="font-family: var(--font-family-supply-mono); font-size: 0.8rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase;">Legal Terms</span>
-        <h1 class="t-h-2xl" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">Terms of Service</h1>
-        <p style="font-size: 0.88rem; color: #888; margin-bottom: 2rem;">Last Updated: August 8, 2026</p>
-
-        <div style="display: flex; flex-direction: column; gap: 1.75rem; color: #333; line-height: 1.7; font-size: 0.98rem;">
-          <section>
-            <h2 style="font-family: var(--font-family-frama); font-size: 1.35rem; color: #000; margin-bottom: 0.5rem;">1. Acceptance of Terms</h2>
-            <p>By accessing or using QuantaForze software platforms, CLI tools (`@quantaforze/cli`), SDKs (`@quantaforze/core`), and AxioVital healthcare operating environments, you agree to be bound by these Terms of Service.</p>
-          </section>
-
-          <section>
-            <h2 style="font-family: var(--font-family-frama); font-size: 1.35rem; color: #000; margin-bottom: 0.5rem;">2. Software License & Usage Rights</h2>
-            <p>QuantaForze Technologies Inc. grants software developers and enterprise clients a non-exclusive, non-transferable license to deploy agentic execution loops subject to our zero-trust security guidelines.</p>
-          </section>
-
-          <section>
-            <h2 style="font-family: var(--font-family-frama); font-size: 1.35rem; color: #000; margin-bottom: 0.5rem;">3. Limitation of Liability</h2>
-            <p>QuantaForze Technologies Inc. provides software platforms for autonomous execution with explicit human authorization controls. Users retain full responsibility for verifying high-impact execution trajectories before approval.</p>
-          </section>
-
-          <section>
-            <h2 style="font-family: var(--font-family-frama); font-size: 1.35rem; color: #000; margin-bottom: 0.5rem;">4. Governing Law & Contact</h2>
-            <p>These terms shall be governed by applicable enterprise law. Inquiries regarding legal terms should be directed to <a href="mailto:contact@quantaforze.com" style="color: var(--color-accent);">contact@quantaforze.com</a>.</p>
-          </section>
-        </div>
+  <!-- HERO SECTION WITH VERCEL GRID BORDERS -->
+  <section class="terms-hero">
+    <div class="terms-hero-inner">
+      <div class="terms-hero-title-box">
+        <h1 class="terms-hero-title">Terms of Service</h1>
+      </div>
+      <div class="terms-hero-date-box">
+        Last Updated August 12, 2026
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- MAIN DOCUMENT WRAPPER -->
+  <div class="terms-main-wrapper">
+    <div class="terms-container">
+
+      <!-- LEFT COLUMN: MAIN DOCUMENT CONTENT -->
+      <article class="terms-content">
+
+        <!-- SECTION 1: INTRODUCTION -->
+        <section class="terms-section" id="introduction">
+          <h2>Introduction</h2>
+          <p>Subject to these Terms of Service (this <strong>"Agreement"</strong>), <strong>QuantaForze Technologies Inc.</strong> (<strong>"QuantaForze"</strong>, <strong>"we"</strong>, <strong>"us"</strong> and/or <strong>"our"</strong>) provides access to QuantaForze's Services. <strong>"Services"</strong> means, collectively, any products, software, CLI tools (<code>@quantaforze/cli</code>), developer SDKs (<code>@quantaforze/core</code>), AxioVital Healthcare Operating Environment, Autonomous AI Agent runtime, Intelligence Layer APIs, or online platforms made available by QuantaForze or its affiliates.</p>
+          <p>By accessing, installing, deploying, or using any of our Services, you acknowledge that you have read, understood, and agree to be bound by this Agreement. If you are entering into this Agreement on behalf of a company, business, or other legal entity, you represent that you have the legal authority to bind such entity to these terms.</p>
+          <div class="terms-callout-box">
+            <strong>IMPORTANT:</strong> PLEASE REVIEW THE MUTUAL ARBITRATION CLAUSE AND CLASS ACTION WAIVER SET FORTH BELOW CAREFULLY. IT REQUIRES YOU TO RESOLVE DISPUTES WITH QUANTAFORZE ON AN INDIVIDUAL BASIS THROUGH FINAL AND BINDING ARBITRATION.
+          </div>
+        </section>
+
+        <!-- SECTION 2: AGE AND ELIGIBILITY -->
+        <section class="terms-section" id="eligibility">
+          <h2>Age and Eligibility</h2>
+          <p>You must be at least 18 years of age (or the legal age of majority in your jurisdiction) to register an account or use our Services. By creating an account, you represent and warrant that you satisfy all eligibility criteria and that your registration details are accurate, complete, and up to date.</p>
+          <p>Services provided under open source licenses (such as specified core utility repositories) are governed exclusively by their respective open source licenses and are not restricted by this eligibility clause.</p>
+        </section>
+
+        <!-- SECTION 3: TEMPORARY USE LICENSE -->
+        <section class="terms-section" id="license">
+          <h2>Temporary Use License</h2>
+          <p>Subject to your continuous compliance with this Agreement and payment of any applicable fees, QuantaForze grants you a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to access and use the Services during the active subscription or usage term.</p>
+          <p>Except as expressly authorized by QuantaForze in writing, you shall not:</p>
+          <ul>
+            <li>Modify, disassemble, decompile, or reverse engineer any binary or proprietary component of the Services;</li>
+            <li>Rent, lease, resell, distribute, or time-share access to the Services to any unauthorized third party;</li>
+            <li>Remove, alter, or obscure any copyright, trademark, or proprietary rights notices contained within the Services;</li>
+            <li>Bypass or disable any security, licensing, authentication, or usage enforcement mechanisms embedded in the software.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 4: YOUR CONTENT & DATA PRIVACY -->
+        <section class="terms-section" id="your-content">
+          <h2>Your Content & Data Privacy</h2>
+          <p>Between you and QuantaForze, you retain all right, title, and interest (including all intellectual property rights) in and to all code, dataset inputs, prompt queries, model parameters, telemetry files, and patient health profiles that you upload, execute, or process through our Services (<strong>"Your Content"</strong>).</p>
+          <p>QuantaForze does not claim ownership over Your Content. You grant QuantaForze a limited, worldwide, royalty-free license solely to host, transmit, process, and display Your Content as strictly required to provide and maintain the Services on your behalf.</p>
+          <p>For zero-retention and local execution workloads, QuantaForze processes data in ephemeral runtime memory without persisting code or patient data to external server storage.</p>
+        </section>
+
+        <!-- SECTION 5: DEVELOPER & SUBSCRIPTION PLANS -->
+        <section class="terms-section" id="plans">
+          <h2>Hobby Plan & Subscriptions</h2>
+          <p>QuantaForze offers both free developer tiers (such as the <strong>Hobby Plan</strong>) and paid subscription tiers for team and enterprise deployments. Paid Services are billed in advance on a recurring monthly or annual basis.</p>
+          <p>Subscriptions automatically renew at the end of each billing cycle unless cancelled prior to the renewal date through your organization billing dashboard. All fees are non-refundable except as required by applicable law or as explicitly stated in an executed Enterprise Service Level Agreement (SLA).</p>
+        </section>
+
+        <!-- SECTION 6: TEAMS AND PROJECTS -->
+        <section class="terms-section" id="teams">
+          <h2>Teams and Projects</h2>
+          <p>When you create an organization or team workspace within QuantaForze, you are designated as the Workspace Owner. Workspace Owners control member access permissions, API keys, role allocations, and billing settings.</p>
+          <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your team workspace. QuantaForze is not liable for any loss or damage arising from unauthorized credential access resulting from your failure to secure login tokens or API keys.</p>
+        </section>
+
+        <!-- SECTION 7: AI FUNCTIONALITY AND THIRD PARTY TOOLS -->
+        <section class="terms-section" id="ai-tools">
+          <h2>AI Functionality and Third Party Tools</h2>
+          <p>Our Autonomous Agent runtime and Intelligence Layer incorporate artificial intelligence and machine learning technologies. AI-generated outputs are probabilistic in nature. You are solely responsible for evaluating and verifying the accuracy, appropriateness, and compliance of AI outputs before executing high-impact code or clinical workflows.</p>
+
+          <!-- CAROUSEL: AI FUNCTIONALITY SAFEGUARDS -->
+          ````carousel
+          > [!NOTE]
+          > **Human-in-the-Loop Verification**: High-risk execution loops require explicit human approval before terminal execution.
+          <!-- slide -->
+          > [!TIP]
+          > **Third-Party Model Connectors**: Integration with external LLM APIs is subject to the privacy terms of the respective model provider.
+          ````
+        </section>
+
+        <!-- SECTION 8: ACCEPTABLE USE -->
+        <section class="terms-section" id="acceptable-use">
+          <h2>Acceptable Use</h2>
+          <p>You agree to use our Services strictly for lawful purposes and in compliance with all applicable local, national, and international laws. You agree not to use the Services to:</p>
+          <ul>
+            <li>Generate, transmit, or execute malicious software, viruses, ransomware, or exploit payloads;</li>
+            <li>Perform unauthorized security probing, port scanning, or vulnerability exploitation against third-party networks;</li>
+            <li>Exceed designated API rate limits or disrupt the stability of shared compute clusters;</li>
+            <li>Violate privacy, health data, or intellectual property rights of any third party.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 9: ETIQUETTE -->
+        <section class="terms-section" id="etiquette">
+          <h2>Etiquette</h2>
+          <p>We foster a collaborative, respectful community across our developer forums, open-source repositories, and support channels. Harassment, abusive language, spamming, or discriminatory behavior toward community members or QuantaForze staff will result in immediate suspension of account privileges.</p>
+        </section>
+
+        <!-- SECTION 10: SECURITY AND COMPLIANCE -->
+        <section class="terms-section" id="security">
+          <h2>Security and Compliance</h2>
+          <p>QuantaForze implements industry-standard technical and organizational security measures, including AES-256 encryption at rest, TLS 1.3 encryption in transit, and zero-trust access controls. For healthcare deployments involving <strong>AxioVital OS</strong>, specialized Business Associate Agreements (BAAs) and HIPAA-compliant isolated environments are available upon request.</p>
+        </section>
+
+        <!-- SECTION 11: GENERAL PROVISIONS -->
+        <section class="terms-section" id="general">
+          <h2>General</h2>
+          <p><strong>Governing Law:</strong> This Agreement shall be governed by and construed in accordance with the laws of the jurisdiction in which QuantaForze Technologies Inc. is registered, without regard to its conflict of law principles.</p>
+          <p><strong>Entire Agreement:</strong> This Agreement constitutes the complete and exclusive understanding between you and QuantaForze regarding your use of the Services, superseding all prior oral or written agreements.</p>
+          <p><strong>Contact Information:</strong> If you have any questions regarding these Terms of Service, please contact our legal team at <a href="mailto:support@quantaforze.com">support@quantaforze.com</a>.</p>
+        </section>
+
+      </article>
+
+      <!-- RIGHT COLUMN: STICKY TABLE OF CONTENTS SIDEBAR -->
+      <aside class="terms-sidebar">
+        <div class="terms-toc-title">On this page</div>
+        <ul class="terms-toc-list">
+          <li><a href="#introduction" class="terms-toc-link is-active">Introduction</a></li>
+          <li><a href="#eligibility" class="terms-toc-link">Age and Eligibility</a></li>
+          <li><a href="#license" class="terms-toc-link">Temporary Use License</a></li>
+          <li><a href="#your-content" class="terms-toc-link">Your Content</a></li>
+          <li><a href="#plans" class="terms-toc-link">Hobby Plan</a></li>
+          <li><a href="#teams" class="terms-toc-link">Teams and Projects</a></li>
+          <li><a href="#ai-tools" class="terms-toc-link">AI Functionality and Third Party Tools</a></li>
+          <li><a href="#acceptable-use" class="terms-toc-link">Acceptable Use</a></li>
+          <li><a href="#etiquette" class="terms-toc-link">Etiquette</a></li>
+          <li><a href="#security" class="terms-toc-link">Security and Compliance</a></li>
+          <li><a href="#general" class="terms-toc-link">General</a></li>
+        </ul>
+      </aside>
+
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="quanta-footer">

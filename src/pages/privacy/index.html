@@ -3,33 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | QuantaForze Technologies Inc.</title>
-  <meta name="description" content="Privacy Policy and Zero-Trust Data Protection Guarantees for QuantaForze Technologies Inc.">
+  <title>Privacy Notice — QuantaForze</title>
+  <meta name="description" content="Privacy Notice and Data Protection Commitments for QuantaForze Technologies Inc.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- CSS Master Bundle -->
-  <link rel="stylesheet" href="/src/styles/main.css">
+  <!-- CSS Bundle & Page Specific Styles -->
+  <link rel="stylesheet" href="/src/pages/privacy/privacy.css">
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="/images/branding/favicon.svg">
 </head>
-<body style="background-color: #ebebeb; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Crect width='1.5' height='1.5' x='2.25' y='2.25' fill='rgba(0,0,0,0.16)'/%3E%3C/svg%3E&quot;);">
+<body class="privacy-page">
 
-  <!-- HEADER -->
+  <!-- HEADER NAVBAR -->
   <header class="site-head quanta-navbar">
     <div class="q-nav-container">
       <a href="/src/pages/home/index.html" class="q-logo" aria-label="QuantaForze Home">
         <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-logo-img">
       </a>
       <div class="q-nav-right">
-        <nav class="q-nav-menu">
-          <a href="/src/pages/home/index.html#loop" class="q-nav-link">Research</a>
-          <a href="/src/pages/home/index.html#usps" class="q-nav-link">Products</a>
-          <a href="/src/pages/home/index.html#sdk" class="q-nav-link">Technology</a>
-        </nav>
         <div class="q-nav-actions">
           <a href="/src/pages/docs/index.html" class="q-btn-docs">Docs</a>
           <a href="/src/pages/contact/index.html" class="q-btn-get-started">Get Started</a>
@@ -38,37 +33,179 @@
     </div>
   </header>
 
-  <main style="padding-top: 8rem; padding-bottom: 6rem;">
-    <div class="u-container" style="max-width: 860px;">
-      <div style="background: #ffffff; padding: 3.5rem; border-radius: 1.25rem; border: 1px solid rgba(0,0,0,0.08);">
-        <span style="font-family: var(--font-family-supply-mono); font-size: 0.8rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase;">Legal & Data Security</span>
-        <h1 class="t-h-2xl" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">Privacy Policy</h1>
-        <p style="font-size: 0.88rem; color: #888; margin-bottom: 2rem;">Effective Date: August 8, 2026 | Version: v1.0.0</p>
-
-        <div style="display: flex; flex-direction: column; gap: 1.75rem; color: #333; line-height: 1.7; font-size: 0.98rem;">
-          <section>
-            <h2 style="font-family: var(--font-family-frama); font-size: 1.35rem; color: #000; margin-bottom: 0.5rem;">1. Zero-Trust Local Data Ownership</h2>
-            <p>At QuantaForze Technologies Inc., privacy is built directly into our execution architecture. Source code, local repository files, and workspace states analyzed by QuantaForze CLI and SDK remain strictly on your local machine or dedicated enterprise tenant. We do not transmit or index your source code for global model training.</p>
-          </section>
-
-          <section>
-            <h2 style="font-family: var(--font-family-frama); font-size: 1.35rem; color: #000; margin-bottom: 0.5rem;">2. AxioVital Healthcare Compliance (HIPAA & GDPR)</h2>
-            <p>The AxioVital Connected Operating Environment complies with HIPAA and GDPR regulations. Patient profiles, clinical records, and inter-hospital care continuity channels use end-to-end TLS 1.3 and AES-256-GCM encryption with explicit role-based access control.</p>
-          </section>
-
-          <section>
-            <h2 style="font-family: var(--font-family-frama); font-size: 1.35rem; color: #000; margin-bottom: 0.5rem;">3. Explicit Human-in-the-Loop Approval</h2>
-            <p>Autonomous AI agents managed by QuantaForze require explicit human authorization before performing high-impact operations such as modifying databases, initiating financial transfers, or altering system configurations.</p>
-          </section>
-
-          <section>
-            <h2 style="font-family: var(--font-family-frama); font-size: 1.35rem; color: #000; margin-bottom: 0.5rem;">4. Contact Security Officer</h2>
-            <p>For privacy verifications or security audits, contact Chief Security Officer Yash Kushwaha at <a href="mailto:security@quantaforze.com" style="color: var(--color-accent);">security@quantaforze.com</a>.</p>
-          </section>
-        </div>
+  <!-- HERO SECTION WITH VERCEL GRID BORDERS -->
+  <section class="privacy-hero">
+    <div class="privacy-hero-inner">
+      <div class="privacy-hero-title-box">
+        <h1 class="privacy-hero-title">Privacy Notice</h1>
+      </div>
+      <div class="privacy-hero-date-box">
+        Last Updated August 12, 2026
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- MAIN DOCUMENT WRAPPER -->
+  <div class="privacy-main-wrapper">
+    <div class="privacy-container">
+
+      <!-- LEFT COLUMN: MAIN DOCUMENT CONTENT -->
+      <article class="privacy-content">
+
+        <!-- SECTION 1: ABOUT QUANTAFORZE -->
+        <section class="privacy-section" id="about">
+          <h2>About QuantaForze</h2>
+          <p>At <strong>QuantaForze Technologies Inc.</strong> (<strong>"QuantaForze"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong>), we respect customers' need for privacy and data security. We offer our Sites, CLI engines (<code>@quantaforze/cli</code>), developer SDKs (<code>@quantaforze/core</code>), Autonomous Agent runtimes, Intelligence Layer APIs, and AxioVital Healthcare Operating Environments to developers, enterprise teams, and healthcare organizations either directly or via authorized partners.</p>
+          <p>Where we refer to our <strong>"Customers"</strong> in this Privacy Notice, we refer to individuals or entities that have entered into an agreement with us to use our Services (each, an <strong>"Agreement"</strong>). Each Customer's respective website users, developers, or patient care stakeholders are referred to as their <strong>"End Users."</strong></p>
+          <div class="privacy-callout-box">
+            By using or accessing our Sites and Services in any manner, you accept the practices and policies outlined in this Privacy Notice, and you acknowledge that we may process and handle your information as described herein.
+          </div>
+        </section>
+
+        <!-- SECTION 2: APPLICABILITY -->
+        <section class="privacy-section" id="applicability">
+          <h2>Applicability of this Privacy Notice</h2>
+          <p>This Privacy Notice covers our treatment of personal information that we gather when you access or use our Sites and Services. It does not apply to the practices of companies that we do not own or control, or to individuals that we do not employ or manage.</p>
+          <p>When providing Services on behalf of an enterprise Customer, QuantaForze acts primarily as a Data Processor or Service Provider, processing Customer Data strictly in accordance with Customer instructions and our executed Data Processing Addendums (DPAs).</p>
+        </section>
+
+        <!-- SECTION 3: INFORMATION WE COLLECT -->
+        <section class="privacy-section" id="information-we-collect">
+          <h2>Information We Collect</h2>
+          <p>We collect information about you directly from you, from third parties, and automatically through your use of our Sites and Services.</p>
+
+          <h3 id="provided-directly">That You Provide Directly</h3>
+          <p>We collect information you provide directly to us when creating an account, subscribing to paid plans, or contacting support:</p>
+          <ul>
+            <li><strong>Account Credentials:</strong> Full name, professional email address, organization name, password hash, and OAuth authentication tokens;</li>
+            <li><strong>Billing Details:</strong> Billing address, payment card details (processed securely via our PCI-DSS compliant payment processors), and tax IDs;</li>
+            <li><strong>Communications & Feedback:</strong> Support ticket logs, inquiry messages, feedback responses, and bug report submissions.</li>
+          </ul>
+
+          <h3 id="third-parties">From Third Parties</h3>
+          <p>If you choose to log in to our Services using a third-party single sign-on (SSO) service (such as GitHub, Google Workspace, or Enterprise SAML), we receive personal data from that provider, such as your public profile name, avatar URL, and verified email address.</p>
+
+          <h3 id="from-customers">From Customers</h3>
+          <p>Enterprise Customers may invite team members to their QuantaForze workspace. In doing so, the Customer provides us with the invited member's email address and assigned role permissions.</p>
+
+          <h3 id="automatically-collected">Automatically Collected</h3>
+          <p>When you interact with our Sites or run CLI developer engines, we automatically collect technical telemetry and usage metrics:</p>
+          <ul>
+            <li><strong>System & Device Metrics:</strong> Operating system version (macOS, Windows, Linux kernel), CPU architecture, CLI version, and memory availability;</li>
+            <li><strong>Network Data:</strong> IP address, browser type, referring URLs, time zone settings, and request timestamps;</li>
+            <li><strong>Diagnostic Telemetry:</strong> Aggregated command execution duration, error stack traces (scrubbed of code variables), and API response latency.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 4: HOW WE USE YOUR INFORMATION -->
+        <section class="privacy-section" id="how-we-use">
+          <h2>How We Use Your Information</h2>
+          <p>We process your personal information for the following legitimate business purposes:</p>
+          <ul>
+            <li>To operate, maintain, and deliver the core functionality of our Services;</li>
+            <li>To manage Customer billing, subscriptions, and usage tier verification;</li>
+            <li>To authenticate users and prevent unauthorized access or fraudulent activities;</li>
+            <li>To detect, diagnose, and resolve technical bugs, stability degradation, and security vulnerabilities;</li>
+            <li>To communicate essential service updates, security advisories, and system status notices;</li>
+            <li>To comply with applicable legal obligations, tax filings, and regulatory requirements.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 5: ZERO-RETENTION & LOCAL EXECUTION -->
+        <section class="privacy-section" id="zero-retention">
+          <h2>Zero-Retention & Local AI Model Execution</h2>
+          <p>QuantaForze is built on a privacy-first, zero-trust engineering philosophy. For local model execution and zero-retention workloads:</p>
+          <ul>
+            <li><strong>No Code Mining:</strong> We do not store, index, or use your proprietary source code, local repository files, or prompt queries to train public AI models;</li>
+            <li><strong>Ephemeral Memory Execution:</strong> Autonomous execution loops operate in transient, sandboxed runtime environments that are cleared immediately upon task completion;</li>
+            <li><strong>On-Premises & Hybrid Isolation:</strong> Enterprise clients can deploy QuantaForze execution kernels within their isolated VPCs or air-gapped infrastructure.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 6: SHARING AND DISCLOSURE OF INFORMATION -->
+        <section class="privacy-section" id="sharing-and-disclosure">
+          <h2>Sharing and Disclosure of Information</h2>
+          <p>We do not sell, rent, or trade your personal information to third parties. We share your information only under the following limited circumstances:</p>
+          <ul>
+            <li><strong>Third-Party Vendors & Infrastructure Providers:</strong> Hosting facilities, cloud infrastructure providers, payment processors, and transactional email services that process data under strict confidentiality contracts;</li>
+            <li><strong>Workspace Administrators:</strong> If your account is affiliated with a Customer workspace, your workspace owner can view your activity logs, role assignments, and usage metrics;</li>
+            <li><strong>Legal Requirements:</strong> If required to disclose information by subpoena, court order, or applicable government regulation, provided we promptly notify you unless legally prohibited;</li>
+            <li><strong>Business Transfers:</strong> In connection with an eventual merger, acquisition, or sale of company assets, where customer data is transferred as a business asset under binding privacy assurances.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 7: DATA SECURITY AND RETENTION -->
+        <section class="privacy-section" id="data-security">
+          <h2>Data Security and Retention</h2>
+          <p>We deploy robust administrative, physical, and technical safeguards to protect your personal information against unauthorized access, loss, or destruction:</p>
+          <ul>
+            <li><strong>Encryption:</strong> TLS 1.3 encryption in transit and AES-256-GCM encryption at rest for stored database records and access keys;</li>
+            <li><strong>Access Control:</strong> Strict role-based access control (RBAC), multi-factor authentication requirements, and audited administrative access logs;</li>
+            <li><strong>Data Retention:</strong> Account data is retained for the active subscription duration plus 30 days to facilitate account restoration, after which it is permanently purged from active storage.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 8: YOUR PRIVACY RIGHTS AND CHOICES -->
+        <section class="privacy-section" id="your-rights">
+          <h2>Your Privacy Rights and Choices</h2>
+          <p>Depending on your location (including the European Economic Area, UK, California, and other jurisdictions), you may possess specific rights regarding your personal information:</p>
+          <ul>
+            <li><strong>Right of Access:</strong> Request a copy of the personal information we hold about you;</li>
+            <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete personal details;</li>
+            <li><strong>Right to Erasure (Right to be Forgotten):</strong> Request permanent deletion of your account and associated personal data;</li>
+            <li><strong>Data Portability:</strong> Request export of your account data in a structured, machine-readable format (JSON/CSV);</li>
+            <li><strong>Opt-Out of Communications:</strong> Unsubscribe from promotional updates by clicking the unsubscribe link in any marketing email.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 9: AXIOVITAL HEALTHCARE PRIVACY & HIPAA -->
+        <section class="privacy-section" id="axiovital-privacy">
+          <h2>AxioVital Healthcare Data Privacy & HIPAA</h2>
+          <p>For healthcare organizations deploying <strong>AxioVital OS</strong> and hospital data pipelines:</p>
+          <ul>
+            <li><strong>Protected Health Information (PHI):</strong> AxioVital complies with HIPAA and HITECH privacy standards when handling PHI;</li>
+            <li><strong>Business Associate Agreements (BAAs):</strong> We execute standard BAAs with covered entities prior to processing healthcare data streams;</li>
+            <li><strong>Clinical Isolation:</strong> Patient profiles and inter-hospital care continuity channels operate in encrypted, tenant-isolated healthcare partitions.</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 10: CONTACT US -->
+        <section class="privacy-section" id="contact-us">
+          <h2>Contact Us</h2>
+          <p>If you have any questions, concerns, or requests regarding this Privacy Notice or our data handling practices, please contact our privacy officer:</p>
+          <p>
+            <strong>QuantaForze Technologies Inc.</strong><br>
+            Attn: Data Privacy & Security Officer<br>
+            Email: <a href="mailto:security@quantaforze.com">security@quantaforze.com</a><br>
+            General Support: <a href="mailto:support@quantaforze.com">support@quantaforze.com</a>
+          </p>
+        </section>
+
+      </article>
+
+      <!-- RIGHT COLUMN: STICKY TABLE OF CONTENTS SIDEBAR -->
+      <aside class="privacy-sidebar">
+        <div class="privacy-toc-title">On this page</div>
+        <ul class="privacy-toc-list">
+          <li><a href="#about" class="privacy-toc-link is-active">About QuantaForze</a></li>
+          <li><a href="#applicability" class="privacy-toc-link">Applicability</a></li>
+          <li><a href="#information-we-collect" class="privacy-toc-link">Information We Collect</a></li>
+          <li><a href="#provided-directly" class="privacy-toc-link sub-link">That You Provide Directly</a></li>
+          <li><a href="#third-parties" class="privacy-toc-link sub-link">From Third Parties</a></li>
+          <li><a href="#from-customers" class="privacy-toc-link sub-link">From Customers</a></li>
+          <li><a href="#automatically-collected" class="privacy-toc-link sub-link">Automatically</a></li>
+          <li><a href="#how-we-use" class="privacy-toc-link">How We Use Information</a></li>
+          <li><a href="#zero-retention" class="privacy-toc-link">Zero-Retention & Local Execution</a></li>
+          <li><a href="#sharing-and-disclosure" class="privacy-toc-link">Sharing & Disclosure</a></li>
+          <li><a href="#data-security" class="privacy-toc-link">Data Security</a></li>
+          <li><a href="#your-rights" class="privacy-toc-link">Your Rights</a></li>
+          <li><a href="#axiovital-privacy" class="privacy-toc-link">AxioVital & HIPAA</a></li>
+          <li><a href="#contact-us" class="privacy-toc-link">Contact Us</a></li>
+        </ul>
+      </aside>
+
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="quanta-footer">
