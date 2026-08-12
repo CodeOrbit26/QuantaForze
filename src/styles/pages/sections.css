@@ -192,7 +192,7 @@
   z-index: 2;
   margin: 0;
   width: 100%;
-  padding: 6.5rem 1.5rem 4.5rem;
+  padding: max(10rem, 15vh) 1.5rem max(14vh, 6rem);
   background-color: #ebebeb;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Crect width='1.5' height='1.5' x='2.25' y='2.25' fill='rgba(0,0,0,0.16)'/%3E%3C/svg%3E");
   background-repeat: repeat;
@@ -391,15 +391,15 @@
 }
 
 /* ================================================================
-   3. USPs CARD STACK (Clean Relative Layout)
+   3. USPs CARD STACK (incredibles.dev exact)
    ================================================================ */
 .s-usps {
   --usp-width: 27.375rem;
   --usp-height: calc(var(--usp-width) * 1.26484);
   position: relative;
-  z-index: 2;
-  margin: 0;
-  padding: 4rem 0 2rem 0;
+  z-index: 0;
+  margin: 0 0 25svh;
+  padding: 75svh 0 0;
 }
 
 @media only screen and (max-width: 1080px) {
@@ -420,15 +420,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  top: auto;
-  left: auto;
+  position: fixed;
+  top: 0;
+  left: 50%;
   z-index: 1;
   width: 100%;
-  height: auto;
-  margin-bottom: 2.5rem;
-  transform: none;
+  height: 100svh;
+  transform: translate(-50%);
+  transform-origin: 50% 25%;
   text-align: center;
+  will-change: transform;
 }
 
 .s-usps .s__title {
