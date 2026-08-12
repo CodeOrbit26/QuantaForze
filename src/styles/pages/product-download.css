@@ -123,50 +123,83 @@
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
 }
 
-/* Feature Highlights Strip */
+/* Feature Highlights Strip — Human Crafted Premium Specs Bar */
 .pd-specs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  gap: 0;
   margin-bottom: 3.5rem;
   background: #ffffff;
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 1.75rem;
   border-radius: 1.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+}
+
+.pd-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 1.25rem;
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.pd-spec-item:first-child {
+  padding-left: 0;
+}
+
+.pd-spec-item:last-child {
+  padding-right: 0;
+  border-right: none;
 }
 
 @media (max-width: 992px) {
   .pd-specs-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 0;
+  }
+  .pd-spec-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 1rem;
+  }
+  .pd-spec-item:nth-child(2n) {
+    border-right: none;
+  }
+  .pd-spec-item:nth-last-child(-n+2) {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 }
 
 @media (max-width: 576px) {
   .pd-specs-grid {
     grid-template-columns: 1fr;
+    gap: 1rem 0;
+  }
+  .pd-spec-item {
+    padding: 0.5rem 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .pd-spec-item:last-child {
+    border-bottom: none;
   }
 }
 
-.pd-spec-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
 .pd-spec-label {
-  font-size: 0.775rem;
-  font-family: var(--font-family-supply-mono, monospace);
-  color: #0284c7;
+  font-size: 0.725rem;
+  color: #64748b;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-weight: 600;
 }
 
 .pd-spec-value {
-  font-size: 0.975rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #0f172a;
+  line-height: 1.3;
 }
 
 /* Product Section Card Containers */
