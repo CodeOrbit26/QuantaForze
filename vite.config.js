@@ -17,6 +17,7 @@ export default defineConfig({
         autonomousAgent: resolve(__dirname, 'src/pages/products/autonomous-agent/index.html'),
         intelligenceLayer: resolve(__dirname, 'src/pages/products/intelligence-layer/index.html'),
         connect: resolve(__dirname, 'src/pages/products/connect/index.html'),
+        acadyk: resolve(__dirname, 'src/pages/products/acadyk/index.html'),
         docs: resolve(__dirname, 'src/pages/docs/index.html'),
         founders: resolve(__dirname, 'src/pages/founders/index.html'),
         contact: resolve(__dirname, 'src/pages/contact/index.html'),

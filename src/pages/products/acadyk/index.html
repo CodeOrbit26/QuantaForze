@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acadyk | Campus Social & Innovation Network | MITS Gwalior × QuantaForze</title>
+  <meta name="description" content="Download Acadyk Android App and Web Portal. The official campus network for MITS Gwalior students and faculty to post project ranks, certificates, hackathon schedules, club coins, and academic thoughts.">
+  <link rel="icon" type="image/svg+xml" href="/images/branding/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/base/layout.css">
+  <link rel="stylesheet" href="/src/styles/base/base.css">
+  <link rel="stylesheet" href="/src/styles/pages/sections.css">
+  <link rel="stylesheet" href="/src/styles/pages/product-download.css">
+  <style>
+    .acadyk-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+    .acadyk-hero-badge img {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+    }
+    .mits-collab-strip {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.25rem 2rem;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .mits-collab-logos {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .mits-collab-logos img {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+    }
+    .mits-collab-text {
+      flex: 1;
+      min-width: 260px;
+    }
+    .mits-collab-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.2rem;
+    }
+    .mits-collab-desc {
+      font-size: 0.88rem;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .feature-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .feature-card {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 2rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+      border-color: #3b82f6;
+    }
+    .feature-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+    .feature-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.6rem;
+    }
+    .feature-card-desc {
+      font-size: 0.93rem;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .feature-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #334155;
+    }
+    .interactive-preview-box {
+      background: #0f172a;
+      border-radius: 20px;
+      color: #ffffff;
+      padding: 2.5rem;
+      margin: 3.5rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .preview-feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .feed-card {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .feed-card:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      background: #243248;
+    }
+    .feed-user {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .feed-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #3b82f6;
+    }
+    .feed-user-info h4 {
+      font-size: 0.92rem;
+      margin: 0;
+      color: #f8fafc;
+      font-weight: 600;
+    }
+    .feed-user-info span {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+    .feed-badge-pill {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      font-weight: 600;
+      margin-left: auto;
+    }
+    .feed-text {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+    .feed-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: #64748b;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.6rem;
+    }
+  </style>
+</head>
+<body class="pd-main-page">
+
+  <!-- Floating Glass Navbar -->
+  <header class="site-head quanta-navbar">
+    <div class="q-nav-container">
+      <a href="/index.html" class="q-logo" aria-label="QuantaForze Home">
+        <img src="/images/branding/quantaforze-mark.svg" alt="QuantaForze Logo" class="q-logo-icon">
+        <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-logo-img">
+      </a>
+
+      <div class="q-nav-right">
+        <div class="q-nav-actions">
+          <a href="/index.html" class="q-nav-link" style="margin-right: 0.75rem;">← Back to Home</a>
+          <a href="#download" class="q-btn-download-nav">Download APK <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></a>
+        </div>
+        <button class="q-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="q-toggle-bar"></span>
+          <span class="q-toggle-bar"></span>
+          <span class="q-toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="q-mobile-menu" aria-hidden="true">
+      <div class="q-mobile-menu-backdrop"></div>
+      <div class="q-mobile-menu-content">
+        <div class="q-mobile-menu-links">
+          <a href="/index.html" class="q-mobile-link">Home</a>
+          <a href="/index.html#usps" class="q-mobile-link">Products</a>
+          <a href="/src/pages/docs/index.html" class="q-mobile-link">Documentation</a>
+          <a href="/src/pages/founders/index.html" class="q-mobile-link">Founders</a>
+          <a href="/src/pages/contact/index.html" class="q-mobile-link">Contact Us</a>
+        </div>
+        <div class="q-mobile-menu-footer">
+          <a href="#download" class="q-btn-get-started q-mobile-btn">Download Acadyk</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="pd-main">
+    <div class="pd-container">
+      
+      <!-- Hero Badge -->
+      <div>
+        <span class="acadyk-hero-badge">
+          <img src="/images/acadyk/mits_logo.png" alt="MITS Gwalior">
+          Official Academic Collaboration with MITS Gwalior
+        </span>
+      </div>
+
+      <!-- Hero Header -->
+      <div class="pd-hero-header">
+        <h1 class="pd-hero-title">
+          Acadyk for <span class="pd-typewriter" data-words='["Android", "MITS Students", "Professors", "Web Portal"]'>Android</span><span class="pd-typewriter-cursor">|</span>
+        </h1>
+        <a href="#download" class="pd-btn-release">
+          <span>Release v1.0.0</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Quick Filter Pills -->
+      <div class="pd-tabs-bar">
+        <a href="#overview" class="pd-tab active">
+          <span>Acadyk Overview</span>
+        </a>
+        <a href="#download" class="pd-tab">
+          <span>Download Software</span>
+        </a>
+        <a href="#features" class="pd-tab">
+          <span>Student &amp; Faculty Features</span>
+        </a>
+        <a href="#architecture" class="pd-tab">
+          <span>System Architecture</span>
+        </a>
+      </div>
+
+      <!-- MITS Gwalior Collaboration Banner -->
+      <div class="mits-collab-strip">
+        <div class="mits-collab-logos">
+          <img src="/images/acadyk/acadyk_logo.png" alt="Acadyk Logo" style="height: 48px;">
+          <span style="font-size: 1.5rem; color: #94a3b8; font-weight: 300;">×</span>
+          <img src="/images/acadyk/mits_logo.png" alt="MITS Gwalior Logo" style="height: 48px;">
+        </div>
+        <div class="mits-collab-text">
+          <div class="mits-collab-title">Built in Direct Collaboration with MITS Gwalior</div>
+          <p class="mits-collab-desc">
+            Madhav Institute of Technology &amp; Science (MITS Gwalior) official campus network. Connecting students, professors, departmental clubs, and hackathons in one unified Twitter + LinkedIn styled interactive ecosystem.
+          </p>
+        </div>
+        <div>
+          <a href="#features" class="q-btn-docs" style="white-space: nowrap;">Explore Campus Network &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Architectural Specs Grid -->
+      <div class="pd-specs-grid">
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Target College</span>
+          <span class="pd-spec-value">MITS Gwalior (Autonomous)</span>
+        </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Client Platforms</span>
+          <span class="pd-spec-value">Android (APK), iOS &amp; Web</span>
+        </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Core Infrastructure</span>
+          <span class="pd-spec-value">Kotlin 21 + Spring Boot 3.3 + Kafka</span>
+        </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Latest Version</span>
+          <span class="pd-spec-value">v1.0.0 Production Release</span>
+        </div>
+      </div>
+
+      <!-- Section 1: Android App Download Grid -->
+      <section id="download" class="pd-section">
+        <div class="pd-section-header">
+          <h2 class="pd-section-title">Acadyk Software &amp; Downloads</h2>
+          <span class="pd-version-badge">v1.0.0 (MITS Build)</span>
+        </div>
+        <p class="pd-section-desc">Get Acadyk on your Android device or access the campus portal directly through web browser with your official MITS student/faculty login.</p>
+
+        <div class="pd-grid">
+          <!-- Android APK Card -->
+          <div class="pd-os-card" style="border-color: #3b82f6; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.08);">
+            <div class="pd-os-title">
+              <span class="pd-os-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#3b82f6"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.996-3.4572c.1557-.2699.0633-.6145-.2066-.7702-.2698-.1558-.6144-.0633-.7702.2066l-2.0238 3.5053c-1.3932-.635-2.9463-.9873-4.5771-.9873s-3.1839.3523-4.5771.9873L5.7031 5.301c-.1558-.2699-.5004-.3624-.7702-.2066-.2699.1557-.3623.5003-.2066.7702l1.996 3.4572C3.123 11.2319 1.139 14.887 1 19h22c-.139-4.113-2.123-7.7681-5.1185-9.6786"/></svg>
+              </span> 
+              Android App (APK)
+            </div>
+            <div class="pd-download-stack">
+              <a href="#" class="pd-btn-download-main" onclick="alert('Downloading Acadyk APK v1.0.0 for MITS Gwalior...'); return false;" style="background: #2563eb; color: #fff;">Download Android APK (v1.0.0) &rarr;</a>
+              <a href="#" class="pd-btn-download-sub" onclick="alert('Opening Google Play Store Early Access...'); return false;">Google Play Early Access</a>
+            </div>
+            <div class="pd-req-box">
+              <div class="pd-req-title">Supported Devices</div>
+              <p class="pd-req-text">Android 8.0 (Oreo) and above. Optimized for Flutter material design 3 with real-time WebSocket notifications.</p>
+            </div>
+          </div>
+
+          <!-- Web Portal Card -->
+          <div class="pd-os-card">
+            <div class="pd-os-title">
+              <span class="pd-os-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </span> 
+              Web &amp; Campus Portal
+            </div>
+            <div class="pd-download-stack">
+              <a href="#" class="pd-btn-download-main" onclick="alert('Connecting to MITS Acadyk Web Portal...'); return false;">Launch Web App &rarr;</a>
+              <a href="#" class="pd-btn-download-sub">Progressive Web App (PWA)</a>
+            </div>
+            <div class="pd-req-box">
+              <div class="pd-req-title">Browser Compatibility</div>
+              <p class="pd-req-text">Works seamlessly on Chrome, Firefox, Safari, and Edge on desktops, tablets, and laptops.</p>
+            </div>
+          </div>
+
+          <!-- Faculty & Admin Portal Card -->
+          <div class="pd-os-card">
+            <div class="pd-os-title">
+              <span class="pd-os-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </span> 
+              Faculty &amp; Admin Suite
+            </div>
+            <div class="pd-download-stack">
+              <a href="#" class="pd-btn-download-main" onclick="alert('Accessing Faculty & Admin Control Console...'); return false;">Faculty Login Console &rarr;</a>
+              <a href="#" class="pd-btn-download-sub">Event &amp; Hackathon Manager</a>
+            </div>
+            <div class="pd-req-box">
+              <div class="pd-req-title">Privileged Access</div>
+              <p class="pd-req-text">Restricted to verified MITS Gwalior professors, HODs, club presidents, and hackathon organizers.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Social & Campus Feed Preview -->
+      <div class="interactive-preview-box">
+        <div class="preview-header">
+          <div>
+            <span style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; color: #60a5fa; font-weight: 700;">Live Campus Activity</span>
+            <h3 style="font-size: 1.6rem; font-weight: 700; margin: 0.25rem 0 0; color: #ffffff;">The MITS Gwalior Social Network in Action</h3>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <span style="display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(34, 197, 94, 0.2); color: #4ade80; padding: 0.4rem 0.9rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 600;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ade80; display: inline-block;"></span> Active MITS Campus Mesh
+            </span>
+          </div>
+        </div>
+
+        <div class="preview-feed">
+          <!-- Post 1: Student Project & Rank -->
+          <div class="feed-card">
+            <div class="feed-user">
+              <img src="/images/acadyk/dharmik_avatar.jpg" alt="Student Avatar" class="feed-avatar">
+              <div class="feed-user-info">
+                <h4>Abhay Gupta</h4>
+                <span>MITS CSE • Batch 2026</span>
+              </div>
+              <span class="feed-badge-pill">Rank #1 CSE</span>
+            </div>
+            <p class="feed-text">
+              🚀 Just published our autonomous AI systems architecture on GitHub! Achieved Top 1% rank in the inter-college hackathon. Verified certificate attached!
+            </p>
+            <div class="feed-meta">
+              <span>❤️ 142 Likes • 28 Comments</span>
+              <span>🪙 +50 Club Coins</span>
+            </div>
+          </div>
+
+          <!-- Post 2: Professor Hackathon & Event Announcement -->
+          <div class="feed-card">
+            <div class="feed-user">
+              <img src="/images/acadyk/somraj_avatar.jpg" alt="Professor Avatar" class="feed-avatar" style="border-color: #f59e0b;">
+              <div class="feed-user-info">
+                <h4>Dr. Sharma (Professor &amp; HOD)</h4>
+                <span>Faculty • Dept of Computer Science</span>
+              </div>
+              <span class="feed-badge-pill" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">Official Notice</span>
+            </div>
+            <p class="feed-text">
+              📢 <strong>MITS Annual Hackathon 2026</strong> schedules are live! Cash prizes, industry mentorship &amp; project incubation. Register your teams before Friday.
+            </p>
+            <div class="feed-meta">
+              <span>📅 Event Date: Oct 12–14</span>
+              <span>🏆 ₹1,00,000 Prize Pool</span>
+            </div>
+          </div>
+
+          <!-- Post 3: Club Promotion & Club Coins -->
+          <div class="feed-card">
+            <div class="feed-user">
+              <img src="/images/acadyk/alina_avatar.jpg" alt="Club Lead Avatar" class="feed-avatar" style="border-color: #10b981;">
+              <div class="feed-user-info">
+                <h4>MITS Robotics &amp; AI Club</h4>
+                <span>Official Student Chapter</span>
+              </div>
+              <span class="feed-badge-pill" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">Club Bounty</span>
+            </div>
+            <p class="feed-text">
+              ⚡ Weekly IoT &amp; ROS workshop this Saturday at 4 PM in Audi-2. Attend and earn <strong>100 Club Coins</strong> redeemable for hardware lab access!
+            </p>
+            <div class="feed-meta">
+              <span>👥 85 RSVPs</span>
+              <span>🪙 Reward: 100 Coins</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Core Campus Features Grid -->
+      <section id="features" class="pd-section" style="margin-top: 4rem;">
+        <div class="pd-section-header">
+          <h2 class="pd-section-title">Designed Specifically for College Communities</h2>
+          <span class="pd-version-badge">Feature Ecosystem</span>
+        </div>
+        <p class="pd-section-desc">Combining the best elements of Twitter's dynamic micro-blogging and LinkedIn's career &amp; project credentials, tailored for MITS Gwalior college life.</p>
+
+        <div class="feature-showcase-grid">
+          
+          <!-- Feature 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">🚀</div>
+            <h3 class="feature-card-title">Student Project &amp; Rank Showcase</h3>
+            <p class="feature-card-desc">
+              Like Twitter + LinkedIn for your campus! Every student can post project updates, code repositories, live demos, semester rankings, and verified skill badges that are visible to peers, seniors, and visiting companies.
+            </p>
+            <div class="feature-tags">
+              <span class="feature-tag">Project Demos</span>
+              <span class="feature-tag">Leaderboards</span>
+              <span class="feature-tag">Rank #1–#100</span>
+              <span class="feature-tag">Peer Endorsements</span>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">📜</div>
+            <h3 class="feature-card-title">Verifiable Certificates &amp; Portfolios</h3>
+            <p class="feature-card-desc">
+              Upload, verify, and pin hackathon certificates, course completions, and symposium awards to your permanent academic profile. Easily shareable links for internships and placement drives.
+            </p>
+            <div class="feature-tags">
+              <span class="feature-tag">Certificate Vault</span>
+              <span class="feature-tag">Placement Profile</span>
+              <span class="feature-tag">Verifiable Credentials</span>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">👨‍🏫</div>
+            <h3 class="feature-card-title">Professor Schedules &amp; Hackathon Hub</h3>
+            <p class="feature-card-desc">
+              Professors and department heads can broadcast official exam schedules, workshop timelines, hackathon registrations, guest lectures, and instantly spotlight intra-college award winners.
+            </p>
+            <div class="feature-tags">
+              <span class="feature-tag">Faculty Broadcasts</span>
+              <span class="feature-tag">Hackathon Manager</span>
+              <span class="feature-tag">Award Winners Spotlight</span>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">🪙</div>
+            <h3 class="feature-card-title">Campus Clubs &amp; Club Coins</h3>
+            <p class="feature-card-desc">
+              Promote technical, cultural, and sports clubs. Host intra-college competitions, assign bounties, and award <strong>Club Coins</strong> that students can accumulate, tip creators, and redeem for exclusive campus perks.
+            </p>
+            <div class="feature-tags">
+              <span class="feature-tag">Club Directories</span>
+              <span class="feature-tag">Club Coins Economy</span>
+              <span class="feature-tag">Event Bounties</span>
+              <span class="feature-tag">Campus Perks</span>
+            </div>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">💬</div>
+            <h3 class="feature-card-title">Thoughts, Discussions &amp; Channels</h3>
+            <p class="feature-card-desc">
+              Post quick academic thoughts, start debates, discuss semester subjects, ask seniors for exam notes, or find teammates for upcoming national hackathons through dedicated departmental tags.
+            </p>
+            <div class="feature-tags">
+              <span class="feature-tag">Department Channels</span>
+              <span class="feature-tag">Team Finder</span>
+              <span class="feature-tag">Exam Notes</span>
+              <span class="feature-tag">Real-Time Chat</span>
+            </div>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">🛡️</div>
+            <h3 class="feature-card-title">Verified MITS Gwalior Authentication</h3>
+            <p class="feature-card-desc">
+              Strict role-based access control (RBAC) ensuring verified students and faculty. Zero spam, authenticated college enrollment IDs, and private inter-department communities.
+            </p>
+            <div class="feature-tags">
+              <span class="feature-tag">MITS Roll Number Auth</span>
+              <span class="feature-tag">Zero Spam</span>
+              <span class="feature-tag">Role Separation</span>
+              <span class="feature-tag">Encrypted Chat</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 3: Technical Architecture -->
+      <section id="architecture" class="pd-section" style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(0, 0, 0, 0.08);">
+        <div class="pd-section-header">
+          <h2 class="pd-section-title">Enterprise Architecture &amp; Tech Stack</h2>
+          <span class="pd-version-badge">Production Monorepo</span>
+        </div>
+        <p class="pd-section-desc">Engineered for extreme performance, low latency notifications, and thousands of concurrent campus interactions.</p>
+
+        <div style="background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 18px; padding: 2.5rem; margin-top: 1.5rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 0.75rem;">📱 Flutter Mobile Client</h4>
+              <ul style="padding-left: 1.25rem; color: #475569; font-size: 0.92rem; line-height: 1.8;">
+                <li>Feature-first Clean Architecture with Riverpod state management</li>
+                <li>100% responsive across Android phones, tablets, and web browsers</li>
+                <li>STOMP WebSocket client with automatic reconnection &amp; exponential backoff</li>
+                <li>Offline caching &amp; instant feed optimistic updates</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 0.75rem;">⚙️ Kotlin &amp; Spring Boot Core</h4>
+              <ul style="padding-left: 1.25rem; color: #475569; font-size: 0.92rem; line-height: 1.8;">
+                <li>Spring Boot 3.3.x enterprise backend running on JDK 21</li>
+                <li>17 domain modules: Posts, Clubs, Events, Leaderboard, Chat, Coins</li>
+                <li>Spring Security + Firebase Admin JWT Token Filter</li>
+                <li>Apache Kafka event streaming for real-time notifications &amp; fanouts</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 0.75rem;">🗄️ Database &amp; Cloud Infra</h4>
+              <ul style="padding-left: 1.25rem; color: #475569; font-size: 0.92rem; line-height: 1.8;">
+                <li>PostgreSQL ACID transactional database with 13 Flyway SQL migrations</li>
+                <li>Redis for caching, sliding-window rate limiting &amp; distributed locks</li>
+                <li>Elasticsearch autocomplete &amp; full-text search across projects &amp; posts</li>
+                <li>AWS S3 pre-signed URLs for ultra-fast certificate &amp; image uploads</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============================================================
+       MULTI-COLUMN FOOTER
+       ============================================================ -->
+  <footer class="q-footer">
+    <div class="q-footer-container">
+      <div class="q-footer-grid">
+        <div class="q-footer-col-brand">
+          <a href="/index.html" class="q-footer-logo" aria-label="QuantaForze Home">
+            <img src="/images/branding/quantaforze-mark.svg" alt="QuantaForze Logo" class="q-footer-logo-icon">
+            <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-footer-logo-img">
+          </a>
+          <p class="q-footer-slogan">
+            Organize complexity. Connect intelligence. Automate action. Building intelligent infrastructure for connected environments.
+          </p>
+          <div style="margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <img src="/images/acadyk/mits_logo.png" alt="MITS Gwalior" style="height: 28px; width: auto; opacity: 0.85;">
+            <span style="font-size: 0.85rem; color: #64748b;">In official collaboration with MITS Gwalior</span>
+          </div>
+        </div>
+
+        <div class="q-footer-col">
+          <h4 class="q-footer-col-title">Products</h4>
+          <ul class="q-footer-links">
+            <li><a href="/src/pages/products/axiovital/index.html">AxioVital Healthcare</a></li>
+            <li><a href="/src/pages/products/autonomous-agent/index.html">Autonomous AI Agent</a></li>
+            <li><a href="/src/pages/products/intelligence-layer/index.html">Intelligence Layer</a></li>
+            <li><a href="/src/pages/products/acadyk/index.html" style="font-weight: 600; color: #0284c7;">Acadyk (MITS Network)</a></li>
+          </ul>
+        </div>
+
+        <div class="q-footer-col">
+          <h4 class="q-footer-col-title">Resources</h4>
+          <ul class="q-footer-links">
+            <li><a href="/src/pages/docs/index.html">Documentation</a></li>
+            <li><a href="/src/pages/support/index.html">Support &amp; Help Center</a></li>
+            <li><a href="/src/pages/founders/index.html">Founders &amp; Team</a></li>
+            <li><a href="/src/pages/contact/index.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="q-footer-col">
+          <h4 class="q-footer-col-title">Legal &amp; Policy</h4>
+          <ul class="q-footer-links">
+            <li><a href="/src/pages/privacy/index.html">Privacy Policy</a></li>
+            <li><a href="/src/pages/terms/index.html">Terms of Service</a></li>
+            <li><a href="/src/pages/support/index.html">System Status</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-footer-bottom">
+        <p class="q-footer-copyright">
+          &copy; 2026 QuantaForze Technologies Inc. All rights reserved. Acadyk is developed in partnership with MITS Gwalior.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple typewriter effect for header
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.pd-typewriter');
+      if (!el) return;
+      const words = JSON.parse(el.getAttribute('data-words') || '["Android", "MITS Students"]');
+      let wordIdx = 0;
+      let charIdx = 0;
+      let isDeleting = false;
+
+      function type() {
+        const currWord = words[wordIdx % words.length];
+        if (isDeleting) {
+          el.textContent = currWord.substring(0, charIdx - 1);
+          charIdx--;
+        } else {
+          el.textContent = currWord.substring(0, charIdx + 1);
+          charIdx++;
+        }
+
+        let speed = isDeleting ? 40 : 80;
+        if (!isDeleting && charIdx === currWord.length) {
+          speed = 1800;
+          isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          wordIdx++;
+          speed = 300;
+        }
+        setTimeout(type, speed);
+      }
+      setTimeout(type, 500);
+    });
+  </script>
+</body>
+</html>
