@@ -14,8 +14,6 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         axiovital: resolve(__dirname, 'src/pages/products/axiovital/index.html'),
-        autonomousAgent: resolve(__dirname, 'src/pages/products/autonomous-agent/index.html'),
-        intelligenceLayer: resolve(__dirname, 'src/pages/products/intelligence-layer/index.html'),
         connect: resolve(__dirname, 'src/pages/products/connect/index.html'),
         acadyk: resolve(__dirname, 'src/pages/products/acadyk/index.html'),
         docs: resolve(__dirname, 'src/pages/docs/index.html'),

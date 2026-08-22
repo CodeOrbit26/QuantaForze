@@ -528,4 +528,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Newsletter Join Event Listeners
+  const newsletterForms = document.querySelectorAll('.q-footer-newsletter');
+  newsletterForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      if (window.handleJoinSubscription) {
+        window.handleJoinSubscription(e);
+      }
+    });
+  });
+
 });
+

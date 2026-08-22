@@ -451,4 +451,90 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('theme-light');
   } catch (e) {}
 
+  // Newsletter Join Event Listeners
+  const newsletterForms = document.querySelectorAll('.q-footer-newsletter');
+  newsletterForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      window.handleJoinSubscription(e);
+    });
+  });
+
 });
+
+// Global Join Subscription Handler & Modal Popup
+window.handleJoinSubscription = function(event) {
+  if (event && event.preventDefault) {
+    event.preventDefault();
+  }
+  const form = event ? event.target : null;
+  const input = form ? form.querySelector('input[type="email"]') : document.querySelector('.q-footer-newsletter input[type="email"]');
+  const email = input ? input.value.trim() : '';
+
+  if (!email) return;
+
+  // Send email to support@quantaforze.com via FormSubmit AJAX endpoint
+  fetch('https://formsubmit.co/ajax/support@quantaforze.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      _subject: 'New Subscription: Engineering Updates',
+      message: `User subscribed to engineering updates with email: ${email}`
+    })
+  }).catch(err => {
+    console.log('FormSubmit dispatch error:', err);
+  });
+
+  // Open popup on screen
+  window.openJoinModal(email);
+
+  if (input) {
+    input.value = '';
+  }
+};
+
+window.openJoinModal = function(email) {
+  let modal = document.getElementById('joinModal');
+  if (!modal) {
+    const modalHtml = `
+      <div id="joinModal" style="position: fixed; inset: 0; z-index: 999999; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+        <div id="joinModalCard" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.5rem; padding: 2.5rem 2rem; max-width: 440px; width: 90%; text-align: center; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25); transform: scale(0.9); transition: transform 0.3s ease; position: relative;">
+          <button onclick="window.closeJoinModal()" aria-label="Close modal" style="position: absolute; top: 1rem; right: 1rem; background: #f1f5f9; border: none; font-size: 1.1rem; color: #64748b; cursor: pointer; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">✕</button>
+          <div style="width: 56px; height: 56px; background: #dcfce7; border: 2px solid #86efac; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: #16a34a; font-size: 1.5rem; font-weight: bold;">✓</div>
+          <h3 style="font-family: var(--font-family-frama, 'Outfit', sans-serif); font-size: 1.45rem; font-weight: 700; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -0.02em;">Thank you for joining us!</h3>
+          <p id="joinModalSubtext" style="font-family: var(--font-family-inter, 'Inter', sans-serif); font-size: 0.95rem; color: #475569; line-height: 1.55; margin-bottom: 1.5rem;">Engineering updates queued and confirmation sent for <span style="color: #0284c7; font-weight: 600;">${email}</span>.</p>
+          <button onclick="window.closeJoinModal()" style="width: 100%; padding: 0.75rem 1.5rem; border-radius: 9999px; background: #0f172a; color: #ffffff; font-family: var(--font-family-inter, 'Inter', sans-serif); font-size: 0.92rem; font-weight: 600; border: none; cursor: pointer; transition: background 0.2s ease;">Done</button>
+        </div>
+      </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    modal = document.getElementById('joinModal');
+  } else {
+    const subtext = document.getElementById('joinModalSubtext');
+    if (subtext) {
+      subtext.innerHTML = `Engineering updates queued and confirmation sent for <span style="color: #0284c7; font-weight: 600;">${email}</span>.`;
+    }
+  }
+
+  modal.style.display = 'flex';
+  setTimeout(() => {
+    modal.style.opacity = '1';
+    const card = document.getElementById('joinModalCard');
+    if (card) card.style.transform = 'scale(1)';
+  }, 10);
+};
+
+window.closeJoinModal = function() {
+  const modal = document.getElementById('joinModal');
+  if (modal) {
+    modal.style.opacity = '0';
+    const card = document.getElementById('joinModalCard');
+    if (card) card.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 300);
+  }
+};
+

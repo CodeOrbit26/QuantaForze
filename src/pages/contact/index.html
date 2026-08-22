@@ -26,6 +26,11 @@
         <img src="/images/branding/Quantaforze.png" alt="QuantaForze" class="q-logo-img">
       </a>
       <div class="q-nav-right">
+        <nav class="q-nav-menu">
+          <a href="/index.html#usps" class="q-nav-link">Products</a>
+          <a href="/index.html#loop" class="q-nav-link">Technology</a>
+          <a href="/src/pages/founders/index.html" class="q-nav-link">Company</a>
+        </nav>
         <div class="q-nav-actions">
           <a href="/src/pages/docs/index.html" class="q-btn-docs">Docs</a>
           <a href="/src/pages/contact/index.html" class="q-btn-get-started">Get Started</a>
@@ -74,11 +79,11 @@
           Get help from the community. If you're on a paid plan, submit a ticket to our support team.
         </div>
         <div class="v-card-actions">
-          <a href="/src/pages/docs/index.html" class="v-btn-primary">Get Support</a>
-          <div class="v-status-badge">
+          <a href="/src/pages/support/index.html" class="v-btn-primary">Get Support</a>
+          <a href="/src/pages/support/index.html" class="v-status-badge" style="text-decoration: none; color: inherit;">
             <span class="v-status-dot"></span>
             All systems normal
-          </div>
+          </a>
         </div>
       </div>
 
@@ -122,7 +127,7 @@
         <div class="v-res-desc">
           Follow us on X. Get QuantaForze news, company information, and media resources.
         </div>
-        <a href="https://github.com/CodeOrbit26/QuantaForze" target="_blank" class="v-btn-pill-muted">Follow @quantaforze</a>
+        <a href="https://x.com/QuantaforgeCorp" target="_blank" rel="noopener noreferrer" class="v-btn-pill-muted">Follow @QuantaforgeCorp</a>
       </div>
 
       <!-- Resource 3: Join Community -->
@@ -134,7 +139,7 @@
         <div class="v-res-desc">
           Join our community. For code related discussions, join our community forum.
         </div>
-        <a href="https://github.com/CodeOrbit26/QuantaForze/discussions" target="_blank" class="v-btn-pill-muted">View our Community forum</a>
+        <a href="https://discord.gg/xPnSrEBfF" target="_blank" rel="noopener noreferrer" class="v-btn-pill-muted">Join Discord Community</a>
       </div>
 
     </div>
@@ -147,15 +152,15 @@
       <h2 class="v-modal-title">Contact Sales &amp; Architecture</h2>
       <p class="v-modal-subtitle">Speak directly with QuantaForze engineering leadership.</p>
 
-      <form onsubmit="event.preventDefault(); alert('Thank you! Your inquiry has been sent to QuantaForze sales & engineering.'); closeVercelContactModal();">
+      <form onsubmit="window.handleContactSalesSubmit(event)">
         <div class="v-form-field">
           <label class="v-form-label">Full Name*</label>
-          <input type="text" class="v-form-input" placeholder="Alex Morgan" required>
+          <input type="text" class="v-form-input" placeholder="Bhawana Rajput" required>
         </div>
 
         <div class="v-form-field">
           <label class="v-form-label">Work Email*</label>
-          <input type="email" class="v-form-input" placeholder="alex@company.com" required>
+          <input type="email" class="v-form-input" placeholder="bhawana@company.com" required>
         </div>
 
         <div class="v-form-field">
@@ -187,7 +192,6 @@
           <h3 class="q-footer-title"><span class="q-title-bar">|</span> ECOSYSTEM</h3>
           <ul class="q-footer-links">
             <li><a href="/src/pages/products/axiovital/index.html">AxioVital Platform</a></li>
-            <li><a href="/src/pages/products/autonomous-agent/index.html">QuantaForze Agent</a></li>
             <li><a href="/src/pages/products/acadyk/index.html">Acadyk (MITS Network)</a></li>
           </ul>
         </div>
@@ -214,13 +218,6 @@
     </div>
   </footer>
 
-  <script>
-    function openVercelContactModal() {
-      document.getElementById('vercelContactModal').classList.add('active');
-    }
-    function closeVercelContactModal() {
-      document.getElementById('vercelContactModal').classList.remove('active');
-    }
-  </script>
+  <script type="module" src="/src/pages/contact/contact.js"></script>
 </body>
 </html>
